@@ -66,6 +66,7 @@
     "@types/react": "^16.0.36",
     "@types/react-dom": "^16.0.3",
     "@types/recompose": "^0.24.4",
+    "babel-loader": "^7.1.2",
     "typescript": "^2.7.1"
   },
   "jest": {
@@ -109,7 +110,8 @@
       "ts-jest": {
         "tsConfigFile": "/Users/tozawa/Projects/react-paper-bindings-test/tsconfig.test.json"
       }
-    }
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setup.js"
   },
   "babel": {
     "presets": [
