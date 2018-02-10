@@ -3,13 +3,13 @@ import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
 import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
-import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
-import {RailPartInfo} from "components/Rail/parts/types";
-import {Pivot} from "components/Rail/parts/primitives/PartBase";
+import CirclePart from "./primitives/CirclePart";
+import {RailPartInfo} from "components/Rails/parts/types";
+import {Pivot} from "components/Rails/parts/primitives/PartBase";
+import {JOINT_DETECTION_OPACITY_RATE, JOINT_FILL_COLORS} from "constants/parts";
 
 
 interface Props extends Partial<DefaultProps> {
-  length: number
   name?: string
   data?: RailPartInfo
   onClick?: (e: MouseEvent) => void
@@ -18,75 +18,81 @@ interface Props extends Partial<DefaultProps> {
 interface DefaultProps {
   position?: Point
   angle?: number
-  pivot?: Pivot
   detectionEnabled?: boolean
+  pivot?: Pivot
   selected?: boolean
   opacity?: number
   fillColors?: string[]
 }
 
-export type StraightRailPartProps = Props & DefaultProps;
+export type JointProps = Props & DefaultProps;
 
 
-export default class StraightRailPart extends React.Component<StraightRailPartProps, {}> {
+export default class Joint extends React.Component<JointProps, {}> {
   public static defaultProps: DefaultProps = {
     position: new Point(0, 0),
     angle: 0,
-    detectionEnabled: false,
-    pivot: Pivot.LEFT,
+    pivot: Pivot.CENTER,
+    detectionEnabled: true,
     selected: false,
     opacity: 1,
-    fillColors: RAIL_PART_FILL_COLORS
+    fillColors: JOINT_FILL_COLORS
   }
+  static WIDTH = 8;
+  static HEIGHT = 18;
+  static HIT_RADIUS = 20;
+  static FLOW_COLOR_1 = "royalblue";
+  static FLOW_COLOR_2 = "greenyellow";
+  static ANIMATION_MAX = 30
+  static ANIMATION_MIN = 60
 
   detectablePart: DetectablePart
 
-  constructor(props: StraightRailPartProps) {
+  constructor(props: JointProps) {
     super(props)
   }
 
   // ========== Public APIs ==========
 
-  get startPoint() {
-    return (this.detectablePart.mainPart as RectPart).getCenterOfLeft()
+  get position() {
+    return this.detectablePart.mainPart.path.position
   }
 
-  get endPoint() {
-    return (this.detectablePart.mainPart as RectPart).getCenterOfRight()
+  move(position: Point): void {
+    this.detectablePart.move(position)
   }
 
   // ========== Private methods ==========
 
   render() {
-    const {length, position, angle, pivot, detectionEnabled, selected, fillColors, opacity,
-      name, data , onClick} = this.props
+    const {position, angle, detectionEnabled, pivot, selected, fillColors, opacity,
+      name, data, onClick} = this.props
+
     return (
       <DetectablePart
         mainPart={
           <RectPart
             position={position}
             angle={angle}
-            width={length}
-            height={RAIL_PART_WIDTH}
+            width={Joint.WIDTH}
+            height={Joint.HEIGHT}
             pivot={pivot}
             selected={selected}
+            opacity={opacity}
           />
         }
         detectionPart={
-          <RectPart
+          <CirclePart
             position={position}
-            angle={angle}
-            width={length}
-            height={RAIL_PART_WIDTH}
-            pivot={pivot}
+            radius={Joint.HIT_RADIUS}
             selected={selected}
-            opacity={opacity * RAIL_PART_DETECTION_OPACITY_RATE}
+            opacity={opacity * JOINT_DETECTION_OPACITY_RATE}
           />
         }
         fillColors={fillColors}
         detectionEnabled={detectionEnabled}
         name={name}
-        data={data}
+        // data={Object.assign(data, {detectionState})}
         onClick={onClick}
         ref={(part) => this.detectablePart = part}
       />

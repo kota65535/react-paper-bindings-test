@@ -1,15 +1,16 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
-import StraightRailPart from "./parts/StraightRailPart";
+import CurveRailPart from "./parts/CurveRailPart";
 import Joint from "./parts/Joint";
-import {Pivot} from "components/Rail/parts/primitives/PartBase";
+import {Pivot} from "components/Rails/parts/primitives/PartBase";
 
 
 interface Props extends Partial<DefaultProps> {
   position: Point
   angle: number
-  length: number
+  radius: number
+  centerAngle: number
   id: number
 }
 
@@ -19,20 +20,20 @@ interface DefaultProps {
   opacity?: number
 }
 
-export type StraightRailProps = Props & DefaultProps
+export type CurveRailProps = Props & DefaultProps
 
 
-export default class StraightRail extends React.Component<StraightRailProps, {}> {
+export default class CurveRail extends React.Component<CurveRailProps, {}> {
   public static defaultProps: DefaultProps = {
     selected: false,
     pivot: Pivot.LEFT,
     opacity: 1,
   }
 
-  railPart: StraightRailPart
+  railPart: CurveRailPart
   joints: Array<Joint> = [null, null]
 
-  constructor(props: StraightRailProps) {
+  constructor(props: CurveRailProps) {
     super(props)
   }
 
@@ -49,8 +50,6 @@ export default class StraightRail extends React.Component<StraightRailProps, {}>
   fixJointsPosition() {
     switch (this.props.pivot) {
       case Pivot.LEFT:
-        // ジョイントパーツの右端・左端をレールパーツに合わせる場合
-        // this.joints[1].detectablePart.move(this.railPart.endPoint, this.joints[1].detectablePart.mainPart.getCenterOfRight())
         this.joints[1].detectablePart.move(this.railPart.endPoint)
         break
       case Pivot.RIGHT:
@@ -59,20 +58,14 @@ export default class StraightRail extends React.Component<StraightRailProps, {}>
     }
   }
 
-  onJointClick = (e: MouseEvent) => {
-
-  }
-
-
-
   render() {
-    const {position, angle, length, id, selected, pivot, opacity} = this.props
-
+    const {position, angle, radius, centerAngle, id, selected, pivot, opacity} = this.props
     return [
-      <StraightRailPart
+      <CurveRailPart
+        radius={radius}
+        centerAngle={centerAngle}
         position={position}
         angle={angle}
-        length={length}
         pivot={pivot}
         selected={selected}
         opacity={opacity}
@@ -85,7 +78,7 @@ export default class StraightRail extends React.Component<StraightRailProps, {}>
         ref={(railPart) => this.railPart = railPart}
       />,
       <Joint
-        angle={angle - 180}
+        angle={angle}
         position={position}
         opacity={opacity}
         name={'Rail'}
@@ -98,7 +91,7 @@ export default class StraightRail extends React.Component<StraightRailProps, {}>
         ref={(joint) => this.joints[0] = joint}
       />,
       <Joint
-        angle={angle}
+        angle={angle + centerAngle}
         position={position}
         opacity={opacity}
         name={'Rail'}
@@ -108,7 +101,6 @@ export default class StraightRail extends React.Component<StraightRailProps, {}>
           partType: 'Joint',
           partId: 1
         }}
-        onClick={this.onJointClick}
         ref={(joint) => this.joints[1] = joint}
       />
     ]

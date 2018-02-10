@@ -5,8 +5,8 @@ import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
 import ArcPart from "./primitives/ArcPart";
 import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
-import {Pivot} from "components/Rail/parts/primitives/PartBase";
-import {RailPartInfo} from "components/Rail/parts/types";
+import {Pivot} from "components/Rails/parts/primitives/PartBase";
+import {RailPartInfo} from "components/Rails/parts/types";
 
 
 interface Props extends Partial<DefaultProps> {

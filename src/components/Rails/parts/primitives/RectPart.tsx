@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
-import PartBase, {PartBaseProps, Pivot} from "components/Rail/parts/primitives/PartBase";
+import PartBase, {PartBaseProps, Pivot} from "components/Rails/parts/primitives/PartBase";
 
 
 interface RectPartProps extends PartBaseProps {
