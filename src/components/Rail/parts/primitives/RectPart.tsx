@@ -1,31 +1,41 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
-import {default as PartBase, PartBaseProps, Pivot} from "components/parts/primitives/PartBase";
+import PartBase, {PartBaseProps, Pivot} from "components/Rail/parts/primitives/PartBase";
 
-export interface TrianglePartProps extends PartBaseProps {
+
+interface RectPartProps extends PartBaseProps {
   width: number
   height: number
 }
 
-export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
 
-  constructor (props: TrianglePartProps) {
+export default class RectPart extends PartBase<RectPartProps, {}> {
+
+  constructor (props: RectPartProps) {
     super(props)
   }
 
   // ========== Public APIs ==========
 
   getCenterOfTop(): Point {
-    return this._path.segments[0].point;
-  }
-
-  getCenterOfBottom(): Point {
     return this._path.curves[1].getLocationAt(this._path.curves[1].length/2).point;
   }
 
-  // ========== Private methods ==========
+  getCenterOfBottom(): Point {
+    return this._path.curves[4].getLocationAt(this._path.curves[4].length/2).point;
+  }
 
+  getCenterOfLeft(): Point {
+    return this._path.segments[0].point
+  }
+
+  getCenterOfRight(): Point {
+    return this._path.segments[3].point
+  }
+
+  // ========== Private methods ==========
+  
   componentDidMount() {
     this.fixPositionByAnchorPoint()
   }
@@ -36,8 +46,14 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
 
   fixPositionByAnchorPoint() {
     switch (this.props.pivot) {
+      case Pivot.LEFT:
+        this.move(this.props.position, this.getCenterOfLeft())
+        break
       case Pivot.TOP:
         this.move(this.props.position, this.getCenterOfTop())
+        break
+      case Pivot.RIGHT:
+        this.move(this.props.position, this.getCenterOfRight())
         break
       case Pivot.BOTTOM:
         this.move(this.props.position, this.getCenterOfBottom())
@@ -55,7 +71,7 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
       position, angle, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
     return <PathComponent
-      pathData={createTrianglePath(width, height)}
+      pathData={createRectPath(width, height)}
       position={position}
       rotation={angle}
       fillColor={fillColor}
@@ -78,7 +94,8 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
   }
 }
 
-export function createTrianglePath(width: number, height: number) {
-  let pathData = `M 0 0 L ${width/2} ${height} L ${-width/2} ${height} Z`
+
+function createRectPath(width: number, height: number) {
+  let pathData = `M 0 0 L 0 ${-height/2} ${width} ${-height/2} L ${width}} 0 L ${width} ${height/2} L 0 ${height/2} Z`
   return pathData
 }

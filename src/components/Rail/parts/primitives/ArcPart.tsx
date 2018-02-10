@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
-import {default as PartBase, PartBaseProps, Pivot} from "components/parts/primitives/PartBase";
+import {default as PartBase, PartBaseProps, Pivot} from "components/Rail/parts/primitives/PartBase";
 
 export interface ArcPartProps extends PartBaseProps {
   width: number

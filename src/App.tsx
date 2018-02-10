@@ -1,13 +1,18 @@
 import * as React from 'react';
 import './App.css';
 import { GridPaper } from 'components/GridPaper';
-import RectPart from "components/parts/primitives/RectPart";
+import RectPart from "components/Rail/parts/primitives/RectPart";
 import {Point} from 'paper';
-import CirclePart from 'components/parts/primitives/CirclePart';
-import {Pivot} from 'components/parts/primitives/PartBase';
-import ArcPart from "components/parts/primitives/ArcPart";
-import TrianglePart from 'components/parts/primitives/TrianglePart';
-import DetectablePart from 'components/parts/primitives/DetectablePart';
+import CirclePart from 'components/Rail/parts/primitives/CirclePart';
+import {Pivot} from 'components/Rail/parts/primitives/PartBase';
+import ArcPart from "components/Rail/parts/primitives/ArcPart";
+import TrianglePart from 'components/Rail/parts/primitives/TrianglePart';
+import DetectablePart from 'components/Rail/parts/primitives/DetectablePart';
+import Joint from "components/Rail/parts/Joint";
+import StraightRailPart from "components/Rail/parts/StraightRailPart";
+import StraightRail from "components/Rail/StraightRail";
+import CurveRailPart from 'components/Rail/parts/CurveRailPart';
+import CurveRail from "components/Rail/CurveRail";
 
 const logo = require('./logo.svg');
 
@@ -96,6 +101,16 @@ class App extends React.Component {
             onClick={(e) => console.log('Clicked')}
             detectionEnabled={true}
           />
+          <Joint
+            position={new Point(400,300)}
+            detectionEnabled={true}
+          />
+          <StraightRailPart
+            position={new Point(500,100)}
+            length={200}/>
+          <StraightRail position={new Point(100, 500)} angle={0} length={200} id={1}/>
+          <CurveRailPart position={new Point(500, 400)}radius={100} centerAngle={90}/>
+          <CurveRail position={new Point(500, 300)} angle={45} radius={100} centerAngle={45} id={2}/>
         </GridPaper>
       </div>
     );

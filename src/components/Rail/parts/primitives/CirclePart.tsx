@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Path as PathComponent} from "react-paper-bindings";
-import PartBase, {PartBaseProps} from "components/parts/primitives/PartBase";
+import PartBase, {PartBaseProps} from "components/Rail/parts/primitives/PartBase";
 
 interface CirclePartProps extends PartBaseProps {
   radius: number
