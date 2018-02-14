@@ -62,6 +62,12 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
     return this._detectionPart
   }
 
+  resetDetectionState() {
+    this.setState({
+        detectionState: DetectionState.BEFORE_DETECT
+    })
+  }
+
   moveRelatively(difference: Point) {
     this.mainPart.moveRelatively(difference)
     this.detectionPart.moveRelatively(difference)
@@ -73,6 +79,16 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   }
 
   // ========== Private methods ==========
+
+  // detectionEnabledが OFF -> ON になった場合は状態をリセットする
+  componentWillReceiveProps(nextProps: DetectablePartProps) {
+    if (! this.props.detectionEnabled && nextProps.detectionEnabled) {
+      this.setState({
+        detectionState: DetectionState.BEFORE_DETECT,
+        detectionPartVisible: true
+      })
+    }
+  }
 
   componentDidMount() {
     this.fixDetectionPartPosition()
@@ -134,6 +150,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
     props.onMouseEnter = this.onMouseEnter
     props.onMouseLeave = this.onMouseLeave
     props.onClick = this.onClick
+    props.onMouseMove = this.props.onMouseMove
     props.ref = (_detectionPart) => this._detectionPart = _detectionPart
     return props
   }

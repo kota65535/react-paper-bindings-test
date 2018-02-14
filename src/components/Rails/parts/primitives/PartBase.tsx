@@ -9,7 +9,7 @@ export enum Pivot {
   BOTTOM = 'Bottom',
 }
 
-export interface PartBaseProps {
+interface Props extends Partial<DefaultProps> {
   position?: Point
   angle?: number
   pivot?: Pivot
@@ -30,22 +30,7 @@ export interface PartBaseProps {
   onMouseLeave?: any
 }
 
-
-export interface PartBaseProps extends Partial<PartBaseDefaultProps> {
-  name?: string
-  data?: object
-  onFrame?: any
-  onMouseDown?: any
-  onMouseDrag?: any
-  onMouseUp?: any
-  onClick?: any
-  onDoubleClick?: any
-  onMouseMove?: any
-  onMouseEnter?: any
-  onMouseLeave?: any
-}
-
-export interface PartBaseDefaultProps {
+interface DefaultProps {
   position?: Point
   angle?: number
   pivot?: Pivot
@@ -55,9 +40,10 @@ export interface PartBaseDefaultProps {
   selected?: boolean
 }
 
+export type PartBaseProps = Props & DefaultProps
 
-export default class PartBase<P, S> extends React.Component<P, S> {
-  public static defaultProps: PartBaseDefaultProps = {
+export default class PartBase<P extends PartBaseProps, S> extends React.Component<P, S> {
+  public static defaultProps: DefaultProps = {
     position: new Point(0, 0),
     angle: 0,
     pivot: Pivot.CENTER,
@@ -83,13 +69,26 @@ export default class PartBase<P, S> extends React.Component<P, S> {
     return this._path.position
   }
 
+  get angle() {
+    return this._path.rotation
+  }
+
   moveRelatively(difference: Point) {
     this._path.position = this._path.position.add(difference);
   }
 
-  move(position: Point, anchor: Point = this._path.position): void {
-    let difference = position.subtract(anchor);
+  move(position: Point, pivot: Point = this.position): void {
+    let difference = position.subtract(pivot);
     this.moveRelatively(difference);
+  }
+
+  rotateRelatively(difference: number, pivot: Point = this.position) {
+    this.path.rotate(difference, pivot);
+  }
+
+  rotate(angle: number, pivot: Point = this.position) {
+    let relAngle = angle - this.angle
+    this.rotateRelatively(relAngle, pivot);
   }
 }
 
