@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Path, Point} from "paper";
+import Item = paper.Item;
 
 export enum Pivot {
   CENTER = 'Center',
@@ -72,6 +73,16 @@ export default class PartBase<P extends PartBaseProps, S> extends React.Componen
 
   get angle() {
     return this._angle
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.position.x === nextProps.position.x && this.props.position.y === nextProps.position.y) {
+      return false
+    }
+    if (this.props.angle === nextProps.angle) {
+      return false
+    }
+    return true
   }
 
   moveRelatively(difference: Point) {

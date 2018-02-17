@@ -86,7 +86,6 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
   }
 
   componentDidUpdate() {
-    this.rotate(30, new Point(0,0))
   }
   componentDidMount() {
     // this.rotate(30, new Point(0,0))

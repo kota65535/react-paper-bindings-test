@@ -2,6 +2,7 @@ import * as React from "react";
 import {Point} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
 import PartBase, {PartBaseProps, Pivot} from "components/Rails/parts/primitives/PartBase";
+import {Path} from "paper";
 
 
 interface RectPartProps extends PartBaseProps {
@@ -14,6 +15,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
 
   constructor (props: RectPartProps) {
     super(props)
+
   }
 
   // ========== Public APIs ==========
@@ -34,37 +36,22 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
     return this._path.segments[3].point
   }
 
-  // ========== Private methods ==========
-  
-  componentDidMount() {
-    this.fixPositionByAnchorPoint()
-    this.rotate(15, new Point(0,0))
-  }
 
-  componentDidUpdate() {
-    this.fixPositionByAnchorPoint()
-    this.rotate(15, new Point(0,0))
-  }
-
-  fixPositionByAnchorPoint() {
-    switch (this.props.pivot) {
+  getPivotPoint() {
+    const {pivot, width, height} = this.props
+    switch (pivot) {
       case Pivot.LEFT:
-        this.move(this.props.position, this.getCenterOfLeft())
-        break
+        return new Point(0, 0)
       case Pivot.TOP:
-        this.move(this.props.position, this.getCenterOfTop())
-        break
+        return new Point(width/2, -height/2)
       case Pivot.RIGHT:
-        this.move(this.props.position, this.getCenterOfRight())
-        break
+        return new Point(width, 0)
       case Pivot.BOTTOM:
-        this.move(this.props.position, this.getCenterOfBottom())
-        break
+        return new Point(width/2, height/2)
       case Pivot.CENTER:
-        // noop
-        break
+        return new Point(width/2, height/2)
       default:
-        throw Error(`Invalid pivot ${this.props.pivot} for ${this.constructor.name}`)
+        throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
     }
   }
 
@@ -72,8 +59,12 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
     const {width, height,
       position, angle, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
+
+    const pivot = this.getPivotPoint()
+
     return <PathComponent
       pathData={createRectPath(width, height)}
+      pivot={pivot}     // pivot parameter MUST proceed to position
       position={position}
       rotation={angle}
       fillColor={fillColor}
