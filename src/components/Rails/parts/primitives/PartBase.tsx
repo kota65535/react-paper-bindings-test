@@ -42,7 +42,7 @@ export interface PartBaseDefaultProps {
 }
 
 
-export default class PartBase<P extends PartBaseProps, S> extends React.Component<P, S> {
+export default abstract class PartBase<P extends PartBaseProps, S> extends React.Component<P, S> {
   public static defaultProps: PartBaseDefaultProps = {
     position: new Point(0, 0),
     angle: 0,
@@ -74,6 +74,9 @@ export default class PartBase<P extends PartBaseProps, S> extends React.Componen
   get angle() {
     return this._angle
   }
+
+
+  // abstract getPivotPoint()
 
   // shouldComponentUpdate(nextProps) {
   //   if (this.props.position.x === nextProps.position.x && this.props.position.y === nextProps.position.y) {

@@ -12,6 +12,10 @@ export default class CirclePart extends PartBase<CirclePartProps, {}> {
     super(props)
   }
 
+  getPivotPoint() {
+
+  }
+
   render() {
     const {radius,
       position, angle, fillColor, visible, opacity, selected, name, data,

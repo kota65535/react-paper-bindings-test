@@ -34,6 +34,10 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     return this._path.segments[3 + correction].point
   }
 
+  getPivotPoint() {
+
+  }
+
   // ========== Private methods ==========
 
   render() {

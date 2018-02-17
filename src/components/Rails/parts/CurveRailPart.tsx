@@ -102,28 +102,26 @@ export default class CurveRailPart extends React.Component<CurveRailPartProps, {
       <DetectablePart
         mainPart={
           <ArcPart
-            position={position}
-            angle={angle}
+            pivot={pivot}
             direction={direction}
             radius={radius}
             centerAngle={centerAngle}
             width={RAIL_PART_WIDTH}
-            pivot={pivot}
-            selected={selected}
           />
         }
         detectionPart={
           <ArcPart
-            position={position}
-            angle={angle}
+            pivot={pivot}
             direction={direction}
             radius={radius}
             centerAngle={centerAngle}
             width={RAIL_PART_WIDTH}
-            selected={selected}
             opacity={opacity * RAIL_PART_DETECTION_OPACITY_RATE}
           />
         }
+        position={position}
+        angle={angle}
+        pivot={pivot}
         fillColors={fillColors}
         detectionEnabled={detectionEnabled}
         name={name}

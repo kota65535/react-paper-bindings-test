@@ -50,6 +50,10 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
     }
   }
 
+  getPivotPoint() {
+
+  }
+
   render() {
     const {width, height,
       position, angle, fillColor, visible, opacity, selected, name, data,

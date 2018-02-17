@@ -100,25 +100,20 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
       <DetectablePart
         mainPart={
           <RectPart
-            position={position}
-            angle={angle}
             width={length}
             height={RAIL_PART_WIDTH}
-            pivot={pivot}
-            selected={selected}
           />
         }
         detectionPart={
           <RectPart
-            position={position}
-            angle={angle}
             width={length}
             height={RAIL_PART_WIDTH}
-            pivot={pivot}
-            selected={selected}
             opacity={opacity * RAIL_PART_DETECTION_OPACITY_RATE}
           />
         }
+        position={position}
+        angle={angle}
+        pivot={pivot}
         fillColors={fillColors}
         detectionEnabled={detectionEnabled}
         name={name}

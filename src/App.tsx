@@ -61,8 +61,8 @@ class App extends React.Component<{}, AppState> {
     // this.rect.rotate(45)
     // this.r.rotate(45)
     // this.rect.rotate(45)
-    this.angle = 60
-    this.position = new Point(300, 200)
+    // this.angle = 60
+    // this.position = new Point(400, 200)
   }
 
 
@@ -185,7 +185,8 @@ class App extends React.Component<{}, AppState> {
             fillColor={'green'}
             position={this.position}
             angle={this.angle}
-            pivot={Pivot.LEFT}
+            pivot={Pivot.TOP}
+            pivotPartIndex={0}
             ref={(p) => this.rect = p}
           >
             <RectPart
@@ -226,15 +227,15 @@ class App extends React.Component<{}, AppState> {
             {/*angle={0}*/}
             {/*radius={50}*/}
           {/*/>*/}
-          {/*<ArcPart*/}
-            {/*position={new Point(500,100)}*/}
-            {/*angle={0}*/}
-            {/*width={10}*/}
-            {/*direction={ArcDirection.LEFT}*/}
-            {/*radius={50}*/}
-            {/*centerAngle={90}*/}
-            {/*pivot={Pivot.RIGHT}*/}
-          {/*/>*/}
+          <ArcPart
+            position={new Point(500,100)}
+            angle={45}
+            width={10}
+            direction={ArcDirection.RIGHT}
+            radius={50}
+            centerAngle={45}
+            pivot={Pivot.LEFT}
+          />
           {/*<TrianglePart*/}
             {/*position={new Point(400,100)}*/}
             {/*angle={0}*/}
@@ -243,27 +244,30 @@ class App extends React.Component<{}, AppState> {
             {/*pivot={Pivot.BOTTOM}*/}
           {/*/>*/}
 
-          {/*<DetectablePart*/}
-            {/*mainPart={*/}
-              {/*<RectPart*/}
-                {/*position={new Point(0,0)}*/}
-                {/*width={50}*/}
-                {/*height={50}*/}
-              {/*/>*/}
-            {/*}*/}
-            {/*detectionPart={*/}
-              {/*<RectPart*/}
-                {/*position={new Point(0,0)}*/}
-                {/*width={70}*/}
-                {/*height={70}*/}
-                {/*opacity={0.5}*/}
-              {/*/>*/}
-            {/*}*/}
-            {/*position={new Point(100, 100)}*/}
-            {/*fillColors={['black', 'orange', 'blue', 'grey']}*/}
-            {/*onClick={(e) => console.log('Clicked')}*/}
-            {/*detectionEnabled={true}*/}
-          {/*/>*/}
+          <DetectablePart
+            mainPart={
+              <RectPart
+                position={new Point(0,0)}
+                width={50}
+                height={50}
+              />
+            }
+            detectionPart={
+              <RectPart
+                position={new Point(0,0)}
+                width={70}
+                height={70}
+                opacity={0.5}
+              />
+            }
+            position={new Point(100, 100)}
+            angle={30}
+            pivot={Pivot.LEFT}
+            pivotPartIndex={0}
+            fillColors={['black', 'orange', 'blue', 'grey']}
+            onClick={(e) => console.log('Clicked')}
+            detectionEnabled={true}
+          />
           {/*<Joint*/}
             {/*position={new Point(400,300)}*/}
           {/*/>*/}
@@ -276,15 +280,16 @@ class App extends React.Component<{}, AppState> {
           {/*/>*/}
 
           {/*<StraightRailPart*/}
-            {/*pivot={Pivot.CENTER}*/}
+            {/*pivot={Pivot.LEFT}*/}
             {/*angle={90}*/}
             {/*position={new Point(300,200)}*/}
             {/*length={200}*/}
           {/*/>*/}
           {/*<CurveRailPart*/}
+            {/*pivot={Pivot.LEFT}*/}
             {/*position={new Point(500, 400)}*/}
             {/*direction={ArcDirection.RIGHT}*/}
-            {/*angle={45}*/}
+            {/*angle={0}*/}
             {/*radius={100}*/}
             {/*centerAngle={45}*/}
           {/*/>*/}
@@ -297,15 +302,15 @@ class App extends React.Component<{}, AppState> {
           {/*/>*/}
           {/*<CurveRail position={this.state.mousePosition} angle={45} radius={100} centerAngle={45} id={2}/>*/}
 
-          <Tool
-            active={true}
-            onMouseMove={(e) => {
-              this.setState({
-                mousePosition: e.point
-              })
-              console.log(`position: ${e.point}`)
-            }}
-          />
+          {/*<Tool*/}
+            {/*active={true}*/}
+            {/*onMouseMove={(e) => {*/}
+              {/*this.setState({*/}
+                {/*mousePosition: e.point*/}
+              {/*})*/}
+              {/*console.log(`position: ${e.point}`)*/}
+            {/*}}*/}
+          {/*/>*/}
         </GridPaper>
       </div>
     );
