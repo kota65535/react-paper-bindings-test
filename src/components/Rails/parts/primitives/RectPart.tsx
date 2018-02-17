@@ -38,12 +38,12 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
   
   componentDidMount() {
     this.fixPositionByAnchorPoint()
-    this.rotate(45)
-    this.rotate(45)
+    this.rotate(15, new Point(0,0))
   }
 
   componentDidUpdate() {
     this.fixPositionByAnchorPoint()
+    this.rotate(15, new Point(0,0))
   }
 
   fixPositionByAnchorPoint() {
@@ -91,7 +91,6 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       onMouseMove={onMouseMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      applyMatrix={false}
       ref={(Path) => this._path = Path}
     />
   }

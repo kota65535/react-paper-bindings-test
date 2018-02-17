@@ -6,13 +6,17 @@ import DetectablePart from "./primitives/DetectablePart";
 import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
 import {RailPartInfo} from "components/Rails/parts/types";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
+import getLogger from "logging";
+
+const LOGGER = getLogger(__filename)
 
 
 interface Props extends Partial<DefaultProps> {
   length: number
   name?: string
   data?: RailPartInfo
-  onClick?: (e: MouseEvent) => void
+  onLeftClick?: (e: MouseEvent) => void
+  onRightClick?: (e: MouseEvent) => void
 }
 
 interface DefaultProps {
@@ -55,11 +59,44 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
     return (this.detectablePart.mainPart as RectPart).getCenterOfRight()
   }
 
+  get startAngle() {
+    return this.detectablePart.angle
+  }
+
+  get endAngle() {
+    return this.detectablePart.angle
+  }
+
+  moveRelatively(difference: Point) {
+    this.detectablePart.moveRelatively(difference)
+  }
+
+  move(position: Point, pivot: Point = this.startPoint): void {
+    LOGGER.debug(`move ${this.detectablePart.position} ->  ${position} @ ${pivot}`)
+    this.detectablePart.move(position, pivot)
+  }
+
+  rotateRelatively(difference: number, pivot: Point = this.startPoint) {
+    this.detectablePart.rotateRelatively(difference, pivot);
+  }
+
+  rotate(angle: number, pivot: Point = this.startPoint) {
+    LOGGER.debug(`rotate ${this.detectablePart.angle} ->  ${angle} @ ${pivot}`)
+    this.detectablePart.rotate(angle, pivot);
+  }
+
+  componentDidUpdate() {
+    this.rotate(30, new Point(0,0))
+  }
+  componentDidMount() {
+    // this.rotate(30, new Point(0,0))
+  }
+
   // ========== Private methods ==========
 
   render() {
     const {length, position, angle, pivot, detectionEnabled, selected, fillColors, opacity,
-      name, data , onClick} = this.props
+      name, data , onLeftClick, onRightClick} = this.props
     return (
       <DetectablePart
         mainPart={
@@ -87,7 +124,8 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
         detectionEnabled={detectionEnabled}
         name={name}
         data={data}
-        onClick={onClick}
+        onLeftClick={onLeftClick}
+        onRightClick={onRightClick}
         ref={(part) => this.detectablePart = part}
       />
     )

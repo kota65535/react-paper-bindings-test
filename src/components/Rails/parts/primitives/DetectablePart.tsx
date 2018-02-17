@@ -9,7 +9,8 @@ export interface DetectablePartProps extends PartBaseProps {
   mainPart: ReactElement<PartBase<PartBaseProps, {}>>         // 本体のコンポーネント
   detectionPart: ReactElement<PartBase<PartBaseProps, {}>>    //  当たり判定のコンポーネント
   fillColors: string[]    // DetectionState ごとの本体、当たり判定の色
-  onClick: (e: MouseEvent) => void
+  onLeftClick?: (e: MouseEvent) => void
+  onRightClick?: (e: MouseEvent) => void
   detectionEnabled: boolean
 }
 
@@ -62,6 +63,14 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
     return this._detectionPart
   }
 
+  get position() {
+    return this._mainPart.position
+  }
+
+  get angle() {
+    return this._mainPart.angle
+  }
+
   resetDetectionState() {
     this.setState({
         detectionState: DetectionState.BEFORE_DETECT
@@ -78,6 +87,16 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
     this.detectionPart.move(position, anchor)
   }
 
+  rotateRelatively(difference: number, pivot: Point = this.position) {
+    this.mainPart.rotateRelatively(difference, pivot);
+    this.detectionPart.rotateRelatively(difference, pivot);
+  }
+
+  rotate(angle: number, pivot: Point = this.position) {
+    this.mainPart.rotate(angle, pivot);
+    this.detectionPart.rotate(angle, pivot);
+  }
+
   // ========== Private methods ==========
 
   // detectionEnabledが OFF -> ON になった場合は状態をリセットする
@@ -92,10 +111,12 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
 
   componentDidMount() {
     this.fixDetectionPartPosition()
+    // this.rotate(30, new Point(0,0))
   }
 
   componentDidUpdate() {
     this.fixDetectionPartPosition()
+    // this.rotate(30, new Point(0,0))
   }
 
   // 本体と当たり判定の中心位置を合わせたいが、本体の位置が確定した後でないとそれができない。
@@ -111,6 +132,9 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
         detectionPartVisible: true
       })
     }
+    if (this.props.onMouseEnter) {
+      this.props.onMouseEnter(e)
+    }
   }
 
   onMouseLeave = (e: MouseEvent) => {
@@ -120,14 +144,29 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
         detectionPartVisible: true
       })
     }
+    if (this.props.onMouseLeave) {
+      this.props.onMouseLeave(e)
+    }
   }
 
-  onClick = (e: MouseEvent) => {
-    this.setState({
-      detectionState: DetectionState.AFTER_DETECT,
-      detectionPartVisible: false
-    })
-    this.props.onClick(e)
+  onClick = (e: MouseEvent|any) => {
+    // TODO: 左クリックと右クリックでイベントを分ける
+    switch (e.event.button) {
+      case 0:
+        this.setState({
+          detectionState: DetectionState.AFTER_DETECT,
+          detectionPartVisible: false
+        })
+        if (this.props.onLeftClick) {
+          this.props.onLeftClick(e)
+        }
+        break
+      case 2:
+        if (this.props.onRightClick) {
+          this.props.onRightClick(e)
+        }
+        break
+    }
   }
 
   // MainPartに追加するProps。既に指定されていたら上書き

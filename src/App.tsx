@@ -6,14 +6,14 @@ import {Point} from 'paper';
 import {Tool} from "react-paper-bindings"
 import CirclePart from 'components/Rails/parts/primitives/CirclePart';
 import {Pivot} from 'components/Rails/parts/primitives/PartBase';
-import ArcPart from "components/Rails/parts/primitives/ArcPart";
+import ArcPart, {ArcDirection} from "components/Rails/parts/primitives/ArcPart";
 import TrianglePart from 'components/Rails/parts/primitives/TrianglePart';
 import DetectablePart from 'components/Rails/parts/primitives/DetectablePart';
 import Joint from "components/Rails/parts/Joint";
 import StraightRailPart from "components/Rails/parts/StraightRailPart";
-import StraightRail from "components/Rails/StraightRail";
+// import StraightRail from "components/Rails/StraightRail";
 import CurveRailPart from 'components/Rails/parts/CurveRailPart';
-import CurveRail from "components/Rails/CurveRail";
+// import CurveRail from "components/Rails/CurveRail";
 
 const logo = require('./logo.svg');
 
@@ -24,11 +24,21 @@ interface AppState {
 
 class App extends React.Component<{}, AppState> {
 
+  r: any
+  rect: any
+
   constructor(props) {
     super(props)
     this.state = {
       mousePosition: new Point(0, 0)
     }
+  }
+
+  componentDidUpdate() {
+    // if (this.r.startAngle !== 90) {
+    //   this.r.rotate(90, new Point(100,100))
+    //   // this.rect.rotate(45, new Point(0,0))
+    // }
   }
 
 
@@ -62,9 +72,9 @@ class App extends React.Component<{}, AppState> {
           matrix={matrix}
         >
           <RectPart
-            // position={new Point(100,100)}
-            position={this.state.mousePosition}
-            pivot={Pivot.CENTER}
+            position={new Point(100,100)}
+            // position={this.state.mousePosition}
+            pivot={Pivot.LEFT}
             angle={0}
             width={100}
             height={100}
@@ -79,20 +89,22 @@ class App extends React.Component<{}, AppState> {
             onMouseEnter={(e) => console.log('onMouseEnter')}
             onMouseLeave={(e) => console.log('onMouseLeave')}
             name={'chinko'}
+            ref={(r) => this.rect = r}
           />
           {/*<CirclePart*/}
             {/*position={new Point(200,100)}*/}
             {/*angle={0}*/}
             {/*radius={50}*/}
           {/*/>*/}
-          {/*<ArcPart*/}
-            {/*position={new Point(300,100)}*/}
-            {/*angle={45}*/}
-            {/*width={10}*/}
-            {/*radius={50}*/}
-            {/*centerAngle={45}*/}
-            {/*pivot={Pivot.LEFT}*/}
-          {/*/>*/}
+          <ArcPart
+            position={new Point(500,100)}
+            angle={0}
+            width={10}
+            direction={ArcDirection.LEFT}
+            radius={50}
+            centerAngle={90}
+            pivot={Pivot.LEFT}
+          />
           {/*<TrianglePart*/}
             {/*position={new Point(400,100)}*/}
             {/*angle={0}*/}
@@ -100,35 +112,57 @@ class App extends React.Component<{}, AppState> {
             {/*height={100}*/}
             {/*pivot={Pivot.BOTTOM}*/}
           {/*/>*/}
-          {/*<DetectablePart*/}
-            {/*mainPart={*/}
-              {/*<CirclePart*/}
-                {/*position={new Point(200,300)}*/}
-                {/*angle={0}*/}
-                {/*radius={50}*/}
-              {/*/>*/}
-            {/*}*/}
-            {/*detectionPart={*/}
-              {/*<CirclePart*/}
-                {/*position={new Point(200,300)}*/}
-                {/*angle={0}*/}
-                {/*radius={100}*/}
-                {/*opacity={0.5}*/}
-              {/*/>*/}
-            {/*}*/}
-            {/*fillColors={['black', 'orange', 'blue', 'grey']}*/}
-            {/*onClick={(e) => console.log('Clicked')}*/}
-            {/*detectionEnabled={true}*/}
-          {/*/>*/}
+          <DetectablePart
+            mainPart={
+              <RectPart
+                position={new Point(200,300)}
+                width={50}
+                height={50}
+              />
+            }
+            detectionPart={
+              <RectPart
+                position={new Point(200,300)}
+                width={70}
+                height={70}
+                opacity={0.5}
+              />
+            }
+            fillColors={['black', 'orange', 'blue', 'grey']}
+            onClick={(e) => console.log('Clicked')}
+            detectionEnabled={true}
+          />
           {/*<Joint*/}
             {/*position={new Point(400,300)}*/}
-            {/*detectionEnabled={true}*/}
           {/*/>*/}
+          <StraightRailPart
+            pivot={Pivot.LEFT}
+            angle={0}
+            position={new Point(200,200)}
+            length={200}
+            ref={(r) => this.r = r}
+          />
+
           {/*<StraightRailPart*/}
-            {/*position={new Point(500,100)}*/}
-            {/*length={200}/>*/}
-          {/*<StraightRail position={new Point(100, 500)} angle={0} length={200} id={1}/>*/}
-          {/*<CurveRailPart position={new Point(500, 400)}radius={100} centerAngle={90}/>*/}
+            {/*pivot={Pivot.CENTER}*/}
+            {/*angle={90}*/}
+            {/*position={new Point(300,200)}*/}
+            {/*length={200}*/}
+          {/*/>*/}
+          {/*<CurveRailPart*/}
+            {/*position={new Point(500, 400)}*/}
+            {/*direction={ArcDirection.RIGHT}*/}
+            {/*angle={45}*/}
+            {/*radius={100}*/}
+            {/*centerAngle={45}*/}
+          {/*/>*/}
+          {/*<CurveRailPart*/}
+            {/*position={new Point(500, 400)}*/}
+            {/*direction={ArcDirection.LEFT}*/}
+            {/*angle={45}*/}
+            {/*radius={100}*/}
+            {/*centerAngle={45}*/}
+          {/*/>*/}
           {/*<CurveRail position={this.state.mousePosition} angle={45} radius={100} centerAngle={45} id={2}/>*/}
 
           <Tool
