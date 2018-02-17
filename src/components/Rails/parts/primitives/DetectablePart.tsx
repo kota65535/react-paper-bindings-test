@@ -174,8 +174,6 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   // MainPartに追加するProps。既に指定されていたら上書き
   additionalMainPartProps() {
     let props: any = {}
-    // props.position = this.props.position
-    props.fillColor = this.props.fillColors[this.state.detectionState]
     props.name = this.props.name
     props.data = this.props.data
     props.ref = (_mainPart) => this._mainPart = _mainPart
@@ -185,8 +183,6 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   // DetectionPartに追加するProps。既に指定されていたら上書き
   additionalDetectionPartProps() {
     let props: any = {}
-    // props.position = this.props.position
-    props.fillColor = this.props.fillColors[this.state.detectionState]
     props.visible = this.props.detectionEnabled ? this.state.detectionPartVisible : false
     props.name = this.props.name
     props.data = this.props.data
@@ -199,7 +195,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   }
 
   render() {
-    const {position, angle, pivot, pivotPartIndex, mainPart, detectionPart} = this.props
+    const {position, angle, pivot, pivotPartIndex, fillColors, mainPart, detectionPart} = this.props
 
     const addedMainPartProps = this.additionalMainPartProps()
     const addedDetectionPartProps = this.additionalDetectionPartProps()
@@ -213,6 +209,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
         angle={angle}
         pivot={pivot}
         pivotPartIndex={pivotPartIndex}
+        fillColor={fillColors[this.state.detectionState]}
       >
         {clonedMainPart}
         {clonedDetectionPart}

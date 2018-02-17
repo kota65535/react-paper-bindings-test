@@ -52,11 +52,11 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
   // ========== Public APIs ==========
 
   get startPoint() {
-    return (this.detectablePart.mainPart as RectPart).getPivotPosition(Pivot.LEFT)
+    return (this.detectablePart.mainPart as RectPart).getPublicPivotPosition(Pivot.LEFT)
   }
 
   get endPoint() {
-    return (this.detectablePart.mainPart as RectPart).getPivotPosition(Pivot.RIGHT)
+    return (this.detectablePart.mainPart as RectPart).getPublicPivotPosition(Pivot.RIGHT)
   }
 
   get startAngle() {
@@ -85,11 +85,6 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
     this.detectablePart.rotate(angle, pivot);
   }
 
-  componentDidUpdate() {
-  }
-  componentDidMount() {
-    // this.rotate(30, new Point(0,0))
-  }
 
   // ========== Private methods ==========
 
