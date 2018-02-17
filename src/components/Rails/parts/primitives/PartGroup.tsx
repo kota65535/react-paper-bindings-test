@@ -88,9 +88,8 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
       case Pivot.BOTTOM:
         return new Point(0, height/2)
       case Pivot.CENTER:
-        return new Point(0, 0)
       default:
-        throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
+        return new Point(0, 0)
     }
   }
 

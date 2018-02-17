@@ -28,9 +28,8 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       case Pivot.BOTTOM:
         return this.path.getPointAt(this.path.length / 8 * 6)
       case Pivot.CENTER:
-        return this.path.position
       default:
-        throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
+        return this.path.position
     }
   }
 
@@ -46,9 +45,8 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       case Pivot.BOTTOM:
         return new Point(width/2, height/2)
       case Pivot.CENTER:
-        return new Point(width/2, 0)
       default:
-        throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
+        return new Point(width/2, 0)
     }
   }
 
