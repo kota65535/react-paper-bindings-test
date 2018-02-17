@@ -61,11 +61,15 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     }
   }
 
-  getPivotPosition() {}
+  // TODO: implement
+  getPublicPivotPosition() {}
 
-  getPivotPoint(pivot: Pivot) {
+  getPrivatePivotPosition(pivot: Pivot) {
+    // PivotPartIndexが指定されていたら、指定のパーツのPivotを使用する
+    // そうでなければBoundingBoxのPivotを使用する
+    // 注: BoundingBoxのPivotはあまり使い勝手は良くない
     if (this.props.pivotPartIndex !== undefined) {
-      return this._children[this.props.pivotPartIndex].getPivotPosition(pivot)
+      return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)
     } else {
       return this.state.pivotPoint
     }
@@ -106,7 +110,7 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     // その後、refによってGroupオブジェクトが取れたら上記を計算し、改めて描画する。
     let pivotPoint, angle, position = new Point(0, 0)
     if (this.state.pivotPoint) {
-      pivotPoint = this.getPivotPoint(this.props.pivot)
+      pivotPoint = this.getPrivatePivotPosition(this.props.pivot)
       angle = this.props.angle
       position = this.props.position
     }
