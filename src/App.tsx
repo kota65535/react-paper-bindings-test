@@ -222,11 +222,13 @@ class App extends React.Component<{}, AppState> {
             {/*ref={(p) => this.rect = p}*/}
           {/*>*/}
           {/*</PartGroup>*/}
-          {/*<CirclePart*/}
-            {/*position={new Point(200,100)}*/}
-            {/*angle={0}*/}
-            {/*radius={50}*/}
-          {/*/>*/}
+          <CirclePart
+            position={new Point(200,100)}
+            pivot={Pivot.RIGHT}
+            angle={0}
+            radius={50}
+            opacity={0.7}
+          />
           <ArcPart
             position={new Point(500,100)}
             angle={45}
@@ -236,13 +238,13 @@ class App extends React.Component<{}, AppState> {
             centerAngle={45}
             pivot={Pivot.LEFT}
           />
-          {/*<TrianglePart*/}
-            {/*position={new Point(400,100)}*/}
-            {/*angle={0}*/}
-            {/*width={100}*/}
-            {/*height={100}*/}
-            {/*pivot={Pivot.BOTTOM}*/}
-          {/*/>*/}
+          <TrianglePart
+            position={new Point(400,100)}
+            angle={30}
+            width={100}
+            height={100}
+            pivot={Pivot.TOP}
+          />
 
           <DetectablePart
             mainPart={
@@ -262,15 +264,15 @@ class App extends React.Component<{}, AppState> {
             }
             position={new Point(100, 100)}
             angle={30}
-            pivot={Pivot.LEFT}
+            pivot={Pivot.TOP}
             pivotPartIndex={0}
             fillColors={['black', 'orange', 'blue', 'grey']}
             onClick={(e) => console.log('Clicked')}
             detectionEnabled={true}
           />
-          {/*<Joint*/}
-            {/*position={new Point(400,300)}*/}
-          {/*/>*/}
+          <Joint
+            position={new Point(400,300)}
+          />
           {/*<StraightRailPart*/}
             {/*pivot={Pivot.LEFT}*/}
             {/*angle={0}*/}
@@ -285,14 +287,14 @@ class App extends React.Component<{}, AppState> {
             {/*position={new Point(300,200)}*/}
             {/*length={200}*/}
           {/*/>*/}
-          {/*<CurveRailPart*/}
-            {/*pivot={Pivot.LEFT}*/}
-            {/*position={new Point(500, 400)}*/}
-            {/*direction={ArcDirection.RIGHT}*/}
-            {/*angle={0}*/}
-            {/*radius={100}*/}
-            {/*centerAngle={45}*/}
-          {/*/>*/}
+          <CurveRailPart
+            pivot={Pivot.RIGHT}
+            position={new Point(500, 400)}
+            direction={ArcDirection.RIGHT}
+            angle={0}
+            radius={100}
+            centerAngle={45}
+          />
           {/*<CurveRailPart*/}
             {/*position={new Point(500, 400)}*/}
             {/*direction={ArcDirection.LEFT}*/}
