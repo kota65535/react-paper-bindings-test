@@ -12,8 +12,10 @@ export default class CirclePart extends PartBase<CirclePartProps, {}> {
     super(props)
   }
 
-  getPivotPoint() {
+  getPivotPosition() {
 
+  }
+  getPivotPoint() {
   }
 
   render() {

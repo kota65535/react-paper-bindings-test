@@ -76,7 +76,8 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
   }
 
 
-  // abstract getPivotPoint()
+  abstract getPivotPosition(pivot: Pivot)
+  abstract getPivotPoint(pivot: Pivot)
 
   // shouldComponentUpdate(nextProps) {
   //   if (this.props.position.x === nextProps.position.x && this.props.position.y === nextProps.position.y) {

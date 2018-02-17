@@ -55,11 +55,11 @@ export default class CurveRailPart extends React.Component<CurveRailPartProps, {
   // ========== Public APIs ==========
 
   get startPoint() {
-    return (this.detectablePart.mainPart as RectPart).getCenterOfLeft()
+    return (this.detectablePart.mainPart as RectPart).getPivotPosition(Pivot.LEFT)
   }
 
   get endPoint() {
-    return (this.detectablePart.mainPart as RectPart).getCenterOfRight()
+    return (this.detectablePart.mainPart as RectPart).getPivotPosition(Pivot.RIGHT)
   }
 
   get startAngle() {

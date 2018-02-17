@@ -50,6 +50,9 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
     }
   }
 
+  getPivotPosition() {
+
+  }
   getPivotPoint() {
 
   }

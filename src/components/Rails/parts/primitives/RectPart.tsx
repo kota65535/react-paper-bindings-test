@@ -19,22 +19,6 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
   }
 
   // ========== Public APIs ==========
-  getCenterOfTop(): Point {
-    return this._path.curves[1].getLocationAt(this._path.curves[1].length/2).point;
-  }
-
-  getCenterOfBottom(): Point {
-    return this._path.curves[4].getLocationAt(this._path.curves[4].length/2).point;
-  }
-
-  getCenterOfLeft(): Point {
-    return this._path.segments[0].point
-  }
-
-  getCenterOfRight(): Point {
-    return this._path.segments[3].point
-  }
-
   getPivotPosition(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
@@ -51,7 +35,6 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
         throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
     }
   }
-
 
 
   getPivotPoint(pivot: Pivot) {

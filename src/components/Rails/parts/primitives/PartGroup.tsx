@@ -61,6 +61,8 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     }
   }
 
+  getPivotPosition() {}
+
   getPivotPoint(pivot: Pivot) {
     if (this.props.pivotPartIndex !== undefined) {
       return this._children[this.props.pivotPartIndex].getPivotPosition(pivot)
