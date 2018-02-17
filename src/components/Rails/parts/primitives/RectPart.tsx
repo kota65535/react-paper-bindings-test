@@ -2,7 +2,6 @@ import * as React from "react";
 import {Point} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
 import PartBase, {PartBaseProps, Pivot} from "components/Rails/parts/primitives/PartBase";
-import {Path} from "paper";
 
 
 interface RectPartProps extends PartBaseProps {
@@ -18,17 +17,16 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
 
   }
 
-  // ========== Public APIs ==========
-  getPivotPosition(pivot: Pivot) {
+  getPublicPivotPosition(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
-        return this._path.segments[0].point
+        return this.path.getPointAt(0)
       case Pivot.TOP:
-        return this._path.curves[1].getLocationAt(this._path.curves[1].length/2).point;
+        return this.path.getPointAt(this.path.length / 8 * 2)
       case Pivot.RIGHT:
-        return this._path.segments[3].point
+        return this.path.getPointAt(this.path.length / 8 * 4)
       case Pivot.BOTTOM:
-        return this._path.curves[4].getLocationAt(this._path.curves[4].length/2).point;
+        return this.path.getPointAt(this.path.length / 8 * 6)
       case Pivot.CENTER:
         return this.path.position
       default:
@@ -36,8 +34,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
     }
   }
 
-
-  getPivotPoint(pivot: Pivot) {
+  getPrivatePivotPosition(pivot: Pivot) {
     const {width, height} = this.props
     switch (pivot) {
       case Pivot.LEFT:
@@ -60,7 +57,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       position, angle, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
 
-    const pivot = this.getPivotPoint(this.props.pivot)
+    const pivot = this.getPrivatePivotPosition(this.props.pivot)
 
     return <PathComponent
       pathData={createRectPath(width, height)}

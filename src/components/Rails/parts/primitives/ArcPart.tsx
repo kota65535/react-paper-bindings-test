@@ -24,7 +24,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
 
   // ========== Public APIs ==========
 
-  getPivotPosition(pivot: Pivot) {
+  getPublicPivotPosition(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
         return this._path.segments[0].point
@@ -37,7 +37,9 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  getPivotPoint(pivot: Pivot) {
+  // ========== Private APIs ==========
+
+  getPrivatePivotPosition(pivot: Pivot) {
     switch (this.props.direction) {
       case ArcDirection.RIGHT:
         return this.getPivotPointRight(pivot)
@@ -82,18 +84,15 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  // ========== Private methods ==========
 
   render() {
     const {width, radius, centerAngle, direction, pivot,
       position, angle, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
 
-    const [pathData, pivotPoint] = createArcPath(width, radius, centerAngle, direction, pivot)
-
     return <PathComponent
-      pathData={pathData}
-      pivot={pivotPoint}
+      pathData={createArcPath(width, radius, centerAngle, direction, pivot)}
+      pivot={this.getPrivatePivotPosition(pivot)}
       position={position}
       rotation={angle}
       fillColor={fillColor}
@@ -118,7 +117,6 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
 
 
 
-
 const createArcPath = (width: number, radius: number, centerAngle: number, direction: ArcDirection, pivot: Pivot) => {
   switch (direction) {
     case ArcDirection.RIGHT:
@@ -136,18 +134,6 @@ const createArcPathRight = (width: number, radius: number, centerAngle: number, 
   const innerEndX = (radius - width/2) * Math.sin(centerAngle / 180 * Math.PI);
   const innerEndY = (radius - width/2) * (1 - Math.cos(centerAngle / 180 * Math.PI)) + width/2;
 
-  // Pivotの座標を計算
-  let pivotPoint
-  switch (pivot) {
-    case Pivot.RIGHT:
-      pivotPoint = new Point((outerEndX + innerEndX) / 2, (outerEndY + innerEndY) / 2)
-      break
-    case Pivot.LEFT:
-      // same as default
-    default:
-      pivotPoint =  new Point(0, 0)
-  }
-
   // パスデータの作成
   const pathData = `M 0 0 L 0 ${-width/2}
   A ${radius + width/2} ${radius + width/2}, 0, 0, 1, ${outerEndX} ${outerEndY}
@@ -156,7 +142,7 @@ const createArcPathRight = (width: number, radius: number, centerAngle: number, 
   A ${radius - width/2} ${radius - width/2} 0, 0, 0, 0 ${ width/2} Z`
 
   console.log(pathData)
-  return [pathData, pivotPoint]
+  return pathData
 }
 
 // 左方向に曲がる円弧のパスデータを作成する
@@ -167,18 +153,6 @@ const createArcPathLeft = (width: number, radius: number, centerAngle: number, p
   const innerEndX = (radius - width/2) * Math.sin(centerAngle / 180 * Math.PI);
   const innerEndY = - (radius - width/2) * (1 - Math.cos(centerAngle / 180 * Math.PI)) - width/2;
 
-  // Pivotの座標を計算
-  let pivotPoint
-  switch (pivot) {
-    case Pivot.RIGHT:
-      pivotPoint = new Point((outerEndX + innerEndX) / 2, (outerEndY + innerEndY) / 2)
-      break
-    case Pivot.LEFT:
-    // same as default
-    default:
-      pivotPoint =  new Point(0, 0)
-  }
-
   // パスデータの作成
   const pathData = `M 0 0 L 0 ${width/2}
   A ${radius + width/2} ${radius + width/2}, 0, 0, 0, ${outerEndX} ${outerEndY}
@@ -186,6 +160,6 @@ const createArcPathLeft = (width: number, radius: number, centerAngle: number, p
   L ${innerEndX} ${innerEndY} 
   A ${radius - width/2} ${radius - width/2} 0, 0, 1, 0 ${-width/2} Z`
   console.log(pathData)
-  return [pathData, pivotPoint]
+  return pathData
 
 }
