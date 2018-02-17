@@ -24,10 +24,6 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
 
   // ========== Public APIs ==========
 
-  _group: Group
-  _width: number
-  _height: number
-
   get group() {
     return this.state.group
   }
@@ -61,46 +57,37 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     }
   }
 
-  getPivotPoint() {
-    const {pivot, position} = this.props
-    // 角度0の時のバウンディングボックスのwidthとheightを保存しておく
-    if (! this._width && !this._height) {
-      this._width = this.state.group.bounds.width
-      this._height = this.state.group.bounds.height
-    }
+  getPivotPoint(group: Group) {
+    const {pivot} = this.props
+    const {width, height} = group.bounds
     switch (pivot) {
       case Pivot.LEFT:
-        return position.add(new Point(-this._width/2, 0))
+        return new Point(-width/2, 0)
       case Pivot.TOP:
-        return position.add(new Point(0, -this._height/2))
+        return new Point(0, -height/2)
       case Pivot.RIGHT:
-        return position.add(new Point(this._width/2, 0))
+        return new Point(width/2, 0)
       case Pivot.BOTTOM:
-        return position.add(new Point(0, this._height/2))
+        return new Point(0, height/2)
       case Pivot.CENTER:
-        return position
+        return new Point(0, 0)
       default:
         throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
     }
-
   }
 
   render() {
-    const {pivot, position, fillColor, visible, opacity, selected, name, data,
+    const {pivot, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
-    let angle = this.props.angle
 
-    let pivotPoint
-    if (! this.state.group) {
-      angle = 0
-    } else if (! this.state.pivotPoint) {
-      pivotPoint = this.getPivotPoint()
-      this.setState({
-        pivotPoint
-      })
-      angle = 0
-    } else {
+    // Pivotの座標を計算するには角度0でのGroupのBoundingBoxが必要なため、
+    // Pivotの影響を受ける position, rotation をいったん無指定にして描画する。
+    // その後、refによってGroupオブジェクトが取れたら上記を計算し、改めて描画する。
+    let pivotPoint, angle, position = new Point(0, 0)
+    if (this.state.pivotPoint) {
       pivotPoint = this.state.pivotPoint
+      angle = this.props.angle
+      position = this.props.position
     }
     console.log(pivotPoint)
 
@@ -126,7 +113,11 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
         onMouseLeave={onMouseLeave}
         ref={(group) => {
           if (! this.state.group) {
-            this.setState({group})
+            this.setState({
+              group: group,
+              pivotPoint: this.getPivotPoint(group)
+
+            })
           }
         }}
       >

@@ -28,12 +28,17 @@ class App extends React.Component<{}, AppState> {
 
   r: any
   rect: any
+  angle: number
+  position: Point
 
   constructor(props) {
     super(props)
     this.state = {
       mousePosition: new Point(0, 0)
     }
+
+    this.angle = 45
+    this.position = new Point(200, 300)
   }
 
   componentDidMount() {
@@ -56,6 +61,8 @@ class App extends React.Component<{}, AppState> {
     // this.rect.rotate(45)
     // this.r.rotate(45)
     // this.rect.rotate(45)
+    this.angle = 60
+    this.position = new Point(300, 200)
   }
 
 
@@ -176,8 +183,8 @@ class App extends React.Component<{}, AppState> {
 
           <PartGroup
             fillColor={'green'}
-            position={new Point(300, 200)}
-            angle={45}
+            position={this.position}
+            angle={this.angle}
             pivot={Pivot.LEFT}
             ref={(p) => this.rect = p}
           >
