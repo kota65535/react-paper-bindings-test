@@ -7,23 +7,33 @@ import PartBase, {PartBaseProps, Pivot} from "components/Rails/parts/primitives/
 interface MultiPartProps extends PartBaseProps {
 }
 
+interface PartGroupState {
+  group: Group
+  pivotPoint: Point
+}
 
-export default class PartGroup extends PartBase<MultiPartProps, {}> {
+export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> {
 
   constructor (props: MultiPartProps) {
     super(props)
+    this.state = {
+      group: null,
+      pivotPoint: null
+    }
   }
-
-  _group: Group
 
   // ========== Public APIs ==========
 
+  _group: Group
+  _width: number
+  _height: number
+
   get group() {
-    return this._group
+    return this.state.group
   }
 
   get position() {
-    return this._group.position
+    return this.state.group.position
   }
 
   get angle() {
@@ -31,7 +41,7 @@ export default class PartGroup extends PartBase<MultiPartProps, {}> {
   }
 
   moveRelatively(difference: Point) {
-    this._group.position = this._group.position.add(difference);
+    this.state.group.position = this.state.group.position.add(difference);
   }
 
   move(position: Point, pivot: Point = this.position): void {
@@ -51,22 +61,52 @@ export default class PartGroup extends PartBase<MultiPartProps, {}> {
     }
   }
 
-  componentDidUpdate() {
-    // this.rotate(45)
-    console.log(this.group.position)
-  }
+  getPivotPoint() {
+    const {pivot, position} = this.props
+    // 角度0の時のバウンディングボックスのwidthとheightを保存しておく
+    if (! this._width && !this._height) {
+      this._width = this.state.group.bounds.width
+      this._height = this.state.group.bounds.height
+    }
+    switch (pivot) {
+      case Pivot.LEFT:
+        return position.add(new Point(-this._width/2, 0))
+      case Pivot.TOP:
+        return position.add(new Point(0, -this._height/2))
+      case Pivot.RIGHT:
+        return position.add(new Point(this._width/2, 0))
+      case Pivot.BOTTOM:
+        return position.add(new Point(0, this._height/2))
+      case Pivot.CENTER:
+        return position
+      default:
+        throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
+    }
 
-  componentDidMount() {
-    // this.rotate(45)
-    console.log(this.group.position)
   }
-
 
   render() {
-    const {position, angle, fillColor, visible, opacity, selected, name, data,
+    const {pivot, position, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
+    let angle = this.props.angle
+
+    let pivotPoint
+    if (! this.state.group) {
+      angle = 0
+    } else if (! this.state.pivotPoint) {
+      pivotPoint = this.getPivotPoint()
+      this.setState({
+        pivotPoint
+      })
+      angle = 0
+    } else {
+      pivotPoint = this.state.pivotPoint
+    }
+    console.log(pivotPoint)
+
     return (
       <GroupComponent
+        pivot={pivotPoint}
         position={position}
         rotation={angle}
         fillColor={fillColor}
@@ -84,7 +124,11 @@ export default class PartGroup extends PartBase<MultiPartProps, {}> {
         onMouseMove={onMouseMove}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        ref={(c) => this._group = c}
+        ref={(group) => {
+          if (! this.state.group) {
+            this.setState({group})
+          }
+        }}
       >
         {this.props.children}
       </GroupComponent>

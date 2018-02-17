@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.css';
 import { GridPaper } from 'components/GridPaper';
 import RectPart from "components/Rails/parts/primitives/RectPart";
-import {Point} from 'paper';
+import {Point, Size} from 'paper';
 import {Tool} from "react-paper-bindings"
 import CirclePart from 'components/Rails/parts/primitives/CirclePart';
 import {Pivot} from 'components/Rails/parts/primitives/PartBase';
@@ -13,7 +13,9 @@ import Joint from "components/Rails/parts/Joint";
 import StraightRailPart from "components/Rails/parts/StraightRailPart";
 // import StraightRail from "components/Rails/StraightRail";
 import CurveRailPart from 'components/Rails/parts/CurveRailPart';
+import PartGroup from 'components/Rails/parts/primitives/PartGroup';
 // import CurveRail from "components/Rails/CurveRail";
+import {Path, Group, Rectangle, Layer} from "react-paper-bindings";
 
 const logo = require('./logo.svg');
 
@@ -34,11 +36,26 @@ class App extends React.Component<{}, AppState> {
     }
   }
 
+  componentDidMount() {
+    // if (this.r.startAngle !== 90) {
+    //   this.r.rotate(90, new Point(100,100))
+    //   // this.rect.rotate(45, new Point(0,0))
+    // }
+
+    // console.log(this.rect.position)
+    // this.rect.rotate(45)
+  }
+
   componentDidUpdate() {
     // if (this.r.startAngle !== 90) {
     //   this.r.rotate(90, new Point(100,100))
     //   // this.rect.rotate(45, new Point(0,0))
     // }
+
+    // console.log(this.rect.position)
+    // this.rect.rotate(45)
+    // this.r.rotate(45)
+    // this.rect.rotate(45)
   }
 
 
@@ -71,40 +88,146 @@ class App extends React.Component<{}, AppState> {
           gridSize={50}
           matrix={matrix}
         >
-          <RectPart
-            position={new Point(100,100)}
-            // position={this.state.mousePosition}
+          {/*<PartGroup*/}
+            {/*position={new Point(100, 200)}*/}
+            {/*angle={30}*/}
+          {/*>*/}
+            {/*<RectPart*/}
+              {/*position={new Point(200, 400)}*/}
+              {/*fillColor={'green'}*/}
+              {/*opacity={0.8}*/}
+              {/*width={100}*/}
+              {/*height={100}*/}
+            {/*/>*/}
+            {/*<RectPart*/}
+              {/*position={new Point(200, 200)}*/}
+              {/*fillColor={'green'}*/}
+              {/*opacity={0.8}*/}
+              {/*width={100}*/}
+              {/*height={100}*/}
+              {/*pivot={Pivot.TOP}*/}
+            {/*/>*/}
+            {/*<Rectangle*/}
+              {/*center={[200, 400]}*/}
+              {/*fillColor={'#222222'}*/}
+              {/*opacity={0.8}*/}
+              {/*size={[100,100]}*/}
+            {/*/>*/}
+            {/*<Rectangle*/}
+              {/*center={[200, 200]}*/}
+              {/*fillColor={'#222222'}*/}
+              {/*opacity={0.8}*/}
+              {/*size={[100, 100]}*/}
+            {/*/>*/}
+          {/*</PartGroup>*/}
+          {/*<RectPart*/}
+            {/*position={new Point(100, 100)}*/}
+            {/*fillColor={'green'}*/}
+            {/*opacity={0.8}*/}
+            {/*width={100}*/}
+            {/*height={100}*/}
+          {/*/>*/}
+
+          {/*<RectPart*/}
+            {/*position={new Point(200, 400)}*/}
+            {/*fillColor={'green'}*/}
+            {/*opacity={0.8}*/}
+            {/*width={100}*/}
+            {/*height={100}*/}
+          {/*/>*/}
+          {/*<RectPart*/}
+            {/*position={new Point(200, 200)}*/}
+            {/*fillColor={'green'}*/}
+            {/*opacity={0.8}*/}
+            {/*width={100}*/}
+            {/*height={100}*/}
+          {/*/>*/}
+
+
+
+
+
+          {/*<Group*/}
+            {/*position={new Point(200, 200)}*/}
+            {/*rotation={15}*/}
+          {/*>*/}
+            {/*<Rectangle*/}
+              {/*center={new Point(300, 400)}*/}
+              {/*fillColor={'#222222'}*/}
+              {/*opacity={0.8}*/}
+              {/*// size={[100,100]}*/}
+              {/*size={new Size(100,100)}*/}
+            {/*/>*/}
+            {/*<Rectangle*/}
+              {/*center={new Point(300, 500)}*/}
+              {/*fillColor={'#222222'}*/}
+              {/*opacity={0.8}*/}
+              {/*// size={[100, 100]}*/}
+              {/*size={new Size(100,100)}*/}
+            {/*/>*/}
+          {/*</Group>*/}
+          {/*<RectPart*/}
+            {/*position={new Point(400,200)}*/}
+            {/*pivot={Pivot.LEFT}*/}
+            {/*angle={30}*/}
+            {/*width={100}*/}
+            {/*height={100}*/}
+          {/*/>*/}
+
+          <PartGroup
+            fillColor={'green'}
+            position={new Point(300, 200)}
+            angle={45}
             pivot={Pivot.LEFT}
-            angle={0}
-            width={100}
-            height={100}
-            // pivot={Pivot.BOTTOM}
-            // onFrame={(e) => console.log('onFrame')}
-            onMouseDown={(e) => console.log('onMouseDown')}
-            onMouseDrag={(e) => console.log('onMouseDrag')}
-            onMouseUp={(e) => console.log('onMouseUp')}
-            onClick={(e) => console.log('onClick')}
-            onDoubleClick={(e) => console.log('onDoubleClick')}
-            onMouseMove={(e) => console.log('onMouseMove')}
-            onMouseEnter={(e) => console.log('onMouseEnter')}
-            onMouseLeave={(e) => console.log('onMouseLeave')}
-            name={'chinko'}
-            ref={(r) => this.rect = r}
-          />
+            ref={(p) => this.rect = p}
+          >
+            <RectPart
+              position={new Point(200,300)}
+              pivot={Pivot.LEFT}
+              // angle={0}
+              width={100}
+              height={100}
+            />
+            <RectPart
+              position={new Point(400,300)}
+              pivot={Pivot.LEFT}
+              // angle={0}
+              width={100}
+              height={100}
+            />
+            {/*<Path*/}
+              {/*position={new Point(300,100)}*/}
+              {/*pathData={createRectPath(100, 100)}*/}
+              {/*fillColor={'blue'}*/}
+            {/*/>*/}
+            {/*<Path*/}
+              {/*position={new Point(500,100)}*/}
+              {/*pathData={createRectPath(100, 100)}*/}
+              {/*fillColor={'blue'}*/}
+            {/*/>*/}
+          </PartGroup>
+
+
+          {/*<PartGroup*/}
+            {/*position={new Point(400, 200)}*/}
+            {/*angle={0}*/}
+            {/*ref={(p) => this.rect = p}*/}
+          {/*>*/}
+          {/*</PartGroup>*/}
           {/*<CirclePart*/}
             {/*position={new Point(200,100)}*/}
             {/*angle={0}*/}
             {/*radius={50}*/}
           {/*/>*/}
-          <ArcPart
-            position={new Point(500,100)}
-            angle={0}
-            width={10}
-            direction={ArcDirection.LEFT}
-            radius={50}
-            centerAngle={90}
-            pivot={Pivot.LEFT}
-          />
+          {/*<ArcPart*/}
+            {/*position={new Point(500,100)}*/}
+            {/*angle={0}*/}
+            {/*width={10}*/}
+            {/*direction={ArcDirection.LEFT}*/}
+            {/*radius={50}*/}
+            {/*centerAngle={90}*/}
+            {/*pivot={Pivot.RIGHT}*/}
+          {/*/>*/}
           {/*<TrianglePart*/}
             {/*position={new Point(400,100)}*/}
             {/*angle={0}*/}
@@ -112,36 +235,38 @@ class App extends React.Component<{}, AppState> {
             {/*height={100}*/}
             {/*pivot={Pivot.BOTTOM}*/}
           {/*/>*/}
-          <DetectablePart
-            mainPart={
-              <RectPart
-                position={new Point(200,300)}
-                width={50}
-                height={50}
-              />
-            }
-            detectionPart={
-              <RectPart
-                position={new Point(200,300)}
-                width={70}
-                height={70}
-                opacity={0.5}
-              />
-            }
-            fillColors={['black', 'orange', 'blue', 'grey']}
-            onClick={(e) => console.log('Clicked')}
-            detectionEnabled={true}
-          />
+
+          {/*<DetectablePart*/}
+            {/*mainPart={*/}
+              {/*<RectPart*/}
+                {/*position={new Point(0,0)}*/}
+                {/*width={50}*/}
+                {/*height={50}*/}
+              {/*/>*/}
+            {/*}*/}
+            {/*detectionPart={*/}
+              {/*<RectPart*/}
+                {/*position={new Point(0,0)}*/}
+                {/*width={70}*/}
+                {/*height={70}*/}
+                {/*opacity={0.5}*/}
+              {/*/>*/}
+            {/*}*/}
+            {/*position={new Point(100, 100)}*/}
+            {/*fillColors={['black', 'orange', 'blue', 'grey']}*/}
+            {/*onClick={(e) => console.log('Clicked')}*/}
+            {/*detectionEnabled={true}*/}
+          {/*/>*/}
           {/*<Joint*/}
             {/*position={new Point(400,300)}*/}
           {/*/>*/}
-          <StraightRailPart
-            pivot={Pivot.LEFT}
-            angle={0}
-            position={new Point(200,200)}
-            length={200}
-            ref={(r) => this.r = r}
-          />
+          {/*<StraightRailPart*/}
+            {/*pivot={Pivot.LEFT}*/}
+            {/*angle={0}*/}
+            {/*position={new Point(200,200)}*/}
+            {/*length={200}*/}
+            {/*ref={(r) => this.r = r}*/}
+          {/*/>*/}
 
           {/*<StraightRailPart*/}
             {/*pivot={Pivot.CENTER}*/}

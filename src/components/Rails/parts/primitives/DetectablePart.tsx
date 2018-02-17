@@ -3,6 +3,7 @@ import {ReactElement} from "react";
 import {Group} from "react-paper-bindings";
 import {Point} from "paper";
 import PartBase, {PartBaseProps} from "components/Rails/parts/primitives/PartBase";
+import PartGroup from "components/Rails/parts/primitives/PartGroup";
 
 
 export interface DetectablePartProps extends PartBaseProps {
@@ -109,21 +110,21 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
     }
   }
 
-  componentDidMount() {
-    this.fixDetectionPartPosition()
-    // this.rotate(30, new Point(0,0))
-  }
-
-  componentDidUpdate() {
-    this.fixDetectionPartPosition()
-    // this.rotate(30, new Point(0,0))
-  }
+  // componentDidMount() {
+  //   this.fixDetectionPartPosition()
+  //   // this.rotate(30, new Point(0,0))
+  // }
+  //
+  // componentDidUpdate() {
+  //   this.fixDetectionPartPosition()
+  //   // this.rotate(30, new Point(0,0))
+  // }
 
   // 本体と当たり判定の中心位置を合わせたいが、本体の位置が確定した後でないとそれができない。
   // そのため両インスタンスを直接参照して位置を変更する
-  fixDetectionPartPosition() {
-    this._detectionPart.path.position = this._mainPart.path.position
-  }
+  // fixDetectionPartPosition() {
+  //   this._detectionPart.path.position = this._mainPart.path.position
+  // }
 
   onMouseEnter = (e: MouseEvent) => {
     if (this.props.detectionEnabled && this.state.detectionState == DetectionState.BEFORE_DETECT) {
@@ -172,6 +173,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   // MainPartに追加するProps。既に指定されていたら上書き
   additionalMainPartProps() {
     let props: any = {}
+    // props.position = this.props.position
     props.fillColor = this.props.fillColors[this.state.detectionState]
     props.name = this.props.name
     props.data = this.props.data
@@ -182,6 +184,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   // DetectionPartに追加するProps。既に指定されていたら上書き
   additionalDetectionPartProps() {
     let props: any = {}
+    // props.position = this.props.position
     props.fillColor = this.props.fillColors[this.state.detectionState]
     props.visible = this.props.detectionEnabled ? this.state.detectionPartVisible : false
     props.name = this.props.name
@@ -195,7 +198,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   }
 
   render() {
-    const {mainPart, detectionPart} = this.props
+    const {position, mainPart, detectionPart} = this.props
 
     const addedMainPartProps = this.additionalMainPartProps()
     const addedDetectionPartProps = this.additionalDetectionPartProps()
@@ -204,10 +207,12 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
     let clonedDetectionPart = React.cloneElement(detectionPart, Object.assign({}, detectionPart.props, addedDetectionPartProps))
 
     return [
-      <React.Fragment>
+      <PartGroup
+        position={position}
+      >
         {clonedMainPart}
         {clonedDetectionPart}
-      </React.Fragment>
+      </PartGroup>
     ]
   }
 }

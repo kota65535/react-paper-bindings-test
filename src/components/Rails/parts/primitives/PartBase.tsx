@@ -75,15 +75,15 @@ export default class PartBase<P extends PartBaseProps, S> extends React.Componen
     return this._angle
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (this.props.position.x === nextProps.position.x && this.props.position.y === nextProps.position.y) {
-      return false
-    }
-    if (this.props.angle === nextProps.angle) {
-      return false
-    }
-    return true
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   if (this.props.position.x === nextProps.position.x && this.props.position.y === nextProps.position.y) {
+  //     return false
+  //   }
+  //   if (this.props.angle === nextProps.angle) {
+  //     return false
+  //   }
+  //   return true
+  // }
 
   moveRelatively(difference: Point) {
     this._path.position = this._path.position.add(difference);

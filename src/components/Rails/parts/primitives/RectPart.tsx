@@ -49,7 +49,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       case Pivot.BOTTOM:
         return new Point(width/2, height/2)
       case Pivot.CENTER:
-        return new Point(width/2, height/2)
+        return new Point(width/2, 0)
       default:
         throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
     }
