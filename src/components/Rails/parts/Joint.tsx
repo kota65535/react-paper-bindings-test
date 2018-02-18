@@ -71,7 +71,7 @@ export default class Joint extends React.Component<JointProps, {}> {
 
   // 対向ジョイントの接続が解除されたら状態をリセットする（再び検出可能にする）
   componentWillReceiveProps(nextProps: JointProps) {
-    if (this.props.hasOpposingJoint && ! nextProps.hasOpposingJoint) {
+    if (this.props.hasOpposingJoint && !nextProps.hasOpposingJoint) {
       this.detectablePart.resetDetectionState()
     }
   }
@@ -93,8 +93,10 @@ export default class Joint extends React.Component<JointProps, {}> {
   // ========== Private methods ==========
 
   render() {
-    const {position, angle, hasOpposingJoint, pivot, selected, fillColors, opacity,
-      name, data, onLeftClick, onRightClick, onMouseMove, onMouseEnter, onMouseLeave, onFixed} = this.props
+    const {
+      position, angle, hasOpposingJoint, pivot, selected, fillColors, opacity,
+      name, data, onLeftClick, onRightClick, onMouseMove, onMouseEnter, onMouseLeave, onFixed
+    } = this.props
 
     return (
       <DetectablePart
@@ -115,7 +117,7 @@ export default class Joint extends React.Component<JointProps, {}> {
         angle={angle}
         pivot={pivot}
         fillColors={fillColors}
-        detectionEnabled={! hasOpposingJoint}
+        detectionEnabled={!hasOpposingJoint}
         name={name}
         // data={Object.assign(data, {detectionState})}
         onLeftClick={onLeftClick}

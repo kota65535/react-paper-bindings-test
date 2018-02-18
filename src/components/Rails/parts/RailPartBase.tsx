@@ -1,13 +1,9 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
-import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
-import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
+import {RAIL_PART_FILL_COLORS} from "constants/parts";
 import {RailPartInfo} from "components/Rails/parts/types";
-import {Pivot} from "components/Rails/parts/primitives/PartBase";
-import getLogger from "logging";
-import PartGroup from "components/Rails/parts/primitives/PartGroup";
 
 
 export interface RailPartBaseProps extends Partial<RailPartBaseDefaultProps> {

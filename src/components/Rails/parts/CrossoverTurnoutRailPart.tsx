@@ -4,12 +4,11 @@ import {Rectangle} from "react-paper-bindings";
 import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
 import ArcPart, {ArcDirection} from "./primitives/ArcPart";
-import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
+import {RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
-import {RailBase} from "components/Rails/RailBase";
 import RailPartBase from "./RailPartBase";
 
 const LOGGER = getLogger(__filename)
@@ -51,10 +50,10 @@ export default class CrossoverTurnoutRailPart extends React.Component<CrossoverT
   detectablePart: DetectablePart
 
   pivots = [
-    { pivotPartIndex: 0, pivot: Pivot.LEFT },
-    { pivotPartIndex: 0, pivot: Pivot.RIGHT },
-    { pivotPartIndex: 1, pivot: Pivot.LEFT },
-    { pivotPartIndex: 1, pivot: Pivot.RIGHT }
+    {pivotPartIndex: 0, pivot: Pivot.LEFT},
+    {pivotPartIndex: 0, pivot: Pivot.RIGHT},
+    {pivotPartIndex: 1, pivot: Pivot.LEFT},
+    {pivotPartIndex: 1, pivot: Pivot.RIGHT}
   ]
 
   angles = [
@@ -77,8 +76,10 @@ export default class CrossoverTurnoutRailPart extends React.Component<CrossoverT
   }
 
   render() {
-    const {length, position, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
-      name, data, onLeftClick, onRightClick, onFixed} = this.props
+    const {
+      length, position, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
+      name, data, onLeftClick, onRightClick, onFixed
+    } = this.props
 
     // TODO: 方程式を解いてちゃんと値を出す
     const radius = length / (2 * Math.sin(15 / 180 * Math.PI))

@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Path, Point} from "paper";
-import Item = paper.Item;
 
 export enum Pivot {
   CENTER = 'Center',
@@ -56,7 +55,7 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
   _path: Path
   _angle: number
 
-  constructor (props: P) {
+  constructor(props: P) {
     super(props)
     this._angle = this.props.angle
   }
@@ -80,6 +79,7 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
   }
 
   abstract getPublicPivotPosition(pivot: Pivot)
+
   abstract getPrivatePivotPosition(pivot: Pivot)
 
   // shouldComponentUpdate(nextProps) {

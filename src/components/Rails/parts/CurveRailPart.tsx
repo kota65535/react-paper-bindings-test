@@ -1,16 +1,15 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
-import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
 import ArcPart, {ArcDirection} from "./primitives/ArcPart";
-import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
+import {RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
-import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
 import {
-  default as RailPartBase, RailPartBaseDefaultProps,
+  default as RailPartBase,
+  RailPartBaseDefaultProps,
   RailPartBaseProps
 } from "components/Rails/parts/RailPartBase";
 
@@ -22,7 +21,6 @@ interface CurveRailPartProps extends RailPartBaseProps {
   centerAngle: number
   direction: ArcDirection
 }
-
 
 
 export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> {
@@ -39,8 +37,8 @@ export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> 
   detectablePart: DetectablePart
 
   pivots = [
-    { pivotPartIndex: 0, pivot: Pivot.LEFT },
-    { pivotPartIndex: 0, pivot: Pivot.RIGHT },
+    {pivotPartIndex: 0, pivot: Pivot.LEFT},
+    {pivotPartIndex: 0, pivot: Pivot.RIGHT},
   ]
 
   angles = [
@@ -68,8 +66,10 @@ export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> 
   }
 
   render() {
-    const {radius, centerAngle, position, direction, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
-      name, data, onLeftClick, onRightClick, onFixed} = this.props
+    const {
+      radius, centerAngle, position, direction, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
+      name, data, onLeftClick, onRightClick, onFixed
+    } = this.props
 
     const {pivotPartIndex, pivot} = this.getPivot(pivotJointIndex)
 

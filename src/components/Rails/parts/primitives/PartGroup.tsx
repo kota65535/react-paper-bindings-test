@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Point, Group} from "paper";
-import {Path as PathComponent, Group as GroupComponent} from "react-paper-bindings";
+import {Group, Point} from "paper";
+import {Group as GroupComponent} from "react-paper-bindings";
 import PartBase, {PartBaseDefaultProps, PartBaseProps, Pivot} from "components/Rails/parts/primitives/PartBase";
 
 
@@ -25,7 +25,7 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     selected: false,
   }
 
-  constructor (props: MultiPartProps) {
+  constructor(props: MultiPartProps) {
     super(props)
     this.state = {
       group: null,
@@ -80,7 +80,7 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
   componentDidUpdate() {
     // PivotPointが設定された状態でレンダリングが終わって初めて位置・回転が確定する
     // その時にonFixedコールバックを呼んでやる
-    if (! this._isFixed && this.state.pivotPoint) {
+    if (!this._isFixed && this.state.pivotPoint) {
       if (this.props.onFixed) {
         this.props.onFixed()
       }
@@ -111,13 +111,13 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     const {width, height} = group.bounds
     switch (pivot) {
       case Pivot.LEFT:
-        return new Point(-width/2, 0)
+        return new Point(-width / 2, 0)
       case Pivot.TOP:
-        return new Point(0, -height/2)
+        return new Point(0, -height / 2)
       case Pivot.RIGHT:
-        return new Point(width/2, 0)
+        return new Point(width / 2, 0)
       case Pivot.BOTTOM:
-        return new Point(0, height/2)
+        return new Point(0, height / 2)
       case Pivot.CENTER:
       default:
         return new Point(0, 0)
@@ -125,8 +125,10 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
   }
 
   render() {
-    const {pivot, fillColor, visible, opacity, selected, name, data,
-      onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
+    const {
+      pivot, fillColor, visible, opacity, selected, name, data,
+      onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
+    } = this.props
 
     // 子要素のメソッドを呼び出す必要があるので、refをそれらのpropsに追加する
     const children = React.Children.map(this.props.children, (child: any, i) => {
@@ -170,7 +172,7 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         ref={(group) => {
-          if (! this.state.group) {
+          if (!this.state.group) {
             this.setState({
               group: group,
               pivotPoint: this.getPivotPointFromBoundingBox(group)

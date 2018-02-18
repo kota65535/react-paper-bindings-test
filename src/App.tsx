@@ -19,6 +19,9 @@ import CurveRailPart from "components/Rails/parts/CurveRailPart";
 import SimpleTurnoutRailPart from "components/Rails/parts/SimpleTurnoutRailPart";
 import DoubleStraightRailPart from "components/Rails/parts/DoubleStraightRailPart";
 import CrossoverTurnoutRailPart from "components/Rails/parts/CrossoverTurnoutRailPart";
+import {CurveRail} from "components/Rails/CurveRail";
+import {SimpleTurnout} from "components/Rails/SimpleTurnout";
+import {DoubleStraightRail} from "components/Rails/DoubleStraightRail";
 
 const logo = require('./logo.svg');
 
@@ -273,18 +276,29 @@ class App extends React.Component<{}, AppState> {
             {/*ref={(r) => this.r = r}*/}
           {/*/>*/}
 
-          <DoubleStraightRailPart
-            position={new Point(300,200)}
-            pivotJointIndex={3}
-            angle={this.angle}
-            length={200}
-          />
-          <CrossoverTurnoutRailPart
-            position={new Point(300,200)}
+          <DoubleStraightRail
+            position={new Point(200,200)}
             pivotJointIndex={1}
             angle={this.angle}
-            length={280}
+            length={200}
+            id={0}
+            layerId={1}
           />
+          {/*<CurveRail*/}
+            {/*position={new Point(200,200)}*/}
+            {/*pivotJointIndex={1}*/}
+            {/*angle={this.angle}*/}
+            {/*radius={200}*/}
+            {/*centerAngle={45}*/}
+            {/*id={0}*/}
+            {/*layerId={1}*/}
+          {/*/>*/}
+          {/*<CrossoverTurnoutRailPart*/}
+            {/*position={new Point(300,200)}*/}
+            {/*pivotJointIndex={1}*/}
+            {/*angle={this.angle}*/}
+            {/*length={280}*/}
+          {/*/>*/}
           {/*<CurveRailPart*/}
             {/*pivotJointIndex={1}*/}
             {/*position={new Point(400,200)}*/}
@@ -293,15 +307,16 @@ class App extends React.Component<{}, AppState> {
             {/*radius={100}*/}
             {/*centerAngle={45}*/}
           {/*/>*/}
-          {/*<SimpleTurnoutRailPart*/}
-            {/*pivotJointIndex={0}*/}
-            {/*length={140}*/}
-            {/*position={new Point(200, 200)}*/}
-            {/*direction={ArcDirection.RIGHT}*/}
-            {/*angle={30}*/}
-            {/*radius={541}*/}
-            {/*centerAngle={15}*/}
-          {/*/>*/}
+          <SimpleTurnout
+            pivotJointIndex={0}
+            length={140}
+            position={new Point(400, 200)}
+            angle={30}
+            radius={541}
+            centerAngle={15}
+            id={0}
+            layerId={1}
+          />
 
 
           {/*<CurveRail position={this.state.mousePosition} angle={45} radius={100} centerAngle={45} id={2}/>*/}
