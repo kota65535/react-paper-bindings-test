@@ -75,6 +75,9 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
     return this._angle
   }
 
+  componentWillReceiveProps(nextProps: PartBaseProps) {
+    this._angle += (nextProps.angle - this.props.angle)
+  }
 
   abstract getPublicPivotPosition(pivot: Pivot)
   abstract getPrivatePivotPosition(pivot: Pivot)

@@ -3,11 +3,13 @@ import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
 import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
+import ArcPart, {ArcDirection} from "./primitives/ArcPart";
 import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
-import {RailPartInfo} from "components/Rails/parts/types";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
+import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
+import {RailBase} from "components/Rails/RailBase";
 
 const LOGGER = getLogger(__filename)
 
@@ -31,10 +33,10 @@ interface DefaultProps {
   fillColors?: string[]
 }
 
-export type StraightRailPartProps = Props & DefaultProps;
+export type CrossoverTurnoutRailPartProps = Props & DefaultProps;
 
 
-export default class StraightRailPart extends React.Component<StraightRailPartProps, {}> {
+export default class CrossoverTurnoutRailPart extends React.Component<CrossoverTurnoutRailPartProps, {}> {
   public static defaultProps: DefaultProps = {
     position: new Point(0, 0),
     angle: 0,
@@ -49,21 +51,20 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
 
   pivots = [
     { pivotPartIndex: 0, pivot: Pivot.LEFT },
-    { pivotPartIndex: 0, pivot: Pivot.RIGHT }
+    { pivotPartIndex: 0, pivot: Pivot.RIGHT },
+    { pivotPartIndex: 1, pivot: Pivot.LEFT },
+    { pivotPartIndex: 1, pivot: Pivot.RIGHT }
   ]
 
   angles = [
     this.props.angle,
+    this.props.angle + 180,
+    this.props.angle,
     this.props.angle + 180
   ]
 
-  constructor(props: StraightRailPartProps) {
+  constructor(props: CrossoverTurnoutRailPartProps) {
     super(props)
-  }
-
-  getJointPosition(jointIndex) {
-    const {pivotPartIndex, pivot} = this.getPivot(jointIndex)
-    return this.detectablePart._partGroup._children[pivotPartIndex].getPublicPivotPosition(pivot)
   }
 
   getPivot(jointIndex: number) {
@@ -75,9 +76,11 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
   }
 
   render() {
-    const {length, position, pivotJointIndex, detectionEnabled, selected, fillColors,
-      name, data , onLeftClick, onRightClick, onFixed} = this.props
+    const {length, position, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
+      name, data, onLeftClick, onRightClick, onFixed} = this.props
 
+    // TODO: 方程式を解いてちゃんと値を出す
+    const radius = length / (2 * Math.sin(15 / 180 * Math.PI))
     const {pivotPartIndex, pivot} = this.getPivot(pivotJointIndex)
 
     const part = (
@@ -88,6 +91,46 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
         <RectPart
           width={length}
           height={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+        />
+        <RectPart
+          position={new Point(0, RailBase.RAIL_SPACE)}
+          width={length}
+          height={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+        />
+        <ArcPart
+          direction={ArcDirection.RIGHT}
+          radius={radius}
+          centerAngle={15}
+          width={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+        />
+        <ArcPart
+          position={new Point(length, 0)}
+          direction={ArcDirection.RIGHT}
+          angle={-15}
+          radius={radius}
+          centerAngle={15}
+          width={RAIL_PART_WIDTH}
+          pivot={Pivot.RIGHT}
+        />
+        <ArcPart
+          position={new Point(0, RailBase.RAIL_SPACE)}
+          direction={ArcDirection.LEFT}
+          radius={radius}
+          centerAngle={15}
+          width={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+        />
+        <ArcPart
+          position={new Point(length, RailBase.RAIL_SPACE)}
+          direction={ArcDirection.LEFT}
+          angle={15}
+          radius={radius}
+          centerAngle={15}
+          width={RAIL_PART_WIDTH}
+          pivot={Pivot.RIGHT}
         />
       </PartGroup>
     )

@@ -13,6 +13,12 @@ import PartGroup from 'components/Rails/parts/primitives/PartGroup';
 // import CurveRail from "components/Rails/CurveRail";
 import {Path, Group, Rectangle, Layer} from "react-paper-bindings";
 import Joint from "components/Rails/parts/Joint";
+import {StraightRail} from "components/Rails/StraightRail";
+import StraightRailPart from "components/Rails/parts/StraightRailPart";
+import CurveRailPart from "components/Rails/parts/CurveRailPart";
+import SimpleTurnoutRailPart from "components/Rails/parts/SimpleTurnoutRailPart";
+import DoubleStraightRailPart from "components/Rails/parts/DoubleStraightRailPart";
+import CrossoverTurnoutRailPart from "components/Rails/parts/CrossoverTurnoutRailPart";
 
 const logo = require('./logo.svg');
 
@@ -46,6 +52,7 @@ class App extends React.Component<{}, AppState> {
 
     // console.log(this.rect.position)
     // this.rect.rotate(45)
+    // this.angle = 60
   }
 
   componentDidUpdate() {
@@ -244,20 +251,21 @@ class App extends React.Component<{}, AppState> {
             {/*/>*/}
             {/*}*/}
             {/*position={new Point(100, 100)}*/}
-            {/*angle={30}*/}
+            {/*angle={this.angle}*/}
             {/*pivot={Pivot.TOP}*/}
             {/*pivotPartIndex={0}*/}
             {/*fillColors={['black', 'orange', 'blue', 'grey']}*/}
             {/*onClick={(e) => console.log('Clicked')}*/}
             {/*detectionEnabled={true}*/}
+            {/*ref={(r) => this.r = r}*/}
           {/*/>*/}
-          <Joint
-            position={new Point(400,300)}
-            onFixed={() => console.log('qqqqqqq')}
-            ref={(r) => this.r = r}
-          />
+          {/*<Joint*/}
+            {/*position={new Point(400,300)}*/}
+            {/*onFixed={() => console.log('qqqqqqq')}*/}
+            {/*// ref={(r) => this.r = r}*/}
+          {/*/>*/}
           {/*<StraightRailPart*/}
-            {/*pivot={Pivot.LEFT}*/}
+            {/*pivotJointIndex={1}*/}
             {/*angle={30}*/}
             {/*position={new Point(200,200)}*/}
             {/*length={200}*/}
@@ -265,27 +273,37 @@ class App extends React.Component<{}, AppState> {
             {/*ref={(r) => this.r = r}*/}
           {/*/>*/}
 
-          {/*<StraightRailPart*/}
-            {/*pivot={Pivot.LEFT}*/}
-            {/*angle={90}*/}
-            {/*position={new Point(300,200)}*/}
-            {/*length={200}*/}
-          {/*/>*/}
+          <DoubleStraightRailPart
+            position={new Point(300,200)}
+            pivotJointIndex={3}
+            angle={this.angle}
+            length={200}
+          />
+          <CrossoverTurnoutRailPart
+            position={new Point(300,200)}
+            pivotJointIndex={1}
+            angle={this.angle}
+            length={280}
+          />
           {/*<CurveRailPart*/}
-            {/*pivot={Pivot.RIGHT}*/}
-            {/*position={new Point(500, 400)}*/}
-            {/*direction={ArcDirection.RIGHT}*/}
-            {/*angle={0}*/}
-            {/*radius={100}*/}
-            {/*centerAngle={45}*/}
-          {/*/>*/}
-          {/*<CurveRailPart*/}
-            {/*position={new Point(500, 400)}*/}
+            {/*pivotJointIndex={1}*/}
+            {/*position={new Point(400,200)}*/}
             {/*direction={ArcDirection.LEFT}*/}
-            {/*angle={45}*/}
+            {/*angle={30}*/}
             {/*radius={100}*/}
             {/*centerAngle={45}*/}
           {/*/>*/}
+          {/*<SimpleTurnoutRailPart*/}
+            {/*pivotJointIndex={0}*/}
+            {/*length={140}*/}
+            {/*position={new Point(200, 200)}*/}
+            {/*direction={ArcDirection.RIGHT}*/}
+            {/*angle={30}*/}
+            {/*radius={541}*/}
+            {/*centerAngle={15}*/}
+          {/*/>*/}
+
+
           {/*<CurveRail position={this.state.mousePosition} angle={45} radius={100} centerAngle={45} id={2}/>*/}
 
           <Tool

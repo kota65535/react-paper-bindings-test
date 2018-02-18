@@ -3,9 +3,10 @@ import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
 import RectPart from "./primitives/RectPart";
 import DetectablePart from "./primitives/DetectablePart";
+import ArcPart, {ArcDirection} from "./primitives/ArcPart";
 import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
-import {RailPartInfo} from "components/Rails/parts/types";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
+import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
 
@@ -31,10 +32,10 @@ interface DefaultProps {
   fillColors?: string[]
 }
 
-export type StraightRailPartProps = Props & DefaultProps;
+export type DoubleStraightRailPartProps = Props & DefaultProps;
 
 
-export default class StraightRailPart extends React.Component<StraightRailPartProps, {}> {
+export default class DoubleStraightRailPart extends React.Component<DoubleStraightRailPartProps, {}> {
   public static defaultProps: DefaultProps = {
     position: new Point(0, 0),
     angle: 0,
@@ -49,21 +50,20 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
 
   pivots = [
     { pivotPartIndex: 0, pivot: Pivot.LEFT },
-    { pivotPartIndex: 0, pivot: Pivot.RIGHT }
+    { pivotPartIndex: 0, pivot: Pivot.RIGHT },
+    { pivotPartIndex: 1, pivot: Pivot.LEFT },
+    { pivotPartIndex: 1, pivot: Pivot.RIGHT }
   ]
 
   angles = [
     this.props.angle,
+    this.props.angle + 180,
+    this.props.angle,
     this.props.angle + 180
   ]
 
-  constructor(props: StraightRailPartProps) {
+  constructor(props: DoubleStraightRailPartProps) {
     super(props)
-  }
-
-  getJointPosition(jointIndex) {
-    const {pivotPartIndex, pivot} = this.getPivot(jointIndex)
-    return this.detectablePart._partGroup._children[pivotPartIndex].getPublicPivotPosition(pivot)
   }
 
   getPivot(jointIndex: number) {
@@ -75,8 +75,8 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
   }
 
   render() {
-    const {length, position, pivotJointIndex, detectionEnabled, selected, fillColors,
-      name, data , onLeftClick, onRightClick, onFixed} = this.props
+    const {length, position, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
+      name, data, onLeftClick, onRightClick, onFixed} = this.props
 
     const {pivotPartIndex, pivot} = this.getPivot(pivotJointIndex)
 
@@ -88,6 +88,13 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
         <RectPart
           width={length}
           height={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+        />
+        <RectPart
+          position={new Point(0, 37)}
+          width={length}
+          height={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
         />
       </PartGroup>
     )

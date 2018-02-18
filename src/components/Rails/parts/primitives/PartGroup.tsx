@@ -85,7 +85,11 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
   }
 
   // TODO: implement
-  getPublicPivotPosition() {}
+  getPublicPivotPosition(pivot: Pivot) {
+    if (this.props.pivotPartIndex !== undefined) {
+      return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)
+    }
+  }
 
   getPrivatePivotPosition(pivot: Pivot) {
     // PivotPartIndexが指定されていたら、指定のパーツのPivotを使用する
