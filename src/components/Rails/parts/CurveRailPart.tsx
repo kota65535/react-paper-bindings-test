@@ -8,6 +8,7 @@ import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
+import PartGroup from "components/Rails/parts/primitives/PartGroup";
 
 const LOGGER = getLogger(__filename)
 
@@ -26,7 +27,7 @@ interface Props extends Partial<DefaultProps> {
 interface DefaultProps {
   position?: Point
   angle?: number
-  pivot?: Pivot
+  pivotJointIndex?: number
   detectionEnabled?: boolean
   selected?: boolean
   opacity?: number
@@ -40,8 +41,8 @@ export default class CurveRailPart extends React.Component<CurveRailPartProps, {
   public static defaultProps: DefaultProps = {
     position: new Point(0, 0),
     angle: 0,
+    pivotJointIndex: 0,
     detectionEnabled: false,
-    pivot: Pivot.LEFT,
     selected: false,
     opacity: 1,
     fillColors: RAIL_PART_FILL_COLORS
@@ -49,77 +50,61 @@ export default class CurveRailPart extends React.Component<CurveRailPartProps, {
 
   detectablePart: DetectablePart
 
+  pivots = [
+    { pivotPartIndex: 0, pivot: Pivot.LEFT },
+    { pivotPartIndex: 0, pivot: Pivot.RIGHT },
+  ]
+
+  angles = [
+    () => this.props.angle,
+    () => {
+      switch (this.props.direction) {
+        case ArcDirection.RIGHT:
+          return this.props.angle - this.props.centerAngle + 180
+        case ArcDirection.LEFT:
+          return this.props.angle + this.props.centerAngle - 180
+      }
+    }
+  ]
+
   constructor(props: CurveRailPartProps) {
     super(props)
   }
 
-  // ========== Public APIs ==========
-
-  get startPoint() {
-    return (this.detectablePart.mainPart as RectPart).getPublicPivotPosition(Pivot.LEFT)
+  getPivot(jointIndex: number) {
+    return this.pivots[jointIndex]
   }
 
-  get endPoint() {
-    return (this.detectablePart.mainPart as RectPart).getPublicPivotPosition(Pivot.RIGHT)
+  getAngle(jointIndex: number) {
+    return this.angles[jointIndex]()
   }
-
-  get startAngle() {
-    return this.detectablePart.angle
-  }
-
-  get endAngle() {
-    switch (this.props.direction) {
-      case ArcDirection.RIGHT:
-        return this.detectablePart.angle + this.props.centerAngle
-      case ArcDirection.LEFT:
-        return this.detectablePart.angle - this.props.centerAngle
-    }
-  }
-
-  moveRelatively(difference: Point) {
-    this.detectablePart.moveRelatively(difference)
-  }
-
-  move(position: Point, pivot: Point = this.startPoint): void {
-    LOGGER.debug(`move ${this.detectablePart.position} ->  ${position}`)
-    this.detectablePart.move(position, pivot)
-  }
-
-  rotateRelatively(difference: number, pivot: Point = this.startPoint) {
-    this.detectablePart.rotateRelatively(difference, pivot);
-  }
-
-  rotate(angle: number, pivot: Point = this.startPoint) {
-    LOGGER.debug(`rotate ${this.detectablePart.angle} ->  ${angle} @ ${pivot}`)
-    this.detectablePart.rotate(angle, pivot);
-  }
-
-  // ========== Private methods ==========
 
   render() {
-    const {radius, centerAngle, position, angle, direction, pivot, detectionEnabled, selected, fillColors, opacity,
+    const {radius, centerAngle, position, direction, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
       name, data, onLeftClick, onRightClick, onFixed} = this.props
+
+    const {pivotPartIndex, pivot} = this.getPivot(pivotJointIndex)
+
+    const part = (
+      <PartGroup
+        pivotPartIndex={pivotPartIndex}
+        pivot={pivot}
+      >
+        <ArcPart
+          direction={direction}
+          radius={radius}
+          centerAngle={centerAngle}
+          width={RAIL_PART_WIDTH}
+        />
+      </PartGroup>
+    )
+
     return (
       <DetectablePart
-        mainPart={
-          <ArcPart
-            direction={direction}
-            radius={radius}
-            centerAngle={centerAngle}
-            width={RAIL_PART_WIDTH}
-          />
-        }
-        detectionPart={
-          <ArcPart
-            direction={direction}
-            radius={radius}
-            centerAngle={centerAngle}
-            width={RAIL_PART_WIDTH}
-            opacity={opacity * RAIL_PART_DETECTION_OPACITY_RATE}
-          />
-        }
+        mainPart={part}
+        detectionPart={part}
         position={position}
-        angle={angle}
+        angle={this.getAngle(pivotJointIndex)}
         pivot={pivot}
         pivotPartIndex={0}
         fillColors={fillColors}

@@ -7,6 +7,7 @@ import {RAIL_PART_DETECTION_OPACITY_RATE, RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH
 import {RailPartInfo} from "components/Rails/parts/types";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import getLogger from "logging";
+import PartGroup from "components/Rails/parts/primitives/PartGroup";
 
 const LOGGER = getLogger(__filename)
 
@@ -23,7 +24,7 @@ interface Props extends Partial<DefaultProps> {
 interface DefaultProps {
   position?: Point
   angle?: number
-  pivot?: Pivot
+  pivotJointIndex?: number
   detectionEnabled?: boolean
   selected?: boolean
   opacity?: number
@@ -37,8 +38,8 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
   public static defaultProps: DefaultProps = {
     position: new Point(0, 0),
     angle: 0,
+    pivotJointIndex: 0,
     detectionEnabled: false,
-    pivot: Pivot.LEFT,
     selected: false,
     opacity: 1,
     fillColors: RAIL_PART_FILL_COLORS
@@ -46,69 +47,47 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
 
   detectablePart: DetectablePart
 
+  pivots = [
+    { pivotPartIndex: 0, pivot: Pivot.LEFT },
+    { pivotPartIndex: 0, pivot: Pivot.RIGHT }
+  ]
+
   constructor(props: StraightRailPartProps) {
     super(props)
   }
 
-  // ========== Public APIs ==========
-
-  get startPoint() {
-    return (this.detectablePart.mainPart as RectPart).getPublicPivotPosition(Pivot.LEFT)
+  getPivot(jointIndex: number) {
+    return this.pivots[jointIndex]
   }
 
-  get endPoint() {
-    return (this.detectablePart.mainPart as RectPart).getPublicPivotPosition(Pivot.RIGHT)
+  getAngle(jointIndex: number) {
+    return this.props.angle
   }
-
-  get startAngle() {
-    return this.detectablePart.angle
-  }
-
-  get endAngle() {
-    return this.detectablePart.angle
-  }
-
-  moveRelatively(difference: Point) {
-    this.detectablePart.moveRelatively(difference)
-  }
-
-  move(position: Point, pivot: Point = this.startPoint): void {
-    LOGGER.debug(`move ${this.detectablePart.position} ->  ${position} @ ${pivot}`)
-    this.detectablePart.move(position, pivot)
-  }
-
-  rotateRelatively(difference: number, pivot: Point = this.startPoint) {
-    this.detectablePart.rotateRelatively(difference, pivot);
-  }
-
-  rotate(angle: number, pivot: Point = this.startPoint) {
-    LOGGER.debug(`rotate ${this.detectablePart.angle} ->  ${angle} @ ${pivot}`)
-    this.detectablePart.rotate(angle, pivot);
-  }
-
-
-  // ========== Private methods ==========
 
   render() {
-    const {length, position, angle, pivot, detectionEnabled, selected, fillColors, opacity,
+    const {length, position, pivotJointIndex, detectionEnabled, selected, fillColors,
       name, data , onLeftClick, onRightClick, onFixed} = this.props
+
+    const {pivotPartIndex, pivot} = this.getPivot(pivotJointIndex)
+
+    const part = (
+      <PartGroup
+        pivotPartIndex={pivotPartIndex}
+        pivot={pivot}
+      >
+        <RectPart
+          width={length}
+          height={RAIL_PART_WIDTH}
+        />
+      </PartGroup>
+    )
+
     return (
       <DetectablePart
-        mainPart={
-          <RectPart
-            width={length}
-            height={RAIL_PART_WIDTH}
-          />
-        }
-        detectionPart={
-          <RectPart
-            width={length}
-            height={RAIL_PART_WIDTH}
-            opacity={opacity * RAIL_PART_DETECTION_OPACITY_RATE}
-          />
-        }
+        mainPart={part}
+        detectionPart={part}
         position={position}
-        angle={angle}
+        angle={this.getAngle(pivotJointIndex)}
         pivot={pivot}
         pivotPartIndex={0}
         fillColors={fillColors}
