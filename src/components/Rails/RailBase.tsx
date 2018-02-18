@@ -45,8 +45,6 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
     hasOpposingJoints: []
   }
 
-  public static RAIL_SPACE = 38
-
   railPart: any
   joints: Joint[]
   temporaryPivotJointIndex: number

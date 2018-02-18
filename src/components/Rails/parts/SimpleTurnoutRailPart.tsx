@@ -9,37 +9,21 @@ import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
+import RailPartBase, {RailPartBaseDefaultProps, RailPartBaseProps} from "components/Rails/parts/RailPartBase";
 
 const LOGGER = getLogger(__filename)
 
 
-interface Props extends Partial<DefaultProps> {
+interface SimpleTurnoutRailPartProps extends RailPartBaseProps {
   length: number
   radius: number
   centerAngle: number
   direction: ArcDirection
-  name?: string
-  data?: RailPartInfo
-  onLeftClick?: (e: MouseEvent) => void
-  onRightClick?: (e: MouseEvent) => void
-  onFixed?: () => void
 }
 
-interface DefaultProps {
-  position?: Point
-  angle?: number
-  pivotJointIndex?: number
-  detectionEnabled?: boolean
-  selected?: boolean
-  opacity?: number
-  fillColors?: string[]
-}
 
-export type SimpleTurnoutRailPartProps = Props & DefaultProps;
-
-
-export default class SimpleTurnoutRailPart extends React.Component<SimpleTurnoutRailPartProps, {}> {
-  public static defaultProps: DefaultProps = {
+export default class SimpleTurnoutRailPart extends RailPartBase<SimpleTurnoutRailPartProps, {}> {
+  public static defaultProps: RailPartBaseDefaultProps = {
     position: new Point(0, 0),
     angle: 0,
     pivotJointIndex: 0,
@@ -48,8 +32,6 @@ export default class SimpleTurnoutRailPart extends React.Component<SimpleTurnout
     opacity: 1,
     fillColors: RAIL_PART_FILL_COLORS
   }
-
-  detectablePart: DetectablePart
 
   pivots = [
     { pivotPartIndex: 0, pivot: Pivot.LEFT },

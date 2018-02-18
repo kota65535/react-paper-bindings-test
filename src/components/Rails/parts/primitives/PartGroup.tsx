@@ -52,6 +52,10 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     return this._angle
   }
 
+  get children() {
+    return this._children
+  }
+
   moveRelatively(difference: Point) {
     this.state.group.position = this.state.group.position.add(difference);
   }
@@ -84,7 +88,7 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     }
   }
 
-  // TODO: implement
+  // TODO: BoundingBoxのPivotの座標を外から取れるようにする
   getPublicPivotPosition(pivot: Pivot) {
     if (this.props.pivotPartIndex !== undefined) {
       return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)

@@ -8,34 +8,21 @@ import {RailPartInfo} from "components/Rails/parts/types";
 import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
+import {
+  default as RailPartBase, RailPartBaseDefaultProps,
+  RailPartBaseProps
+} from "components/Rails/parts/RailPartBase";
 
 const LOGGER = getLogger(__filename)
 
 
-interface Props extends Partial<DefaultProps> {
+interface StraightRailPartProps extends RailPartBaseProps {
   length: number
-  name?: string
-  data?: RailPartInfo
-  onLeftClick?: (e: MouseEvent) => void
-  onRightClick?: (e: MouseEvent) => void
-  onFixed?: () => void
 }
 
-interface DefaultProps {
-  position?: Point
-  angle?: number
-  pivotJointIndex?: number
-  detectionEnabled?: boolean
-  selected?: boolean
-  opacity?: number
-  fillColors?: string[]
-}
 
-export type StraightRailPartProps = Props & DefaultProps;
-
-
-export default class StraightRailPart extends React.Component<StraightRailPartProps, {}> {
-  public static defaultProps: DefaultProps = {
+export default class StraightRailPart extends RailPartBase<StraightRailPartProps, {}> {
+  public static defaultProps: RailPartBaseDefaultProps = {
     position: new Point(0, 0),
     angle: 0,
     pivotJointIndex: 0,
@@ -44,8 +31,6 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
     opacity: 1,
     fillColors: RAIL_PART_FILL_COLORS
   }
-
-  detectablePart: DetectablePart
 
   pivots = [
     { pivotPartIndex: 0, pivot: Pivot.LEFT },
@@ -59,11 +44,6 @@ export default class StraightRailPart extends React.Component<StraightRailPartPr
 
   constructor(props: StraightRailPartProps) {
     super(props)
-  }
-
-  getJointPosition(jointIndex) {
-    const {pivotPartIndex, pivot} = this.getPivot(jointIndex)
-    return this.detectablePart._partGroup._children[pivotPartIndex].getPublicPivotPosition(pivot)
   }
 
   getPivot(jointIndex: number) {

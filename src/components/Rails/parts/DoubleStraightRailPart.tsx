@@ -9,11 +9,16 @@ import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
+import {
+  default as RailPartBase, RailPartBaseDefaultProps,
+  RailPartBaseProps
+} from "components/Rails/parts/RailPartBase";
+import {RailBase} from "components/Rails/RailBase";
 
 const LOGGER = getLogger(__filename)
 
 
-interface Props extends Partial<DefaultProps> {
+interface DoubleStraightRailPartProps extends RailPartBaseProps {
   length: number
   name?: string
   data?: RailPartInfo
@@ -22,21 +27,9 @@ interface Props extends Partial<DefaultProps> {
   onFixed?: () => void
 }
 
-interface DefaultProps {
-  position?: Point
-  angle?: number
-  pivotJointIndex?: number
-  detectionEnabled?: boolean
-  selected?: boolean
-  opacity?: number
-  fillColors?: string[]
-}
 
-export type DoubleStraightRailPartProps = Props & DefaultProps;
-
-
-export default class DoubleStraightRailPart extends React.Component<DoubleStraightRailPartProps, {}> {
-  public static defaultProps: DefaultProps = {
+export default class DoubleStraightRailPart extends RailPartBase<DoubleStraightRailPartProps, {}> {
+  public static defaultProps: RailPartBaseDefaultProps = {
     position: new Point(0, 0),
     angle: 0,
     pivotJointIndex: 0,
@@ -45,8 +38,6 @@ export default class DoubleStraightRailPart extends React.Component<DoubleStraig
     opacity: 1,
     fillColors: RAIL_PART_FILL_COLORS
   }
-
-  detectablePart: DetectablePart
 
   pivots = [
     { pivotPartIndex: 0, pivot: Pivot.LEFT },
@@ -91,7 +82,7 @@ export default class DoubleStraightRailPart extends React.Component<DoubleStraig
           pivot={Pivot.LEFT}
         />
         <RectPart
-          position={new Point(0, 37)}
+          position={new Point(0, RailPartBase.RAIL_SPACE)}
           width={length}
           height={RAIL_PART_WIDTH}
           pivot={Pivot.LEFT}

@@ -10,6 +10,7 @@ import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
 import {RailBase} from "components/Rails/RailBase";
+import RailPartBase from "./RailPartBase";
 
 const LOGGER = getLogger(__filename)
 
@@ -94,7 +95,7 @@ export default class CrossoverTurnoutRailPart extends React.Component<CrossoverT
           pivot={Pivot.LEFT}
         />
         <RectPart
-          position={new Point(0, RailBase.RAIL_SPACE)}
+          position={new Point(0, RailPartBase.RAIL_SPACE)}
           width={length}
           height={RAIL_PART_WIDTH}
           pivot={Pivot.LEFT}
@@ -116,7 +117,7 @@ export default class CrossoverTurnoutRailPart extends React.Component<CrossoverT
           pivot={Pivot.RIGHT}
         />
         <ArcPart
-          position={new Point(0, RailBase.RAIL_SPACE)}
+          position={new Point(0, RailPartBase.RAIL_SPACE)}
           direction={ArcDirection.LEFT}
           radius={radius}
           centerAngle={15}
@@ -124,7 +125,7 @@ export default class CrossoverTurnoutRailPart extends React.Component<CrossoverT
           pivot={Pivot.LEFT}
         />
         <ArcPart
-          position={new Point(length, RailBase.RAIL_SPACE)}
+          position={new Point(length, RailPartBase.RAIL_SPACE)}
           direction={ArcDirection.LEFT}
           angle={15}
           radius={radius}

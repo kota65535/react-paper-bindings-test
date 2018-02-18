@@ -9,36 +9,24 @@ import {Pivot} from "components/Rails/parts/primitives/PartBase";
 import {RailPartInfo} from "components/Rails/parts/types";
 import getLogger from "logging";
 import PartGroup from "components/Rails/parts/primitives/PartGroup";
+import {
+  default as RailPartBase, RailPartBaseDefaultProps,
+  RailPartBaseProps
+} from "components/Rails/parts/RailPartBase";
 
 const LOGGER = getLogger(__filename)
 
 
-interface Props extends Partial<DefaultProps> {
+interface CurveRailPartProps extends RailPartBaseProps {
   radius: number
   centerAngle: number
   direction: ArcDirection
-  name?: string
-  data?: RailPartInfo
-  onLeftClick?: (e: MouseEvent) => void
-  onRightClick?: (e: MouseEvent) => void
-  onFixed?: () => void
 }
 
-interface DefaultProps {
-  position?: Point
-  angle?: number
-  pivotJointIndex?: number
-  detectionEnabled?: boolean
-  selected?: boolean
-  opacity?: number
-  fillColors?: string[]
-}
-
-export type CurveRailPartProps = Props & DefaultProps;
 
 
-export default class CurveRailPart extends React.Component<CurveRailPartProps, {}> {
-  public static defaultProps: DefaultProps = {
+export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> {
+  public static defaultProps: RailPartBaseDefaultProps = {
     position: new Point(0, 0),
     angle: 0,
     pivotJointIndex: 0,
