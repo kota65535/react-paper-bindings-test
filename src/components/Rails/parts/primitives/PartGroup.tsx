@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Point, Group} from "paper";
 import {Path as PathComponent, Group as GroupComponent} from "react-paper-bindings";
-import PartBase, {PartBaseProps, Pivot} from "components/Rails/parts/primitives/PartBase";
+import PartBase, {PartBaseDefaultProps, PartBaseProps, Pivot} from "components/Rails/parts/primitives/PartBase";
 
 
 interface MultiPartProps extends PartBaseProps {
@@ -15,6 +15,15 @@ interface PartGroupState {
 }
 
 export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> {
+  public static defaultProps: PartBaseDefaultProps = {
+    position: new Point(0, 0),
+    angle: 0,
+    pivot: Pivot.CENTER,
+    fillColor: undefined,
+    visible: true,
+    opacity: 1,
+    selected: false,
+  }
 
   constructor (props: MultiPartProps) {
     super(props)
@@ -111,18 +120,15 @@ export default class PartGroup extends PartBase<MultiPartProps, PartGroupState> 
     const {pivot, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave} = this.props
 
-    // PivotPartIndexが指定されていたら、子パーツのメソッドを呼び出す必要があるのでrefをpropsに追加する
-    let children
-    if (this.props.pivotPartIndex !== undefined) {
-      children = React.Children.map(this.props.children, (child: any, i) => {
-        return React.cloneElement(child as any, {
-          ...child.props,
-          ref: (node) => this._children[i] = node
-        })
+    // 子要素のメソッドを呼び出す必要があるので、refをそれらのpropsに追加する
+    const children = React.Children.map(this.props.children, (child: any, i) => {
+      return React.cloneElement(child as any, {
+        ...child.props,
+        ref: (node) => {
+          this._children[i] = node
+        }
       })
-    } else {
-      children = this.props.children
-    }
+    })
 
     // Pivotの座標を計算するには角度0でのGroupのBoundingBoxが必要なため、
     // Pivotの影響を受ける position, rotation をいったん無指定にして描画する。
