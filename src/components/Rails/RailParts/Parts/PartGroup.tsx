@@ -30,7 +30,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     this.state = {
       pivotPoint: null
     }
-    this._children = new Array((this.props.children as any[]).length)
+    this._children = this.props.children ? new Array((this.props.children as any[]).length) : []
     this._isFixed = false
   }
 
@@ -185,6 +185,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
+    // TODO: 子が空の時のエラー処理
     // 子要素のメソッドを呼び出す必要があるので、refをそれらのpropsに追加する
     const children = React.Children.map(this.props.children, (child: any, i) => {
       // 動的に子要素を削除された場合、nullが入ってくるので対処する

@@ -1,7 +1,7 @@
 import * as React from "react";
 import RectPart from "components/Rails/RailParts/Parts/RectPart";
 import {Point} from "paper";
-import {View} from "react-paper-bindings";
+import {View, Tool} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import CirclePart from "../components/Rails/RailParts/Parts/CirclePart";
@@ -12,6 +12,13 @@ import TrianglePart from "../components/Rails/RailParts/Parts/TrianglePart";
  * position, angle, pivot がうまく動作しているかのテスト
  */
 export default class Case01 extends React.Component<any, any> {
+  r
+
+  constructor(props) {
+    super(props)
+
+    this.r = null
+  }
 
   render() {
     const matrix = {
@@ -112,6 +119,7 @@ export default class Case01 extends React.Component<any, any> {
           radius={50}
           centerAngle={45}
           fillColor='red'
+          ref={(r) => this.r = r}
         />
         <ArcPart
           position={new Point(200, 400)}
@@ -123,6 +131,7 @@ export default class Case01 extends React.Component<any, any> {
           centerAngle={45}
           fillColor='blue'
         />
+
         <ArcPart
           position={new Point(200, 400)}
           pivot={Pivot.RIGHT}
@@ -143,24 +152,6 @@ export default class Case01 extends React.Component<any, any> {
           centerAngle={45}
           fillColor='yellow'
         />
-        {/*<ArcPart*/}
-          {/*position={new Point(200, 400)}*/}
-          {/*angle={30}*/}
-          {/*direction={ArcDirection.LEFT}*/}
-          {/*width={10}*/}
-          {/*radius={50}*/}
-          {/*centerAngle={45}*/}
-          {/*fillColor='orange'*/}
-        {/*/>*/}
-        {/*<ArcPart*/}
-          {/*position={new Point(200, 400)}*/}
-          {/*angle={30}*/}
-          {/*direction={ArcDirection.RIGHT}*/}
-          {/*width={10}*/}
-          {/*radius={50}*/}
-          {/*centerAngle={45}*/}
-          {/*fillColor='orange'*/}
-        {/*/>*/}
 
         <TrianglePart
           position={new Point(400, 400)}
@@ -183,6 +174,15 @@ export default class Case01 extends React.Component<any, any> {
           height={100}
         />
 
+        <Tool
+          active={true}
+          onMouseMove={(e) => {
+            this.setState({
+              mousePosition: e.point
+            })
+            console.log(`position: ${e.point}`)
+          }}
+        />
       </View>
     )
   }

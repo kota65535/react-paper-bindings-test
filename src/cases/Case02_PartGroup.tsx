@@ -5,6 +5,7 @@ import {View} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
+import ArcPart, {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
 
 export default class Case02 extends React.Component<any, any> {
 
@@ -99,6 +100,35 @@ export default class Case02 extends React.Component<any, any> {
           fillColor={'red'}
         >
           {paths}
+        </PartGroup>
+
+
+        <PartGroup
+          position={new Point(200,100)}
+          pivotPartIndex={0}
+          pivot={Pivot.RIGHT}
+          angle={45}
+        >
+          <ArcPart
+            position={new Point(200, 400)}
+            pivot={Pivot.LEFT}
+            angle={0}
+            direction={ArcDirection.LEFT}
+            width={10}
+            radius={50}
+            centerAngle={45}
+            fillColor='red'
+          />
+          <ArcPart
+            position={new Point(200, 400)}
+            pivot={Pivot.LEFT}
+            angle={0}
+            direction={ArcDirection.RIGHT}
+            width={10}
+            radius={50}
+            centerAngle={45}
+            fillColor='red'
+          />
         </PartGroup>
 
       </View>

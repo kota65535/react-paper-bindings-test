@@ -3,13 +3,10 @@ import {Point} from "paper";
 import {View} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import StraightRailPart from "components/Rails/RailParts/StraightRailPart";
-import DetectablePart from "components/Rails/RailParts/Parts/DetectablePart";
-import RectPart from "components/Rails/RailParts/Parts/RectPart";
-import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import CurveRailPart from "../components/Rails/RailParts/CurveRailPart";
 import {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
 import SimpleTurnoutRailPart from "../components/Rails/RailParts/SimpleTurnoutRailPart";
-import DoubleStraightRailPart from "../components/Rails/RailParts/DoubleStraightRailPart";
+import CurvedTurnoutRailPart from "../components/Rails/RailParts/CurvedTurnoutRailPart";
 
 export default class Case05 extends React.Component<any, any> {
 
@@ -111,6 +108,37 @@ export default class Case05 extends React.Component<any, any> {
           length={140}
           radius={280}
           centerAngle={30}
+        />
+
+        <CurvedTurnoutRailPart
+          pivotJointIndex={0}
+          position={new Point(400,400)}
+          direction={ArcDirection.RIGHT}
+          angle={30}
+          innerRadius={200}
+          outerRadius={300}
+          innerCenterAngle={45}
+          outerCenterAngle={30}
+        />
+        <CurvedTurnoutRailPart
+          pivotJointIndex={1}
+          position={new Point(400,400)}
+          direction={ArcDirection.RIGHT}
+          angle={120}
+          innerRadius={200}
+          outerRadius={300}
+          innerCenterAngle={45}
+          outerCenterAngle={30}
+        />
+        <CurvedTurnoutRailPart
+          pivotJointIndex={2}
+          position={new Point(400,400)}
+          direction={ArcDirection.RIGHT}
+          angle={210}
+          innerRadius={200}
+          outerRadius={300}
+          innerCenterAngle={45}
+          outerCenterAngle={30}
         />
 
       </View>

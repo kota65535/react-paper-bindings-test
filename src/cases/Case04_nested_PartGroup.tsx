@@ -6,6 +6,7 @@ import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
 import CirclePart from "../components/Rails/RailParts/Parts/CirclePart";
+import ArcPart, {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
 
 export default class Case04 extends React.Component<any, any> {
 
@@ -49,6 +50,16 @@ export default class Case04 extends React.Component<any, any> {
         position={new Point(350, 200)}
         radius={50}
         name={'c1'}
+      />,
+      <ArcPart
+        position={new Point(200, 400)}
+        pivot={Pivot.LEFT}
+        angle={30}
+        direction={ArcDirection.RIGHT}
+        width={10}
+        radius={50}
+        centerAngle={45}
+        fillColor='blue'
       />
     ]
 

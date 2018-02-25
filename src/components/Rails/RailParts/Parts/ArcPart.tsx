@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Point} from "paper";
+import {Point, Path} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
 import {default as PartBase, PartBaseProps, Pivot} from "components/Rails/RailParts/Parts/PartBase";
 
@@ -41,6 +41,20 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
   }
 
   getPublicPivotPosition(pivot: Pivot) {
+    return this.path.localToParent(this.getPrivatePivotPosition(pivot))
+  }
+
+  // ========== Private APIs ==========
+
+  getPrivatePivotPosition(pivot: Pivot) {
+    if (this._path) {
+      return this.getPrivatePivotPointFromPath(pivot)
+    } else {
+      return this.getInitialPrivatePivotPoint(pivot)
+    }
+  }
+
+  getPrivatePivotPointFromPath(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
         return this._path.segments[0].point
@@ -53,9 +67,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  // ========== Private APIs ==========
-
-  getPrivatePivotPosition(pivot: Pivot) {
+  getInitialPrivatePivotPoint(pivot: Pivot) {
     switch (this.props.direction) {
       case ArcDirection.RIGHT:
         return this.getPivotPointRight(pivot)
@@ -83,7 +95,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
   }
 
   getPivotPointLeft(pivot: Pivot) {
-    const {radius, width, centerAngle} = this.props
+    const {radius, width, centerAngle, direction} = this.props
     // 曲線の始点・終点の座標を計算
     const outerEndX = (radius + width / 2) * Math.sin(centerAngle / 180 * Math.PI);
     const outerEndY = -(radius + width / 2) * (1 - Math.cos(centerAngle / 180 * Math.PI)) + width / 2;
@@ -109,7 +121,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     } = this.props
 
     return <PathComponent
-      pathData={createArcPath(width, radius, centerAngle, direction, pivot)}
+      pathData={createArcPath(width, radius, centerAngle, direction)}
       pivot={this.getPrivatePivotPosition(pivot)}
       position={position}
       rotation={angle}
@@ -134,17 +146,17 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
 }
 
 
-const createArcPath = (width: number, radius: number, centerAngle: number, direction: ArcDirection, pivot: Pivot) => {
+const createArcPath = (width: number, radius: number, centerAngle: number, direction: ArcDirection) => {
   switch (direction) {
     case ArcDirection.RIGHT:
-      return createArcPathRight(width, radius, centerAngle, pivot)
+      return createArcPathRight(width, radius, centerAngle)
     case ArcDirection.LEFT:
-      return createArcPathLeft(width, radius, centerAngle, pivot)
+      return createArcPathLeft(width, radius, centerAngle)
   }
 }
 
 // 右方向に曲がる円弧のパスデータを作成する
-const createArcPathRight = (width: number, radius: number, centerAngle: number, pivot: Pivot) => {
+const createArcPathRight = (width: number, radius: number, centerAngle: number) => {
   // 曲線の始点・終点の座標を計算
   const outerEndX = (radius + width / 2) * Math.sin(centerAngle / 180 * Math.PI);
   const outerEndY = (radius + width / 2) * (1 - Math.cos(centerAngle / 180 * Math.PI)) - width / 2;
@@ -161,7 +173,7 @@ const createArcPathRight = (width: number, radius: number, centerAngle: number, 
 }
 
 // 左方向に曲がる円弧のパスデータを作成する
-const createArcPathLeft = (width: number, radius: number, centerAngle: number, pivot: Pivot) => {
+const createArcPathLeft = (width: number, radius: number, centerAngle: number) => {
   // 曲線の始点・終点の座標を計算
   const outerEndX = (radius + width / 2) * Math.sin(centerAngle / 180 * Math.PI);
   const outerEndY = -(radius + width / 2) * (1 - Math.cos(centerAngle / 180 * Math.PI)) + width / 2;

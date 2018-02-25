@@ -1,29 +1,25 @@
 import * as React from "react";
 import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
+import RectPart from "./Parts/RectPart";
 import DetectablePart from "./Parts/DetectablePart";
 import ArcPart, {ArcDirection} from "./Parts/ArcPart";
 import {RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
-import getLogger from "logging";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
-import {
-  default as RailPartBase,
-  RailPartBaseDefaultProps,
-  RailPartBaseProps
-} from "components/Rails/RailParts/RailPartBase";
-
-const LOGGER = getLogger(__filename)
+import RailPartBase, {RailPartBaseDefaultProps, RailPartBaseProps} from "components/Rails/RailParts/RailPartBase";
 
 
-interface CurveRailPartProps extends RailPartBaseProps {
-  radius: number
-  centerAngle: number
+interface CurvedTurnoutRailPartProps extends RailPartBaseProps {
+  innerRadius: number
+  outerRadius: number
+  innerCenterAngle: number
+  outerCenterAngle: number
   direction: ArcDirection
 }
 
 
-export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> {
+export default class CurvedTurnoutRailPart extends RailPartBase<CurvedTurnoutRailPartProps, {}> {
   public static defaultProps: RailPartBaseDefaultProps = {
     position: new Point(0, 0),
     angle: 0,
@@ -34,28 +30,33 @@ export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> 
     fillColors: RAIL_PART_FILL_COLORS
   }
 
-  detectablePart: DetectablePart
-
-  // Pivotにするジョイントの位置を指定するための情報
   pivots = [
     {pivotPartIndex: 0, pivot: Pivot.LEFT},
     {pivotPartIndex: 0, pivot: Pivot.RIGHT},
+    {pivotPartIndex: 1, pivot: Pivot.RIGHT}
   ]
 
-  // Pivotジョイントに応じて変わるレールの角度
   angles = [
     () => this.props.angle,
     () => {
       switch (this.props.direction) {
         case ArcDirection.RIGHT:
-          return this.props.angle - this.props.centerAngle + 180
+          return this.props.angle - this.props.outerCenterAngle + 180
         case ArcDirection.LEFT:
-          return this.props.angle + this.props.centerAngle - 180
+          return this.props.angle + this.props.outerCenterAngle - 180
+      }
+    },
+    () => {
+      switch (this.props.direction) {
+        case ArcDirection.RIGHT:
+          return this.props.angle - this.props.innerCenterAngle + 180
+        case ArcDirection.LEFT:
+          return this.props.angle + this.props.innerCenterAngle - 180
       }
     }
   ]
 
-  constructor(props: CurveRailPartProps) {
+  constructor(props: CurvedTurnoutRailPartProps) {
     super(props)
   }
 
@@ -69,7 +70,7 @@ export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> 
 
   render() {
     const {
-      radius, centerAngle, position, direction, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
+      innerRadius, outerRadius, innerCenterAngle, outerCenterAngle, position, direction, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
       name, data, onLeftClick, onRightClick, onFixed
     } = this.props
 
@@ -81,11 +82,18 @@ export default class CurveRailPart extends RailPartBase<CurveRailPartProps, {}> 
         pivot={pivot}
       >
         <ArcPart
-          pivot={Pivot.LEFT}
           direction={direction}
-          radius={radius}
-          centerAngle={centerAngle}
+          radius={outerRadius}
+          centerAngle={outerCenterAngle}
           width={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+        />
+        <ArcPart
+          direction={direction}
+          radius={innerRadius}
+          centerAngle={innerCenterAngle}
+          width={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
         />
       </PartGroup>
     )
