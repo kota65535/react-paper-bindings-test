@@ -33,6 +33,7 @@
     "react-draggable": "^3.0.5",
     "react-paper-bindings": "^1.0.3",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "recompose": "^0.26.0",
     "redux-actions": "^2.2.1",
     "redux-devtools-extension": "^2.13.2",
@@ -67,6 +68,8 @@
     "@types/react-dom": "^16.0.3",
     "@types/recompose": "^0.24.4",
     "babel-loader": "^7.1.2",
+    "chromedriver": "^2.35.0",
+    "nightwatch": "^0.9.19",
     "typescript": "^2.7.1"
   },
   "jest": {
