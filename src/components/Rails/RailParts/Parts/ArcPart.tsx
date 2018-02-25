@@ -44,8 +44,6 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     return this.path.localToParent(this.getPrivatePivotPosition(pivot))
   }
 
-  // ========== Private APIs ==========
-
   getPrivatePivotPosition(pivot: Pivot) {
     if (this._path) {
       return this.getPrivatePivotPointFromPath(pivot)
@@ -57,11 +55,9 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
   getPrivatePivotPointFromPath(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
-        return this._path.segments[0].point
+        return this.path.getPointAt(0)
       case Pivot.RIGHT:
-        // 90度ごとに右端のセグメントのインデックスがインクリメントされているらしい
-        const correction = Math.floor((Math.abs(this.props.centerAngle) + 1) / 90)
-        return this._path.segments[3 + correction].point
+        return this.path.getPointAt(this.path.length/2)
       default:
         throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
     }

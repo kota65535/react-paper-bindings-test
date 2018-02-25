@@ -93,14 +93,14 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
   abstract getPivotAngle(pivot: Pivot): number
 
   /**
-   * 指定のPivotのグローバルな位置を返す。親コンポーネントから使われる
+   * このパーツのParentの座標系における指定のPivotの位置を返す。
+   * 基本的には getPrivatePivotPosition の結果に localToParent() すれば良いはず
    * @param {Pivot} pivot
    */
   abstract getPublicPivotPosition(pivot: Pivot): Point
 
   /**
-   * 指定のPivotの初期位置を返す。
-   * 最初のrender()ではまだ実態の
+   * このパーツのローカル座標系における指定のPivotの位置を返す。
    * @param {Pivot} pivot
    */
   protected abstract getPrivatePivotPosition(pivot: Pivot): Point

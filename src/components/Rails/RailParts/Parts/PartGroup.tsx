@@ -115,7 +115,6 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     return this.angle
   }
 
-  // TODO: BoundingBoxのPivotの座標を外から取れるようにする
   getPublicPivotPosition(pivot: Pivot) {
     if (this.props.pivotPartIndex !== undefined) {
       return this.group.localToParent(this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot))
@@ -131,11 +130,8 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     if (this.props.pivotPartIndex !== undefined) {
       const pivotPart = this._children[this.props.pivotPartIndex]
       return pivotPart.getPublicPivotPosition(pivot)
-      // return this.localToParent(this._children[this.props.pivotPartIndex].getPrivatePivotPosition(pivot))
-      // return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)
     } else {
       return this.getPrivatePivotPointFromBoundingBox(pivot)
-      // return this.getPrivatePivotPointFromBoundingBox(pivot)
     }
   }
 
@@ -154,30 +150,6 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
         return this.group.bounds.center
     }
   }
-
-
-  // getPrivatePivotPointFromBoundingBox(pivot: Pivot) {
-  //   const {width, height} = this.group.bounds
-  //   switch (pivot) {
-  //     case Pivot.LEFT:
-  //       return new Point(-width / 2, 0)
-  //       // return this.group.position.add(new Point(-width / 2, 0))
-  //     case Pivot.TOP:
-  //       return new Point(0, -height / 2)
-  //       // return this.group.position.add(new Point(0, -height / 2))
-  //     case Pivot.RIGHT:
-  //       return new Point(width / 2, 0)
-  //       // return this.group.position.add(new Point(width / 2, 0))
-  //     case Pivot.BOTTOM:
-  //       return new Point(0, height / 2)
-  //       // return this.group.position.add(new Point(0, height / 2))
-  //     case Pivot.CENTER:
-  //     default:
-  //       return new Point(0, 0)
-  //       // return this.group.position
-  //   }
-  // }
-
 
   render() {
     const {

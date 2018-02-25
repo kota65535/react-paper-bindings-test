@@ -19,15 +19,7 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
   }
 
   getPublicPivotPosition(pivot: Pivot) {
-    switch (pivot) {
-      case Pivot.TOP:
-        return this.path.getPointAt(0)
-      case Pivot.BOTTOM:
-        return this.path.getPointAt(this.path.length / 8 * 2)
-      case Pivot.CENTER:
-      default:
-        return this.path.position
-    }
+    return this.path.localToParent(this.getPrivatePivotPosition(pivot))
   }
 
   // ========== Private methods ==========

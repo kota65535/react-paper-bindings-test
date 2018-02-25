@@ -1,41 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="0"
+            failures="1"
             tests="7">
 
   <testsuite name="specs"
-    errors="0" failures="0" hostname="" id="" package="specs" skipped="0"
-    tests="7" time="20.42" timestamp="Sun, 25 Feb 2018 13:28:41 GMT">
+    errors="0" failures="1" hostname="" id="" package="specs" skipped="3"
+    tests="7" time="16.17" timestamp="Sun, 25 Feb 2018 13:39:16 GMT">
   
-    <testcase name="Case01" classname="specs" time="3.115" assertions="0">
+    <testcase name="Case01" classname="specs" time="3.121" assertions="0">
     </testcase>
   
-    <testcase name="Case02" classname="specs" time="2.908" assertions="1">
+    <testcase name="Case02" classname="specs" time="3.777" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Case03" classname="specs" time="2.840" assertions="1">
+    <testcase name="Case03" classname="specs" time="5.995" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Case04" classname="specs" time="3.018" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Case05" classname="specs" time="2.744" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Case06" classname="specs" time="2.946" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Case07" classname="specs" time="2.851" assertions="1">
+    <testcase name="Case04" classname="specs" time="3.278" assertions="1">  <failure message="Visual Regression: Screen differs by 3.01% (see: screenshots/failures/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case03__body.diff.png)">    at Object.Case03 (/Users/tozawa/Projects/react-paper-bindings-test/test/specs/specs.js:17:15)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
 
     
     </testcase>
@@ -43,6 +29,23 @@
 
   
 
+  
+    
+    <testcase
+      name="Case05" classname="specs">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Case06" classname="specs">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Case07" classname="specs">
+      <skipped />
+    </testcase>
+    
   
   </testsuite>
 </testsuites>
