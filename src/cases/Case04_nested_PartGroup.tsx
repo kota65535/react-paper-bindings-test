@@ -52,7 +52,7 @@ export default class Case04 extends React.Component<any, any> {
         name={'c1'}
       />,
       <ArcPart
-        position={new Point(200, 400)}
+        position={new Point(400, 200)}
         pivot={Pivot.LEFT}
         angle={30}
         direction={ArcDirection.RIGHT}

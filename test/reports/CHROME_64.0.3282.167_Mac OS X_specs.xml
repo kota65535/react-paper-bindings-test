@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
             failures="0"
-            tests="5">
+            tests="7">
 
   <testsuite name="specs"
     errors="0" failures="0" hostname="" id="" package="specs" skipped="0"
-    tests="5" time="22.26" timestamp="Sat, 24 Feb 2018 15:03:14 GMT">
+    tests="7" time="20.42" timestamp="Sun, 25 Feb 2018 13:28:41 GMT">
   
-    <testcase name="Case01: show a react logo" classname="specs" time="5.004" assertions="1">
+    <testcase name="Case01" classname="specs" time="3.115" assertions="0">
+    </testcase>
+  
+    <testcase name="Case02" classname="specs" time="2.908" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Case02: set initial position &amp; rotation" classname="specs" time="4.116" assertions="1">
+    <testcase name="Case03" classname="specs" time="2.840" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Case03: set initial pivot, position &amp; rotation" classname="specs" time="4.472" assertions="1">
+    <testcase name="Case04" classname="specs" time="3.018" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Case04: update position &amp; rotation" classname="specs" time="4.634" assertions="1">
+    <testcase name="Case05" classname="specs" time="2.744" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Case05: update pivot &amp; rotation" classname="specs" time="4.038" assertions="1">
+    <testcase name="Case06" classname="specs" time="2.946" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Case07" classname="specs" time="2.851" assertions="1">
 
     
     </testcase>
