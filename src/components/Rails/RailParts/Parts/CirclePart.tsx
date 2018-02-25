@@ -17,10 +17,6 @@ export default class CirclePart extends PartBase<CirclePartProps, {}> {
     return this.angle
   }
 
-  getPivotPositionForParent(pivot: Pivot) {
-    return this.path.localToParent(this.getLocalPivotPosition(pivot))
-  }
-
   getLocalPivotPosition(pivot: Pivot) {
     const {radius} = this.props
     switch (pivot) {

@@ -40,10 +40,6 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  getPivotPositionForParent(pivot: Pivot) {
-    return this.path.localToParent(this.getLocalPivotPosition(pivot))
-  }
-
   getLocalPivotPosition(pivot: Pivot) {
     if (this._path) {
       return this.getPrivatePivotPointFromPath(pivot)

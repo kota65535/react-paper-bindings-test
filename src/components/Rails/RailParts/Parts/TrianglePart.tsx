@@ -18,10 +18,6 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
     return this.angle
   }
 
-  getPivotPositionForParent(pivot: Pivot) {
-    return this.path.localToParent(this.getLocalPivotPosition(pivot))
-  }
-
   // ========== Private methods ==========
 
   getLocalPivotPosition(pivot: Pivot) {

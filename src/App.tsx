@@ -11,6 +11,7 @@ import Case04 from "./cases/Case04_nested_PartGroup";
 import Case05 from "./cases/Case05_DetectablePart";
 import Case06 from './cases/Case06_RailParts';
 import Case07 from './cases/Case07';
+import Case08 from "./cases/Case08";
 
 const logo = require('./logo.svg');
 
@@ -36,6 +37,7 @@ class App extends React.Component<{}, AppState> {
             <Route path="/5" component={Case05}/>
             <Route path="/6" component={Case06}/>
             <Route path="/7" component={Case07}/>
+            <Route path="/8" component={Case08}/>
           </div>
         </Router>
     );

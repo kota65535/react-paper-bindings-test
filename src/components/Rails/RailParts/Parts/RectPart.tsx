@@ -21,10 +21,6 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
     return this.angle
   }
 
-  getPivotPositionForParent(pivot: Pivot) {
-    return this.path.localToParent(this.getLocalPivotPosition(pivot))
-  }
-
   getLocalPivotPosition(pivot: Pivot) {
     const {width, height} = this.props
     switch (pivot) {

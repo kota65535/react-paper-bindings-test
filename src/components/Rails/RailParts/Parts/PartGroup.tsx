@@ -109,9 +109,13 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     })
   }
 
-
   getPivotAngle(pivot: Pivot) {
     return this.angle
+  }
+
+  getPivotPositionForGlobal(pivot: Pivot) {
+    //TODO: impl
+    return new Point(0, 0)
   }
 
   getPivotPositionForParent(pivot: Pivot) {

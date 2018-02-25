@@ -6,6 +6,7 @@ import StraightRailPart from "components/Rails/RailParts/StraightRailPart";
 import DetectablePart from "components/Rails/RailParts/Parts/DetectablePart";
 import RectPart from "components/Rails/RailParts/Parts/RectPart";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
+import Joint from "../components/Rails/RailParts/Joint";
 
 export default class Case05 extends React.Component<any, any> {
 
@@ -57,6 +58,15 @@ export default class Case05 extends React.Component<any, any> {
           onClick={(e) => console.log('Clicked')}
           detectionEnabled={true}
         />
+
+        <Joint
+          position={new Point(400,300)}
+          angle={50}
+          onFixed={() => console.log('qqqqqqq')}
+          // ref={(r) => this.r = r}
+        />
+
+
       </View>
     )
   }

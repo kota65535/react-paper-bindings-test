@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="640e4422-933c-4350-a5ce-80fac79fcc8a" name="Default" comment="" />
+    <list default="true" id="640e4422-933c-4350-a5ce-80fac79fcc8a" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/cases/Case08.tsx" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" afterPath="$PROJECT_DIR$/src/App.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx" afterPath="$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,62 +26,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Case05_DetectablePart.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PartBase.tsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PartGroup.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="117" column="24" lean-forward="true" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ArcPart.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="414">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="specs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/specs/specs.js">
+      <file leaf-file-name="RectPart.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+            <state relative-caret-position="135">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PartBase.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
+      <file leaf-file-name="TrianglePart.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="105" column="21" lean-forward="false" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PartGroup.tsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
+      <file leaf-file-name="RailPartBase.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="167" column="10" lean-forward="false" selection-start-line="167" selection-start-column="10" selection-end-line="167" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="352">
+              <caret line="63" column="36" lean-forward="false" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="Case06_RailParts.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case06_RailParts.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="270">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetectablePart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx">
+      <file leaf-file-name="Case08.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case08.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1460">
-              <caret line="170" column="4" lean-forward="false" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="529">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,8 +125,8 @@
       <file leaf-file-name="CirclePart.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="128">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -97,8 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DetectablePart</find>
-      <find>fillColors</find>
       <find>../../../src/</find>
       <find>SetState</find>
       <find>setState</find>
@@ -127,6 +173,8 @@
       <find>saveScreenshot</find>
       <find>move</find>
       <find>children</find>
+      <find>Joint</find>
+      <find>onFixed</find>
     </findStrings>
     <replaceStrings>
       <replace>PartGroup</replace>
@@ -175,9 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Rails/parts/primitives/PartGroup.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailBase.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/utils.tsx" />
         <option value="$PROJECT_DIR$/test/src/cases/Case01_React.js" />
         <option value="$PROJECT_DIR$/test/src/cases/Case02_React.js" />
@@ -204,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/cases/Case03.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case06.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case07.tsx" />
-        <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/CurvedTurnoutRailPart.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/CurveRailPart.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case06_RailParts.tsx" />
@@ -219,13 +263,17 @@
         <option value="$PROJECT_DIR$/test/specs/specs.js" />
         <option value="$PROJECT_DIR$/test/globals.js" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx" />
+        <option value="$PROJECT_DIR$/src/App.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case08.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" />
       </list>
     </option>
   </component>
@@ -358,6 +406,12 @@
               <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="cases" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -417,9 +471,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/cases" />
       <recent name="$PROJECT_DIR$/test" />
       <recent name="$PROJECT_DIR$/src/components/Rails/RailParts" />
-      <recent name="$PROJECT_DIR$/src/cases" />
       <recent name="$PROJECT_DIR$/src/components/Rails/RailParts/Parts" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -481,7 +535,7 @@
       <workItem from="1518233682316" duration="70752000" />
       <workItem from="1519315343253" duration="19925000" />
       <workItem from="1519491580894" duration="12386000" />
-      <workItem from="1519504618688" duration="32983000" />
+      <workItem from="1519504618688" duration="35707000" />
     </task>
     <task id="LOCAL-00001" summary="webpack config">
       <created>1518200284365</created>
@@ -718,16 +772,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195342000" />
+    <option name="totallyTimeSpent" value="198066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42322096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42322096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -819,76 +872,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/react.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/yarn.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/selenium-debug.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x1013/My Test__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/My Test__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/failures/specs/chrome_64.0.3282.167_Mac OS X/1200x829/My Test__body.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__body.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case02__body.diff.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -899,25 +882,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case04_nested_PartGroup.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case02__body.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case02__canvas.png">
@@ -1027,34 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="24" column="7" lean-forward="false" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case04__body.diff.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1093,22 +1032,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="170" column="4" lean-forward="false" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/reports/CHROME_64.0.3282.167_Mac OS X_specs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1125,18 +1048,182 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
+    <entry file="file://$PROJECT_DIR$/src/cases/Case03.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="105" column="21" lean-forward="false" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+        <state relative-caret-position="-986">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case04_nested_PartGroup.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.tsx.bak">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case07.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/CurvedTurnoutRailPart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case01_PrimitiveParts.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Joint.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case06_RailParts.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="63" column="36" lean-forward="false" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case08.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="167" column="10" lean-forward="false" selection-start-line="167" selection-start-column="10" selection-end-line="167" selection-end-column="10" />
+        <state relative-caret-position="409">
+          <caret line="117" column="24" lean-forward="true" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
           <folding />
         </state>
       </provider>
