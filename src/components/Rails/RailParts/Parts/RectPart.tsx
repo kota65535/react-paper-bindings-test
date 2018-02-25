@@ -21,11 +21,11 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
     return this.angle
   }
 
-  getPublicPivotPosition(pivot: Pivot) {
-    return this.path.localToParent(this.getPrivatePivotPosition(pivot))
+  getPivotPositionForParent(pivot: Pivot) {
+    return this.path.localToParent(this.getLocalPivotPosition(pivot))
   }
 
-  getPrivatePivotPosition(pivot: Pivot) {
+  getLocalPivotPosition(pivot: Pivot) {
     const {width, height} = this.props
     switch (pivot) {
       case Pivot.LEFT:
@@ -49,7 +49,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
-    const pivot = this.getPrivatePivotPosition(this.props.pivot)
+    const pivot = this.getLocalPivotPosition(this.props.pivot)
 
     return <PathComponent
       pathData={createRectPath(width, height)}

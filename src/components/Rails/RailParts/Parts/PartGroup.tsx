@@ -69,8 +69,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
       } else {
         // Pivotリセットを行った直後の状態。Pivotを再計算する。
         this.setState({
-          pivotPoint: this.getPrivatePivotPosition(this.props.pivot)
-          // pivotPoint: this.getPublicPivotPosition(this.props.pivot)
+          pivotPoint: this.getLocalPivotPosition(this.props.pivot)
         })
       }
     }
@@ -95,7 +94,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
 
   componentDidMount() {
     // マウントされたらrefでGroupオブジェクトが取れているので、Pivotを計算して再描画する
-    let pivotPoint = this.getPrivatePivotPosition(this.props.pivot)
+    let pivotPoint = this.getLocalPivotPosition(this.props.pivot)
 
     console.log(`${this.props.name} mounted. Group: position=${this.group.position} pivot=${this.group.pivot}`)
     console.log(`${this.props.name} calc pivot: pivotIndex=${this.props.pivotPartIndex}, pivot=${pivotPoint}`)
@@ -115,27 +114,27 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     return this.angle
   }
 
-  getPublicPivotPosition(pivot: Pivot) {
-    if (this.props.pivotPartIndex !== undefined) {
-      return this.group.localToParent(this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot))
-    } else {
-      return this.getPrivatePivotPointFromBoundingBox(pivot)
-    }
-  }
-
-  getPrivatePivotPosition(pivot: Pivot) {
+  getPivotPositionForParent(pivot: Pivot) {
     // PivotPartIndexが指定されていたら、指定のパーツのPivotを使用する
     // そうでなければBoundingBoxのPivotを使用する
-    // 注: BoundingBoxのPivotはあまり使い勝手は良くない
     if (this.props.pivotPartIndex !== undefined) {
-      const pivotPart = this._children[this.props.pivotPartIndex]
-      return pivotPart.getPublicPivotPosition(pivot)
+      return this.group.localToParent(this._children[this.props.pivotPartIndex].getPivotPositionForParent(pivot))
     } else {
-      return this.getPrivatePivotPointFromBoundingBox(pivot)
+      return this.getPivotPositionFromBounds(pivot)
     }
   }
 
-  getPrivatePivotPointFromBoundingBox(pivot: Pivot) {
+  getLocalPivotPosition(pivot: Pivot) {
+    // PivotPartIndexが指定されていたら、指定のパーツのPivotを使用する
+    // そうでなければBoundingBoxのPivotを使用する
+    if (this.props.pivotPartIndex !== undefined) {
+      return this._children[this.props.pivotPartIndex].getPivotPositionForParent(pivot)
+    } else {
+      return this.getPivotPositionFromBounds(pivot)
+    }
+  }
+
+  getPivotPositionFromBounds(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
         return this.group.bounds.leftCenter
@@ -157,8 +156,8 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
-    // TODO: 子が空の時のエラー処理
     // 子要素のメソッドを呼び出す必要があるので、refをそれらのpropsに追加する
+    // TODO: childrenが空の時のエラー処理
     const children = React.Children.map(this.props.children, (child: any, i) => {
       // 動的に子要素を削除された場合、nullが入ってくるので対処する
       if (child) {
@@ -177,7 +176,6 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     // その後、refによってGroupオブジェクトが取れたら上記を計算し、改めて描画する。
     let pivotPoint, position, angle
     if (this.state.pivotPoint) {
-      // pivotPoint = this.getPrivatePivotPosition(this.props.pivot)
       pivotPoint = this.state.pivotPoint
       position = this.props.position
       angle = this.props.angle

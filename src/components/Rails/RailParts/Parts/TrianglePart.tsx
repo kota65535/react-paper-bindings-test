@@ -18,13 +18,13 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
     return this.angle
   }
 
-  getPublicPivotPosition(pivot: Pivot) {
-    return this.path.localToParent(this.getPrivatePivotPosition(pivot))
+  getPivotPositionForParent(pivot: Pivot) {
+    return this.path.localToParent(this.getLocalPivotPosition(pivot))
   }
 
   // ========== Private methods ==========
 
-  getPrivatePivotPosition(pivot: Pivot) {
+  getLocalPivotPosition(pivot: Pivot) {
     const {height} = this.props
     switch (pivot) {
       case Pivot.TOP:
@@ -44,7 +44,7 @@ export default class TrianglePart extends PartBase<TrianglePartProps, {}> {
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
-    const pivot = this.getPrivatePivotPosition(this.props.pivot)
+    const pivot = this.getLocalPivotPosition(this.props.pivot)
 
     return <PathComponent
       pathData={createTrianglePath(width, height)}

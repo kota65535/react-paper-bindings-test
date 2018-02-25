@@ -40,11 +40,11 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  getPublicPivotPosition(pivot: Pivot) {
-    return this.path.localToParent(this.getPrivatePivotPosition(pivot))
+  getPivotPositionForParent(pivot: Pivot) {
+    return this.path.localToParent(this.getLocalPivotPosition(pivot))
   }
 
-  getPrivatePivotPosition(pivot: Pivot) {
+  getLocalPivotPosition(pivot: Pivot) {
     if (this._path) {
       return this.getPrivatePivotPointFromPath(pivot)
     } else {
@@ -118,7 +118,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
 
     return <PathComponent
       pathData={createArcPath(width, radius, centerAngle, direction)}
-      pivot={this.getPrivatePivotPosition(pivot)}
+      pivot={this.getLocalPivotPosition(pivot)}
       position={position}
       rotation={angle}
       fillColor={fillColor}

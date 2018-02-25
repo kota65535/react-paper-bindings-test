@@ -94,16 +94,16 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
 
   /**
    * このパーツのParentの座標系における指定のPivotの位置を返す。
-   * 基本的には getPrivatePivotPosition の結果に localToParent() すれば良いはず
+   * 基本的には getLocalPivotPosition の結果に localToParent() すれば良いはず
    * @param {Pivot} pivot
    */
-  abstract getPublicPivotPosition(pivot: Pivot): Point
+  abstract getPivotPositionForParent(pivot: Pivot): Point
 
   /**
    * このパーツのローカル座標系における指定のPivotの位置を返す。
    * @param {Pivot} pivot
    */
-  protected abstract getPrivatePivotPosition(pivot: Pivot): Point
+  protected abstract getLocalPivotPosition(pivot: Pivot): Point
 
   // shouldComponentUpdate(nextProps) {
   //   if (this.props.position.x === nextProps.position.x && this.props.position.y === nextProps.position.y) {
