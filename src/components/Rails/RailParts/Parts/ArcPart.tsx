@@ -53,7 +53,9 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
       case Pivot.LEFT:
         return this.path.getPointAt(0)
       case Pivot.RIGHT:
-        return this.path.getPointAt(this.path.length/2)
+        // 90度ごとに右端のセグメントのインデックスがインクリメントされている？
+        const correction = Math.floor((Math.abs(this.props.centerAngle) + 1) / 90)
+        return this.path.curves[3 + correction].point1
       default:
         throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
     }
