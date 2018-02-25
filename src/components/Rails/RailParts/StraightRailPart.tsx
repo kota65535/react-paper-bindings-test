@@ -5,15 +5,12 @@ import RectPart from "./Parts/RectPart";
 import DetectablePart from "./Parts/DetectablePart";
 import {RAIL_PART_FILL_COLORS, RAIL_PART_WIDTH} from "constants/parts";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
-import getLogger from "logging";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
 import {
   default as RailPartBase,
   RailPartBaseDefaultProps,
   RailPartBaseProps
 } from "components/Rails/RailParts/RailPartBase";
-
-const LOGGER = getLogger(__filename)
 
 
 interface StraightRailPartProps extends RailPartBaseProps {

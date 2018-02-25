@@ -59,7 +59,7 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
 
   constructor(props: P) {
     super(props)
-    this._angle = this.props.angle
+    this._angle = this.props.angle ? this.props.angle : 0
   }
 
   // ========== Public APIs ==========
@@ -74,6 +74,10 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
 
   get angle() {
     return this._angle
+  }
+
+  componentDidMount() {
+    console.log(`mounted ${this.props.name}: position=${this.position} pivot=${this.path.pivot}`)
   }
 
   componentWillReceiveProps(nextProps: PartBaseProps) {
@@ -111,23 +115,23 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
   //   return true
   // }
 
-  moveRelatively(difference: Point) {
-    this._path.position = this._path.position.add(difference);
-  }
-
-  move(position: Point, pivot: Point = this.position): void {
-    let difference = position.subtract(pivot);
-    this.moveRelatively(difference);
-  }
-
-  rotateRelatively(difference: number, pivot: Point = this.position) {
-    this._angle += difference
-    this.path.rotate(difference, pivot);
-  }
-
-  rotate(angle: number, pivot: Point = this.position) {
-    let relAngle = angle - this.angle
-    this.rotateRelatively(relAngle, pivot);
-  }
+  // moveRelatively(difference: Point) {
+  //   this._path.position = this._path.position.add(difference);
+  // }
+  //
+  // move(position: Point, pivot: Point = this.position): void {
+  //   let difference = position.subtract(pivot);
+  //   this.moveRelatively(difference);
+  // }
+  //
+  // rotateRelatively(difference: number, pivot: Point = this.position) {
+  //   this._angle += difference
+  //   this.path.rotate(difference, pivot);
+  // }
+  //
+  // rotate(angle: number, pivot: Point = this.position) {
+  //   let relAngle = angle - this.angle
+  //   this.rotateRelatively(relAngle, pivot);
+  // }
 }
 

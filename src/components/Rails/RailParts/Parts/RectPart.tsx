@@ -22,19 +22,19 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
   }
 
   getPublicPivotPosition(pivot: Pivot) {
-    switch (pivot) {
-      case Pivot.LEFT:
-        return this.path.getPointAt(0)
-      case Pivot.TOP:
-        return this.path.getPointAt(this.path.length / 8 * 2)
-      case Pivot.RIGHT:
-        return this.path.getPointAt(this.path.length / 8 * 4)
-      case Pivot.BOTTOM:
-        return this.path.getPointAt(this.path.length / 8 * 6)
-      case Pivot.CENTER:
-      default:
-        return this.path.position
-    }
+    return this.path.localToParent(this.getPrivatePivotPosition(pivot))
+    // // switch (pivot) {
+    // //   case Pivot.LEFT:
+    // //   case Pivot.TOP:
+    // //     return this.path.getPointAt(this.path.length / 8 * 2)
+    // //   case Pivot.RIGHT:
+    // //     return this.path.getPointAt(this.path.length / 8 * 4)
+    // //   case Pivot.BOTTOM:
+    // //     return this.path.getPointAt(this.path.length / 8 * 6)
+    // //   case Pivot.CENTER:
+    // //   default:
+    // //     return this.path.position
+    // }
   }
 
   getPrivatePivotPosition(pivot: Pivot) {

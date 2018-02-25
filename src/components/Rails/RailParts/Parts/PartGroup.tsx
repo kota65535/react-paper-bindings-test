@@ -70,9 +70,11 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
         // Pivotリセットを行った直後の状態。Pivotを再計算する。
         this.setState({
           pivotPoint: this.getPrivatePivotPosition(this.props.pivot)
+          // pivotPoint: this.getPublicPivotPosition(this.props.pivot)
         })
       }
     }
+    console.log(`${this.props.name} updated: position=${this.group.position} pivot=${this.group.pivot}`)
   }
 
   componentWillReceiveProps(nextProps: PartGroupProps) {
@@ -93,9 +95,18 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
 
   componentDidMount() {
     // マウントされたらrefでGroupオブジェクトが取れているので、Pivotを計算して再描画する
-    console.log(`${this.props.name}: ${this.getPrivatePivotPosition(this.props.pivot)}`)
+    let pivotPoint = this.getPrivatePivotPosition(this.props.pivot)
+
+    console.log(`${this.props.name} mounted. Group: position=${this.group.position} pivot=${this.group.pivot}`)
+    console.log(`${this.props.name} calc pivot: pivotIndex=${this.props.pivotPartIndex}, pivot=${pivotPoint}`)
+
+    // Hackyだが、親がこのGroupの位置を使ってPivotを計算できるよう、ここで実際に移動をさせてしまう
+    // TODO: より洗練された方法があるか考える
+    this.group.pivot = pivotPoint
+    this.group.position = this.props.position
+
     this.setState({
-      pivotPoint: this.getPrivatePivotPosition(this.props.pivot)
+      pivotPoint: pivotPoint
     })
   }
 
@@ -107,10 +118,9 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
   // TODO: BoundingBoxのPivotの座標を外から取れるようにする
   getPublicPivotPosition(pivot: Pivot) {
     if (this.props.pivotPartIndex !== undefined) {
-      return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)
+      return this.group.localToParent(this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot))
     } else {
-      // return this.position
-      return this.getPublicPivotPointFromBoundingBox(pivot)
+      return this.getPrivatePivotPointFromBoundingBox(pivot)
     }
   }
 
@@ -119,30 +129,55 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     // そうでなければBoundingBoxのPivotを使用する
     // 注: BoundingBoxのPivotはあまり使い勝手は良くない
     if (this.props.pivotPartIndex !== undefined) {
-      return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)
+      const pivotPart = this._children[this.props.pivotPartIndex]
+      return pivotPart.getPublicPivotPosition(pivot)
+      // return this.localToParent(this._children[this.props.pivotPartIndex].getPrivatePivotPosition(pivot))
+      // return this._children[this.props.pivotPartIndex].getPublicPivotPosition(pivot)
     } else {
-      // return this.getPivotPointFromBoundingBox(this._group)
-      return this.getPublicPivotPointFromBoundingBox(pivot)
-      // return this.position
+      return this.getPrivatePivotPointFromBoundingBox(pivot)
+      // return this.getPrivatePivotPointFromBoundingBox(pivot)
     }
   }
 
-  getPublicPivotPointFromBoundingBox(pivot: Pivot) {
-    const {width, height} = this.group.bounds
+  getPrivatePivotPointFromBoundingBox(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
-        return new Point(-width / 2, 0)
+        return this.group.bounds.leftCenter
       case Pivot.TOP:
-        return new Point(0, -height / 2)
+        return this.group.bounds.topCenter
       case Pivot.RIGHT:
-        return new Point(width / 2, 0)
+        return this.group.bounds.rightCenter
       case Pivot.BOTTOM:
-        return new Point(0, height / 2)
+        return this.group.bounds.bottomCenter
       case Pivot.CENTER:
       default:
-        return new Point(0, 0)
+        return this.group.bounds.center
     }
   }
+
+
+  // getPrivatePivotPointFromBoundingBox(pivot: Pivot) {
+  //   const {width, height} = this.group.bounds
+  //   switch (pivot) {
+  //     case Pivot.LEFT:
+  //       return new Point(-width / 2, 0)
+  //       // return this.group.position.add(new Point(-width / 2, 0))
+  //     case Pivot.TOP:
+  //       return new Point(0, -height / 2)
+  //       // return this.group.position.add(new Point(0, -height / 2))
+  //     case Pivot.RIGHT:
+  //       return new Point(width / 2, 0)
+  //       // return this.group.position.add(new Point(width / 2, 0))
+  //     case Pivot.BOTTOM:
+  //       return new Point(0, height / 2)
+  //       // return this.group.position.add(new Point(0, height / 2))
+  //     case Pivot.CENTER:
+  //     default:
+  //       return new Point(0, 0)
+  //       // return this.group.position
+  //   }
+  // }
+
 
   render() {
     const {
@@ -178,7 +213,12 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
       pivotPoint = new Point(0, 0)
       position = new Point(0, 0)
       angle = 0
+      // pivotPoint = undefined
+      // position = undefined
+      // angle = undefined
     }
+
+    console.log(`${name} rendering : position=${position}, pivot=${pivotPoint}`)
 
     return (
       <GroupComponent
