@@ -12,18 +12,22 @@ import SimpleTurnoutRailPart from "../components/Rails/RailParts/SimpleTurnoutRa
 import DoubleStraightRailPart from "../components/Rails/RailParts/DoubleStraightRailPart";
 import DoubleCrossTurnoutRailPart from "../components/Rails/RailParts/DoubleCrossTurnoutRailPart";
 import Joint from "../components/Rails/RailParts/Joint";
+import {CurveRail} from "components/Rails/CurveRail";
 
 export default class Case08 extends React.Component<any, any> {
   r: any
+  p: number
 
   constructor(props) {
     super(props)
 
     this.r = null
+    this.p = 0
   }
 
   componentDidMount() {
-
+    this.p = 1
+    this.forceUpdate()
   }
 
   render() {
@@ -38,8 +42,6 @@ export default class Case08 extends React.Component<any, any> {
     };
 
 
-    // PivotPartIndexを指定した場合、BoundingBoxではなくそのパーツに対してPivotを指定できる
-
     return (
       <View width={800}
             height={600}
@@ -51,24 +53,35 @@ export default class Case08 extends React.Component<any, any> {
         {createGridLines(800, 600, 100)}
 
 
-        <StraightRailPart
-          pivotJointIndex={0}
-          angle={30}
+        {/*<StraightRailPart*/}
+          {/*pivotJointIndex={0}*/}
+          {/*angle={30}*/}
+          {/*position={new Point(200,200)}*/}
+          {/*length={200}*/}
+          {/*ref={(r) => this.r = r}*/}
+          {/*onFixed={() => this.forceUpdate()}*/}
+        {/*/>*/}
+        {/*<Joint*/}
+          {/*position={this.r ? this.r.getJointPosition(0) : new Point(0, 0)}*/}
+          {/*angle={this.r ? this.r.getJointAngle(0) : 0}*/}
+          {/*onFixed={() => console.log('j1 fixed')}*/}
+        {/*/>*/}
+        {/*<Joint*/}
+          {/*position={this.r ? this.r.getJointPosition(1) : new Point(0, 0)}*/}
+          {/*angle={this.r ? this.r.getJointAngle(1) : 0}*/}
+          {/*onFixed={() => console.log('j2 fixed')}*/}
+        {/*/>*/}
+
+        <CurveRail
           position={new Point(200,200)}
-          length={200}
-          ref={(r) => this.r = r}
-          onFixed={() => this.forceUpdate()}
+          pivotJointIndex={this.p}
+          angle={30}
+          radius={200}
+          centerAngle={45}
+          id={0}
+          layerId={1}
         />
-        <Joint
-          position={this.r ? this.r.getJointPosition(0) : new Point(0, 0)}
-          angle={this.r ? this.r.getJointAngle(0) : 0}
-          onFixed={() => console.log('j1 fixed')}
-        />
-        <Joint
-          position={this.r ? this.r.getJointPosition(1) : new Point(0, 0)}
-          angle={this.r ? this.r.getJointAngle(1) : 0}
-          onFixed={() => console.log('j2 fixed')}
-        />
+
 
         <Tool
           active={true}
@@ -76,7 +89,7 @@ export default class Case08 extends React.Component<any, any> {
             this.setState({
               mousePosition: e.point
             })
-            console.log(`position: ${e.point}`)
+            // console.log(`position: ${e.point}`)
           }}
         />
       </View>

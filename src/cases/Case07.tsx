@@ -54,21 +54,37 @@ export default class Case05 extends React.Component<any, any> {
           onFixed={() => console.log("FIXED!")}
         />
 
-        <DoubleCrossTurnoutRailPart
-          pivotJointIndex={0}
+        <DoubleStraightRailPart
+          pivotJointIndex={2}
           angle={30}
-          position={new Point(100,400)}
+          position={new Point(300,200)}
           length={200}
           onFixed={() => console.log("FIXED!")}
         />
 
-        <DoubleCrossTurnoutRailPart
-          pivotJointIndex={1}
+        <DoubleStraightRailPart
+          pivotJointIndex={3}
           angle={30}
-          position={new Point(200,400)}
+          position={new Point(400,200)}
           length={200}
           onFixed={() => console.log("FIXED!")}
         />
+
+        {/*<DoubleCrossTurnoutRailPart*/}
+          {/*pivotJointIndex={0}*/}
+          {/*angle={30}*/}
+          {/*position={new Point(100,400)}*/}
+          {/*length={200}*/}
+          {/*onFixed={() => console.log("FIXED!")}*/}
+        {/*/>*/}
+
+        {/*<DoubleCrossTurnoutRailPart*/}
+          {/*pivotJointIndex={1}*/}
+          {/*angle={30}*/}
+          {/*position={new Point(200,400)}*/}
+          {/*length={200}*/}
+          {/*onFixed={() => console.log("FIXED!")}*/}
+        {/*/>*/}
 
       </View>
     )

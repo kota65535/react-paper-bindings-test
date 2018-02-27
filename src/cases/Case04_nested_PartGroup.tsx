@@ -9,6 +9,19 @@ import CirclePart from "../components/Rails/RailParts/Parts/CirclePart";
 import ArcPart, {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
 
 export default class Case04 extends React.Component<any, any> {
+  p
+  g2
+
+  constructor(props) {
+    super(props)
+    this.g2 = null
+    this.p = 0
+  }
+
+  componentDidMount() {
+    this.p = 1
+    this.forceUpdate()
+  }
 
   render() {
     const matrix = {
@@ -32,6 +45,10 @@ export default class Case04 extends React.Component<any, any> {
         position={new Point(200, 200)}
         pivotPartIndex={0}
         name={'G1'}
+        onFixed={(g) => {
+          console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.LEFT)}`)
+          console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.RIGHT)}`)
+        }}
       >
         <RectPart
           position={new Point(100, 0)}
@@ -79,44 +96,50 @@ export default class Case04 extends React.Component<any, any> {
         /* BoudingBox全体がPivotの対象となる */
         <PartGroup
           pivot={Pivot.LEFT}
-          position={new Point(100,200)}
+          pivotPartIndex={this.p}
+          position={new Point(200,200)}
           angle={-30}
           name={'G2'}
           fillColor='red'
+          onFixed={(g) => {
+            console.log(`G2: ${g.children[1].getPivotPositionForGlobal(Pivot.LEFT)}`)
+            console.log(`G2: ${g.children[1].getPivotPositionForGlobal(Pivot.RIGHT)}`)
+            this.g2 = g
+          }}
         >
           {paths}
         </PartGroup>
 
         /* BoudingBox全体がPivotの対象となる */
-        <PartGroup
-          position={new Point(500,200)}
-          angle={-30}
-          name={'G2'}
-          fillColor='blue'
-        >
-          {paths}
-        </PartGroup>
+        {/*<PartGroup*/}
+          {/*position={new Point(500,200)}*/}
+          {/*angle={-30}*/}
+          {/*name={'G2'}*/}
+          {/*fillColor='blue'*/}
+        {/*>*/}
+          {/*{paths}*/}
+        {/*</PartGroup>*/}
 
-        <PartGroup
-          pivot={Pivot.TOP}
-          pivotPartIndex={0}
-          position={new Point(100,400)}
-          angle={30}
-          name={'G2'}
-          fillColor='green'
-        >
-          {paths}
-        </PartGroup>
+        {/*<PartGroup*/}
+          {/*pivot={Pivot.TOP}*/}
+          {/*pivotPartIndex={0}*/}
+          {/*position={new Point(100,400)}*/}
+          {/*angle={30}*/}
+          {/*name={'G2'}*/}
+          {/*fillColor='green'*/}
+        {/*>*/}
+          {/*{paths}*/}
+        {/*</PartGroup>*/}
 
-        <PartGroup
-          pivotPartIndex={2}
-          position={new Point(500,500)}
-          angle={30}
-          name={'G2'}
-          fillColor='orange'
-        >
-          {paths}
-        </PartGroup>
+        {/*<PartGroup*/}
+          {/*pivotPartIndex={2}*/}
+          {/*position={new Point(500,500)}*/}
+          {/*angle={30}*/}
+          {/*name={'G2'}*/}
+          {/*fillColor='orange'*/}
+        {/*>*/}
+          {/*{paths}*/}
+        {/*</PartGroup>*/}
 
         <Tool
           active={true}
@@ -127,6 +150,7 @@ export default class Case04 extends React.Component<any, any> {
             console.log(`position: ${e.point}`)
           }}
         />
+
       </View>
     )
   }

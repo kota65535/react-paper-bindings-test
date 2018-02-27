@@ -1,7 +1,7 @@
 import * as React from "react";
 import RectPart from "components/Rails/RailParts/Parts/RectPart";
 import {Point} from "paper";
-import {View, Tool} from "react-paper-bindings";
+import {View, Tool, Circle} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import CirclePart from "../components/Rails/RailParts/Parts/CirclePart";
@@ -43,136 +43,142 @@ export default class Case01 extends React.Component<any, any> {
       >
         {createGridLines(800, 600, 100)}
 
-        <RectPart
-          position={new Point(200, 200)}
-          pivot={Pivot.LEFT}
-          angle={30}
-          width={100}
-          height={100}
-        />
-        <RectPart
-          position={new Point(200, 200)}
-          pivot={Pivot.TOP}
-          angle={30}
-          width={100}
-          height={100}
-        />
-        <RectPart
-          position={new Point(200, 200)}
-          pivot={Pivot.RIGHT}
-          angle={30}
-          width={100}
-          height={100}
-        />
-        <RectPart
-          position={new Point(200, 200)}
-          pivot={Pivot.BOTTOM}
-          angle={30}
-          width={100}
-          height={100}
-        />
-        <RectPart
-          position={new Point(200, 200)}
-          angle={30}
-          width={100}
-          height={100}
-          fillColor='orange'
-        />
+        {/*<RectPart*/}
+          {/*position={new Point(200, 200)}*/}
+          {/*pivot={Pivot.LEFT}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
+        {/*<RectPart*/}
+          {/*position={new Point(200, 200)}*/}
+          {/*pivot={Pivot.TOP}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
+        {/*<RectPart*/}
+          {/*position={new Point(200, 200)}*/}
+          {/*pivot={Pivot.RIGHT}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
+        {/*<RectPart*/}
+          {/*position={new Point(200, 200)}*/}
+          {/*pivot={Pivot.BOTTOM}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
+        {/*<RectPart*/}
+          {/*position={new Point(200, 200)}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+          {/*fillColor='orange'*/}
+        {/*/>*/}
 
-        <CirclePart
-          position={new Point(400, 200)}
-          pivot={Pivot.LEFT}
-          angle={30}
-          radius={50}
-        />
-        <CirclePart
-          position={new Point(400, 200)}
-          pivot={Pivot.TOP}
-          angle={30}
-          radius={50}
-        />
-        <CirclePart
-          position={new Point(400, 200)}
-          pivot={Pivot.RIGHT}
-          angle={30}
-          radius={50}
-        />
-        <CirclePart
-          position={new Point(400, 200)}
-          pivot={Pivot.BOTTOM}
-          angle={30}
-          radius={50}
-        />
-        <CirclePart
-          position={new Point(400, 200)}
-          angle={30}
-          radius={50}
-          fillColor='orange'
-        />
+        {/*<CirclePart*/}
+          {/*position={new Point(400, 200)}*/}
+          {/*pivot={Pivot.LEFT}*/}
+          {/*angle={30}*/}
+          {/*radius={50}*/}
+        {/*/>*/}
+        {/*<CirclePart*/}
+          {/*position={new Point(400, 200)}*/}
+          {/*pivot={Pivot.TOP}*/}
+          {/*angle={30}*/}
+          {/*radius={50}*/}
+        {/*/>*/}
+        {/*<CirclePart*/}
+          {/*position={new Point(400, 200)}*/}
+          {/*pivot={Pivot.RIGHT}*/}
+          {/*angle={30}*/}
+          {/*radius={50}*/}
+        {/*/>*/}
+        {/*<CirclePart*/}
+          {/*position={new Point(400, 200)}*/}
+          {/*pivot={Pivot.BOTTOM}*/}
+          {/*angle={30}*/}
+          {/*radius={50}*/}
+        {/*/>*/}
+        {/*<CirclePart*/}
+          {/*position={new Point(400, 200)}*/}
+          {/*angle={30}*/}
+          {/*radius={50}*/}
+          {/*fillColor='orange'*/}
+        {/*/>*/}
 
         <ArcPart
           position={new Point(200, 400)}
           pivot={Pivot.LEFT}
-          angle={30}
+          angle={0}
           direction={ArcDirection.LEFT}
-          width={10}
-          radius={50}
+          width={20}
+          radius={317}
           centerAngle={45}
           fillColor='red'
           ref={(r) => this.r = r}
         />
-        <ArcPart
-          position={new Point(200, 400)}
-          pivot={Pivot.LEFT}
-          angle={30}
-          direction={ArcDirection.RIGHT}
-          width={10}
-          radius={50}
-          centerAngle={45}
-          fillColor='blue'
-        />
+        {this.r &&
+        <CirclePart
+          radius={5}
+          position={this.r.getPivotPositionForGlobal(Pivot.RIGHT)}
+        />}
 
-        <ArcPart
-          position={new Point(200, 400)}
-          pivot={Pivot.RIGHT}
-          angle={30}
-          direction={ArcDirection.LEFT}
-          width={10}
-          radius={50}
-          centerAngle={45}
-          fillColor='green'
-        />
-        <ArcPart
-          position={new Point(200, 400)}
-          pivot={Pivot.RIGHT}
-          angle={30}
-          direction={ArcDirection.RIGHT}
-          width={10}
-          radius={50}
-          centerAngle={45}
-          fillColor='yellow'
-        />
+        {/*<ArcPart*/}
+          {/*position={new Point(200, 400)}*/}
+          {/*pivot={Pivot.LEFT}*/}
+          {/*angle={30}*/}
+          {/*direction={ArcDirection.RIGHT}*/}
+          {/*width={10}*/}
+          {/*radius={50}*/}
+          {/*centerAngle={45}*/}
+          {/*fillColor='blue'*/}
+        {/*/>*/}
 
-        <TrianglePart
-          position={new Point(400, 400)}
-          angle={30}
-          width={100}
-          height={100}
-        />
-        <TrianglePart
-          position={new Point(400, 400)}
-          pivot={Pivot.TOP}
-          angle={30}
-          width={100}
-          height={100}
-        />
-        <TrianglePart
-          position={new Point(400, 400)}
-          pivot={Pivot.BOTTOM}
-          angle={30}
-          width={100}
-          height={100}
-        />
+        {/*<ArcPart*/}
+          {/*position={new Point(200, 400)}*/}
+          {/*pivot={Pivot.RIGHT}*/}
+          {/*angle={30}*/}
+          {/*direction={ArcDirection.LEFT}*/}
+          {/*width={10}*/}
+          {/*radius={50}*/}
+          {/*centerAngle={45}*/}
+          {/*fillColor='green'*/}
+        {/*/>*/}
+        {/*<ArcPart*/}
+          {/*position={new Point(200, 400)}*/}
+          {/*pivot={Pivot.RIGHT}*/}
+          {/*angle={30}*/}
+          {/*direction={ArcDirection.RIGHT}*/}
+          {/*width={10}*/}
+          {/*radius={50}*/}
+          {/*centerAngle={45}*/}
+          {/*fillColor='yellow'*/}
+        {/*/>*/}
+
+        {/*<TrianglePart*/}
+          {/*position={new Point(400, 400)}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
+        {/*<TrianglePart*/}
+          {/*position={new Point(400, 400)}*/}
+          {/*pivot={Pivot.TOP}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
+        {/*<TrianglePart*/}
+          {/*position={new Point(400, 400)}*/}
+          {/*pivot={Pivot.BOTTOM}*/}
+          {/*angle={30}*/}
+          {/*width={100}*/}
+          {/*height={100}*/}
+        {/*/>*/}
 
         <Tool
           active={true}
