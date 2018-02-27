@@ -5,6 +5,8 @@ import {View, Tool} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
+import * as assert from "assert";
+import {pointsEqual} from "../components/Rails/utils";
 
 
 export default class Case03 extends React.Component<any, any> {
@@ -13,9 +15,6 @@ export default class Case03 extends React.Component<any, any> {
     super(props)
     this.state = {
       count: 0,
-      // pivot: undefined,
-      pivot: Pivot.TOP,
-      pivotPart: 0,
       position: new Point(200,200),
       child_position_1: new Point(200,100),
       child_position_2: new Point(300,100)
@@ -33,6 +32,12 @@ export default class Case03 extends React.Component<any, any> {
       zoom: 1
     };
 
+    console.log(this.state)
+
+    /*
+      Pivot指定なし＋PivotPart指定なしのパターン
+     */
+
     return (
       <View width={800}
             height={600}
@@ -44,19 +49,14 @@ export default class Case03 extends React.Component<any, any> {
         {createGridLines(800, 600, 100)}
 
         /*
-          GroupのPivot指定が変わるテストパターン
+          Pivot指定なし＋PivotPart指定なしのパターン
          */
 
         <PartGroup
           position={this.state.position}
-          pivot={this.state.pivot}
-          pivotPartIndex={this.state.pivotPart}
           onFixed={(g) => {
-            console.log(g.children[0].getPivotPositionForGlobal(Pivot.LEFT))
-            console.log(g.children[0].getPivotPositionForGlobal(Pivot.RIGHT))
-            // this.setState({
-            //   pivot: 1
-            // })
+            // 位置が確定していることを確認
+            assert(pointsEqual(g.position, this.state.position))
           }}
         >
           <RectPart
@@ -81,15 +81,20 @@ export default class Case03 extends React.Component<any, any> {
           onMouseDown={(e) => {
             switch (this.state.count) {
               case 0:
+                // Groupの位置を変更
                 this.setState({
                   count: this.state.count + 1,
-                  pivotPart: 1
+                  position: new Point(300, 200),
                 })
                 break
               case 1:
+                // 子の位置とGroupの位置を変更
+                // 本当はGroupのBoundsが変化するはずなのだが、何故かcomponentDidUpdate が呼ばれた時点で変わっていない・・・。
+                // TODO: 調査する
                 this.setState({
                   count: this.state.count + 1,
-                  pivotPart: undefined
+                  position: new Point(300,300),
+                  child_position_2: new Point(500,100)
                 })
                 break
             }

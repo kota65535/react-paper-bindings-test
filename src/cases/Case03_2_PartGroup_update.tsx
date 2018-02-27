@@ -5,6 +5,8 @@ import {View, Tool} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
+import * as assert from "assert";
+import {pointsEqual} from "../components/Rails/utils";
 
 
 export default class Case03 extends React.Component<any, any> {
@@ -13,7 +15,7 @@ export default class Case03 extends React.Component<any, any> {
     super(props)
     this.state = {
       count: 0,
-      pivot: 0,
+      pivot: Pivot.LEFT,
       position: new Point(200,200),
       child_position_1: new Point(200,100),
       child_position_2: new Point(300,100)
@@ -31,6 +33,8 @@ export default class Case03 extends React.Component<any, any> {
       zoom: 1
     };
 
+    console.log(this.state)
+
     return (
       <View width={800}
             height={600}
@@ -42,18 +46,17 @@ export default class Case03 extends React.Component<any, any> {
         {createGridLines(800, 600, 100)}
 
         /*
-          GroupのPivot指定なし=BoundingBoxの中心がPivotとなるテストパターン
-          子の位置が変更された場合、Pivotも追従して変更される
+          Pivot指定あり＋PivotPart指定なしのパターン
+          TODO: 今は未実装！Pivot指定なしと同じ動作をする
          */
 
         <PartGroup
           position={this.state.position}
+          pivot={this.state.pivot}
           onFixed={(g) => {
-            console.log(g.children[0].getPivotPositionForGlobal(Pivot.LEFT))
-            console.log(g.children[0].getPivotPositionForGlobal(Pivot.RIGHT))
-            // this.setState({
-            //   pivot: 1
-            // })
+            // 位置が確定していることを確認
+            console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.position})`);
+            // assert(pointsEqual(g.getPivotPositionForGlobal(this.state.pivot), this.state.position))
           }}
         >
           <RectPart

@@ -15,8 +15,8 @@ export default class Case04 extends React.Component<any, any> {
     this.state = {
       count: 0,
       pivot: 0,
-      g1_position: new Point(250,200),
-      g2_position: new Point(200,400),
+      g1_position: new Point(200,200),
+      g2_position: new Point(250,200),
       c1_position: new Point(200,100),
       c2_position: new Point(300,100),
       c3_position: new Point(350,200),
@@ -34,6 +34,11 @@ export default class Case04 extends React.Component<any, any> {
       zoom: 1
     };
 
+    /*
+      Pivot指定あり＋PivotPart指定なしのパターン
+      TODO: 今は未実装！Pivot指定なしと同じ動作をする
+     */
+
     return (
       <View width={800}
             height={600}
@@ -47,13 +52,8 @@ export default class Case04 extends React.Component<any, any> {
 
         <PartGroup
           pivot={this.state.pivot}
-          position={this.state.g2_position}
+          position={this.state.g1_position}
           name={'G2'}
-          // onFixed={(g) => {
-          //   console.log(`G2: ${g.children[1].getPivotPositionForGlobal(Pivot.LEFT)}`)
-          //   console.log(`G2: ${g.children[1].getPivotPositionForGlobal(Pivot.RIGHT)}`)
-          //   this.g2 = g
-          // }}
         >
           <CirclePart
             position={new Point(150, 200)}
@@ -63,7 +63,7 @@ export default class Case04 extends React.Component<any, any> {
             fillColor={'blue'}
           />
           <PartGroup
-            position={this.state.g1_position}
+            position={this.state.g2_position}
             onFixed={(g) => {
               console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.LEFT)}`)
               console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.RIGHT)}`)
@@ -108,7 +108,7 @@ export default class Case04 extends React.Component<any, any> {
                 // 子の位置とGroupの位置を変更
                 this.setState({
                   count: this.state.count + 1,
-                  // g2_position: new Point(300,300),
+                  // g1_position: new Point(300,300),
                   c2_position: new Point(300,200),
                   c3_position: new Point(550,200)
                 })
