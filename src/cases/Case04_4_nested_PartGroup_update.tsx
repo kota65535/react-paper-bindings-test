@@ -7,6 +7,8 @@ import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
 import CirclePart from "../components/Rails/RailParts/Parts/CirclePart";
 import ArcPart, {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
+import * as assert from "assert";
+import {pointsEqual} from "../components/Rails/utils";
 
 export default class Case04 extends React.Component<any, any> {
 
@@ -14,8 +16,9 @@ export default class Case04 extends React.Component<any, any> {
     super(props)
     this.state = {
       count: 0,
-      pivot: 0,
-      g1_position: new Point(200,200),
+      pivot: Pivot.LEFT,
+      pivotPart: 0,
+      g1_position: new Point(300,200),
       g2_position: new Point(250,200),
       c1_position: new Point(200,100),
       c2_position: new Point(300,100),
@@ -50,15 +53,15 @@ export default class Case04 extends React.Component<any, any> {
 
 
         <PartGroup
-          pivot={Pivot.LEFT}
-          pivotPartIndex={this.state.pivot}
+          pivot={this.state.pivot}
+          pivotPartIndex={this.state.pivotPart}
           position={this.state.g1_position}
-          name={'G2'}
-          // onFixed={(g) => {
-          //   console.log(`G2: ${g.children[1].getPivotPositionForGlobal(Pivot.LEFT)}`)
-          //   console.log(`G2: ${g.children[1].getPivotPositionForGlobal(Pivot.RIGHT)}`)
-          //   this.g2 = g
-          // }}
+          name={'G1'}
+          onFixed={(g) => {
+            // 位置が確定していることを確認
+            console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.g1_position})`);
+            assert(pointsEqual(g.getPivotPositionForParent(this.state.pivot), this.state.g1_position))
+          }}
         >
           <CirclePart
             position={new Point(150, 200)}
@@ -68,10 +71,13 @@ export default class Case04 extends React.Component<any, any> {
             fillColor={'blue'}
           />
           <PartGroup
+            pivot={this.state.pivot}
+            pivotPartIndex={this.state.pivotPart}
             position={this.state.g2_position}
             onFixed={(g) => {
-              console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.LEFT)}`)
-              console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.RIGHT)}`)
+              // 位置が確定していることを確認
+              console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.g2_position})`);
+              assert(pointsEqual(g.getPivotPositionForParent(this.state.pivot), this.state.g2_position))
             }}
           >
             <RectPart
@@ -106,19 +112,15 @@ export default class Case04 extends React.Component<any, any> {
                 // Groupの位置を変更
                 this.setState({
                   count: this.state.count + 1,
-                  pivot: 1
+                  pivotPart: 1,
+                  pivot: Pivot.RIGHT,
                 })
                 break
               case 1:
                 this.setState({
                   count: this.state.count + 1,
-                  pivot: 2
-                })
-                break
-              case 2:
-                this.setState({
-                  count: this.state.count + 1,
-                  pivot: undefined
+                  pivot: undefined,
+                  pivotPart: undefined
                 })
                 break
             }

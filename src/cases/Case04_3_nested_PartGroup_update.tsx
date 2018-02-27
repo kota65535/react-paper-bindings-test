@@ -57,8 +57,8 @@ export default class Case04 extends React.Component<any, any> {
           name={'G1'}
           onFixed={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPivotPositionForParent(this.state.pivotPart)}, ${this.state.g1_position})`);
-            assert(pointsEqual(g.getPivotPositionForParent(this.state.pivotPart), this.state.g1_position))
+            console.log(`${g.getPivotPositionForParent(undefined)}, ${this.state.g1_position})`);
+            assert(pointsEqual(g.getPivotPositionForParent(undefined), this.state.g1_position))
           }}
         >
           <CirclePart
@@ -70,11 +70,12 @@ export default class Case04 extends React.Component<any, any> {
           />
           <PartGroup
             pivotPartIndex={this.state.pivotPart}
+            // pivotPartIndex={0}
             position={this.state.g2_position}
             onFixed={(g) => {
               // 位置が確定していることを確認
-              // console.log(`${g.getPivotPositionForParent(this.state.pivotPart)}, ${this.state.g2_position})`);
-              // assert(pointsEqual(g.getPivotPositionForParent(this.state.pivotPart), this.state.g2_position))
+              console.log(`${g.getPivotPositionForParent(undefined)}, ${this.state.g2_position})`);
+              assert(pointsEqual(g.getPivotPositionForParent(undefined), this.state.g2_position))
             }}
           >
             <RectPart
@@ -115,7 +116,7 @@ export default class Case04 extends React.Component<any, any> {
               case 1:
                 this.setState({
                   count: this.state.count + 1,
-                  pivotPart: 2
+                  // pivotPart: 2
                 })
                 break
               case 2:
