@@ -80,6 +80,30 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     //     pivotPoint: this.getLocalPivotPosition(this.props.pivot)
     //   })
     // }
+    if (this.props.pivotPartIndex !== undefined) {
+      // PivotPartの指定がある場合、ここでPivot位置を確定させて再度Renderする
+      let pivotPoint = this.getLocalPivotPosition(this.props.pivot)
+      // 親のGroupがいる場合、render時にこのGroupの位置を利用したい場合がある
+      // そのためここでpivot, positionを実質設定してしまう
+      // TODO: より上手い方法が無いか考える
+      this.group.pivot = pivotPoint
+      this.group.position = this.props.position
+    }
+    else {
+      // PivotPartの指定が無い場合、ここで位置を確定する。理由は上記と同様
+      this.group.position = this.props.position
+    }
+  }
+
+  componentWillReceiveProps(nextProps: PartGroupProps) {
+    // if (
+    //   // PivotPartの指定が変更された場合
+    //   this.props.pivotPartIndex && this.props.pivotPartIndex !== nextProps.pivotPartIndex
+    //     // Pivotの指定が変更された場合
+    //   || this.props.pivot !== nextProps.pivot
+    // ) {
+    //   this._isFixed = false
+    // }
   }
 
   componentDidMount() {

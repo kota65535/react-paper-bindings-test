@@ -13,12 +13,9 @@ export default class CirclePart extends PartBase<CirclePartProps, {}> {
     super(props)
   }
 
-  getPivotAngle(pivot: Pivot) {
-    return this.angle
-  }
 
-  getLocalPivotPosition(pivot: Pivot) {
-    const {radius} = this.props
+  private getPivotPosition() {
+    const {radius, pivot} = this.props
     switch (pivot) {
       case Pivot.LEFT:
         return new Point(0, 0)
@@ -41,7 +38,7 @@ export default class CirclePart extends PartBase<CirclePartProps, {}> {
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
-    const pivot = this.getLocalPivotPosition(this.props.pivot)
+    const pivot = this.getPivotPosition()
 
     return <PathComponent
       pathData={createCirclePath(radius)}

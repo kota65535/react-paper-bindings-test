@@ -22,16 +22,24 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     super(props)
   }
 
-  getPivotAngle(pivot: Pivot) {
+  getAngle(pivot: Pivot) {
+    return super.getAngle(pivot) + this.getPivotAngle(pivot)
+  }
+
+  getGlobalAngle(pivot: Pivot) {
+    return super.getGlobalAngle(pivot) + this.getPivotAngle(pivot)
+  }
+
+  private getPivotAngle(pivot: Pivot) {
     switch (pivot) {
       case Pivot.LEFT:
-        return this.angle
+        return 0
       case Pivot.RIGHT:
         switch (this.props.direction) {
           case ArcDirection.RIGHT:
-            return this.angle + this.props.centerAngle
+            return this.props.centerAngle
           case ArcDirection.LEFT:
-            return this.angle - this.props.centerAngle
+            return this.props.centerAngle
           default:
             throw Error(`Invalid direction ${this.props.direction} for ${this.constructor.name}`)
         }
@@ -40,28 +48,8 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  getLocalPivotPosition(pivot: Pivot) {
-    if (this._path) {
-      return this.getPrivatePivotPointFromPath(pivot)
-    } else {
-      return this.getInitialPrivatePivotPoint(pivot)
-    }
-  }
 
-  getPrivatePivotPointFromPath(pivot: Pivot) {
-    switch (pivot) {
-      case Pivot.LEFT:
-        return this.path.getPointAt(0)
-      case Pivot.RIGHT:
-        // 90度ごとに右端のセグメントのインデックスがインクリメントされている？
-        const correction = Math.floor((Math.abs(this.props.centerAngle) + 1) / 90)
-        return this.path.curves[3 + correction].point1
-      default:
-        throw Error(`Invalid pivot ${pivot} for ${this.constructor.name}`)
-    }
-  }
-
-  getInitialPrivatePivotPoint(pivot: Pivot) {
+  private getPivotPosition(pivot: Pivot) {
     switch (this.props.direction) {
       case ArcDirection.RIGHT:
         return this.getPivotPointRight(pivot)
@@ -70,7 +58,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  getPivotPointRight(pivot: Pivot) {
+  private getPivotPointRight(pivot: Pivot) {
     const {radius, width, centerAngle} = this.props
     // 曲線の始点・終点の座標を計算
     const outerEndX = (radius + width / 2) * Math.sin(centerAngle / 180 * Math.PI);
@@ -88,7 +76,7 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
     }
   }
 
-  getPivotPointLeft(pivot: Pivot) {
+  private getPivotPointLeft(pivot: Pivot) {
     const {radius, width, centerAngle, direction} = this.props
     // 曲線の始点・終点の座標を計算
     const outerEndX = (radius + width / 2) * Math.sin(centerAngle / 180 * Math.PI);
@@ -114,9 +102,11 @@ export default class ArcPart extends PartBase<ArcPartProps, {}> {
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
+    const pivotPosition = this.getPivotPosition(pivot)
+
     return <PathComponent
       pathData={createArcPath(width, radius, centerAngle, direction)}
-      pivot={this.getLocalPivotPosition(pivot)}
+      pivot={pivotPosition}
       position={position}
       rotation={angle}
       fillColor={fillColor}

@@ -14,7 +14,7 @@ export interface DetectablePartProps extends PartBaseProps {
   onRightClick?: (e: MouseEvent) => void
   detectionEnabled: boolean
   pivotPartIndex?: number
-  onFixed?: () => void
+  onFixed?: (instance: any) => void
 }
 
 export interface DetectablePartState {
@@ -57,6 +57,10 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
   }
 
   // ========== Public APIs ==========
+
+  get partGroup() {
+    return this._partGroup
+  }
 
   get mainPart() {
     return this._partGroup._children[0]

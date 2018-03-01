@@ -3,26 +3,20 @@ import {Point} from "paper";
 import {Path as PathComponent} from "react-paper-bindings";
 import PartBase, {PartBaseProps, Pivot} from "components/Rails/RailParts/Parts/PartBase";
 
-
-interface RectPartProps extends PartBaseProps {
+export interface RectPartProps extends PartBaseProps {
   width: number
   height: number
 }
-
 
 export default class RectPart extends PartBase<RectPartProps, {}> {
 
   constructor(props: RectPartProps) {
     super(props)
-
   }
 
-  getPivotAngle(pivot: Pivot) {
-    return this.angle
-  }
 
-  getLocalPivotPosition(pivot: Pivot) {
-    const {width, height} = this.props
+  private getPivotPoint() {
+    const {width, height, pivot} = this.props
     switch (pivot) {
       case Pivot.LEFT:
         return new Point(0, 0)
@@ -45,7 +39,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
-    const pivot = this.getLocalPivotPosition(this.props.pivot)
+    const pivot = this.getPivotPoint()
 
     return <PathComponent
       pathData={createRectPath(width, height)}
@@ -73,7 +67,7 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
 }
 
 
-function createRectPath(width: number, height: number) {
+export function createRectPath(width: number, height: number) {
   let pathData = `M 0 0 L 0 ${-height / 2} ${width} ${-height / 2} L ${width}} 0 L ${width} ${height / 2} L 0 ${height / 2} Z`
   return pathData
 }
