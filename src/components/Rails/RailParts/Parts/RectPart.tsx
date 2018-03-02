@@ -14,36 +14,18 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
     super(props)
   }
 
-
-  private getPivotPoint() {
-    const {width, height, pivot} = this.props
-    switch (pivot) {
-      case Pivot.LEFT:
-        return new Point(0, 0)
-      case Pivot.TOP:
-        return new Point(width / 2, -height / 2)
-      case Pivot.RIGHT:
-        return new Point(width, 0)
-      case Pivot.BOTTOM:
-        return new Point(width / 2, height / 2)
-      case Pivot.CENTER:
-      default:
-        return new Point(width / 2, 0)
-    }
-  }
-
   render() {
     const {
       width, height,
-      position, angle, fillColor, visible, opacity, selected, name, data,
+      position, angle, pivot, fillColor, visible, opacity, selected, name, data,
       onFrame, onMouseDown, onMouseDrag, onMouseUp, onClick, onDoubleClick, onMouseMove, onMouseEnter, onMouseLeave
     } = this.props
 
-    const pivot = this.getPivotPoint()
+    const pivotPosition = this.getInternalPivotPosition(pivot)
 
     return <PathComponent
       pathData={createRectPath(width, height)}
-      pivot={pivot}     // pivot parameter MUST proceed to position
+      pivot={pivotPosition}     // pivot parameter MUST proceed to position
       position={position}
       rotation={angle}
       fillColor={fillColor}
@@ -63,6 +45,23 @@ export default class RectPart extends PartBase<RectPartProps, {}> {
       onMouseLeave={onMouseLeave}
       ref={(Path) => this._path = Path}
     />
+  }
+
+  protected getInternalPivotPosition(pivot: Pivot) {
+    const {width, height} = this.props
+    switch (pivot) {
+      case Pivot.LEFT:
+        return new Point(0, 0)
+      case Pivot.TOP:
+        return new Point(width / 2, -height / 2)
+      case Pivot.RIGHT:
+        return new Point(width, 0)
+      case Pivot.BOTTOM:
+        return new Point(width / 2, height / 2)
+      case Pivot.CENTER:
+      default:
+        return new Point(width / 2, 0)
+    }
   }
 }
 
