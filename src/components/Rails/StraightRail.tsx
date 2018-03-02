@@ -7,15 +7,11 @@ import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import {connect} from "react-redux";
 import {compose} from "recompose";
 import {
-  mapDispatchToProps,
-  mapStateToProps,
   RailBase,
   RailBaseDefaultProps,
   RailBaseProps, RailBaseState
 } from "components/Rails/RailBase";
 import * as _ from "lodash";
-import {BaseItemData} from "reducers/layout";
-import withHistory, {WithHistoryProps} from "components/hoc/withHistory";
 
 
 export interface StraightRailProps extends RailBaseProps {
@@ -23,7 +19,7 @@ export interface StraightRailProps extends RailBaseProps {
 }
 
 
-export type StraightRailComposedProps = StraightRailProps & WithHistoryProps
+export type StraightRailComposedProps = StraightRailProps
 
 
 export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseState> {
@@ -74,7 +70,7 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
             partType: 'RailPart',
             partId: 0
           }}
-          onFixed={this.onRailPartFixed}
+          // onFixed={this.onRailPartFixed}
           ref={(railPart) => this.railPart = railPart}
         />
         {_.range(StraightRail.NUM_JOINTS).map(i => {
@@ -91,12 +87,11 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
               }}
               detectionEnabled={this.props.enableJoints}
               hasOpposingJoint={hasOpposingJoints[i]}
-              onLeftClick={this.onJointLeftClick.bind(this, i)}
-              onRightClick={this.onJointRightClick.bind(this, i)}
-              onMouseMove={this.onJointMouseMove.bind(this, i)}
-              onMouseEnter={this.onJointMouseEnter.bind(this, i)}
-              onMouseLeave={this.onJointMouseLeave.bind(this, i)}
-              onFixed={this.onJointsFixed}
+              // onLeftClick={this.onJointLeftClick.bind(this, i)}
+              // onRightClick={this.onJointRightClick.bind(this, i)}
+              // onMouseMove={this.onJointMouseMove.bind(this, i)}
+              // onMouseEnter={this.onJointMouseEnter.bind(this, i)}
+              // onMouseLeave={this.onJointMouseLeave.bind(this, i)}
               ref={(joint) => this.joints[i] = joint}
             />
           )
@@ -105,10 +100,3 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
     )
   }
 }
-
-export type StraightRailItemData = BaseItemData & StraightRailProps
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(compose<StraightRailProps, StraightRailProps>(
-  withHistory
-)(StraightRail))

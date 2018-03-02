@@ -5,6 +5,7 @@ import DetectablePart from "./Parts/DetectablePart";
 import {RAIL_PART_FILL_COLORS} from "constants/parts";
 import {RailPartInfo} from "components/Rails/RailParts/types";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
+import PartGroup from "./Parts/PartGroup";
 
 
 export interface RailPartBaseProps extends Partial<RailPartBaseDefaultProps> {
@@ -12,7 +13,7 @@ export interface RailPartBaseProps extends Partial<RailPartBaseDefaultProps> {
   data?: RailPartInfo
   onLeftClick?: (e: MouseEvent) => void
   onRightClick?: (e: MouseEvent) => void
-  onFixed?: () => void
+  onFixed?: (instance: any) => void
 }
 
 export interface RailPartBaseDefaultProps {
@@ -43,6 +44,31 @@ export default abstract class RailPartBase<P extends RailPartBaseProps, S> exten
 
   constructor(props: P) {
     super(props)
+
+    this.onFixed = this.onFixed.bind(this)
+  }
+
+  componentDidUpdate() {
+    console.log(`0: ${this.getJointPosition(0)}, ${this.getJointAngle(0)}`);
+    console.log(`1: ${this.getJointPosition(1)}, ${this.getJointAngle(1)}`);
+    // setTimeout(() => {
+    //   // let point2 = path.localToGlobal(path.getPointAt(0))
+    //   // console.log(point2)
+    //   console.log(`0: ${this.getJointPosition(0)}, ${this.getJointAngle(0)}`);
+    //   console.log(`1: ${this.getJointPosition(1)}, ${this.getJointAngle(1)}`);
+    // }, 0)
+  }
+
+  onFixed(instance: PartGroup) {
+    if (this.props.onFixed) {
+      this.props.onFixed(this)
+    }
+  }
+
+  componentDidMount() {
+    console.log('mounted')
+    console.log(`0: ${this.getJointPosition(0)}, ${this.getJointAngle(0)}`);
+    console.log(`1: ${this.getJointPosition(1)}, ${this.getJointAngle(1)}`);
   }
 
   /**
@@ -53,7 +79,8 @@ export default abstract class RailPartBase<P extends RailPartBaseProps, S> exten
   getJointPosition(jointIndex: number) {
     // 決まった階層構造を前提としている。どのように実装を矯正すべきか？
     const {pivotPartIndex, pivot} = this.getPivot(jointIndex)
-    return this.detectablePart.mainPart.children[pivotPartIndex].getPivotPositionForGlobal(pivot)
+    return this.detectablePart.mainPart.children[pivotPartIndex].getGlobalPosition(pivot)
+    // return this.detectablePart.partGroup.getPosition(pivot)
   }
 
   /**
@@ -63,16 +90,12 @@ export default abstract class RailPartBase<P extends RailPartBaseProps, S> exten
    */
   getJointAngle(jointIndex: number) {
     const {pivotPartIndex, pivot} = this.getPivot(jointIndex)
-    // レールパーツのグローバルな角度を取得
-    const globalAngle = this.detectablePart.angle
     // レールパーツ内部のGroupにおけるPartのPivotにおける角度を取得
-    let localAngle = this.detectablePart.mainPart.children[pivotPartIndex].getPivotAngle(pivot)
+    let globalRotation = this.detectablePart.mainPart.children[pivotPartIndex].getGlobalAngle(pivot)
     if (pivot === Pivot.LEFT) {
-      // console.log(`Joint ${jointIndex} ${globalAngle} + ${localAngle} + 180`)
-      return globalAngle + localAngle + 180
+      return (globalRotation + 180) % 360
     } else {
-      // console.log(`Joint ${jointIndex} ${globalAngle} + ${localAngle}`)
-      return globalAngle + localAngle
+      return globalRotation
     }
   }
 

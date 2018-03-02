@@ -102,7 +102,7 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
    */
   getGlobalPosition(pivot: Pivot) {
     (this.path as any)._project._updateVersion += 1
-    return this.path.localToGlobal(this.getPosition(pivot))
+    return this.path.localToGlobal(this.getInternalPivotPosition(pivot))
   }
 
   componentDidMount() {

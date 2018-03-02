@@ -2,20 +2,15 @@ import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
 import CurveRailPart from "./RailParts/CurveRailPart";
 import Joint from "./RailParts/Joint";
-import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import {connect} from "react-redux";
 import {compose} from "recompose";
 import {ArcDirection} from "components/Rails/RailParts/Parts/ArcPart";
 import {
-  mapDispatchToProps,
-  mapStateToProps,
   RailBase,
   RailBaseDefaultProps,
   RailBaseProps, RailBaseState
 } from "components/Rails/RailBase";
 import * as _ from "lodash";
-import {BaseItemData} from "reducers/layout";
-import withHistory, {WithHistoryProps} from "components/hoc/withHistory";
 
 
 export interface CurveRailProps extends RailBaseProps {
@@ -23,7 +18,7 @@ export interface CurveRailProps extends RailBaseProps {
   centerAngle: number
 }
 
-export type CurveRailComposedProps = CurveRailProps & WithHistoryProps
+export type CurveRailComposedProps = CurveRailProps
 
 
 export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
@@ -74,7 +69,7 @@ export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
             partType: 'RailPart',
             partId: 0
           }}
-          onFixed={this.onRailPartFixed}
+          // onFixed={this.onRailPartFixed}
           ref={(railPart) => this.railPart = railPart}
         />
         {_.range(CurveRail.NUM_JOINTS).map(i => {
@@ -91,12 +86,11 @@ export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
               }}
               detectionEnabled={this.props.enableJoints}
               hasOpposingJoint={hasOpposingJoints[i]}
-              onLeftClick={this.onJointLeftClick.bind(this, i)}
-              onRightClick={this.onJointRightClick.bind(this, i)}
+              // onLeftClick={this.onJointLeftClick.bind(this, i)}
+              // onRightClick={this.onJointRightClick.bind(this, i)}
               // onMouseMove={this.onJointMouseMove.bind(this, i)}
-              onMouseEnter={this.onJointMouseEnter.bind(this, i)}
-              onMouseLeave={this.onJointMouseLeave.bind(this, i)}
-              onFixed={this.onJointsFixed}
+              // onMouseEnter={this.onJointMouseEnter.bind(this, i)}
+              // onMouseLeave={this.onJointMouseLeave.bind(this, i)}
               ref={(joint) => this.joints[i] = joint}
             />
           )
@@ -106,8 +100,4 @@ export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
   }
 }
 
-export type CurveRailItemData = BaseItemData & CurveRailProps
 
-export default connect(mapStateToProps, mapDispatchToProps)(compose<CurveRailProps, CurveRailProps>(
-  withHistory
-)(CurveRail))
