@@ -118,6 +118,14 @@ export default class Case04 extends React.Component<any, any> {
                   c3_position: new Point(450,200)
                 })
                 break
+              case 2:
+                // 子の位置とGroupの位置を変更
+                // ここでGroup内のパーツの位置を変更するのでPivotも変化する
+                this.setState({
+                  count: this.state.count + 1,
+                  g1_position: new Point(500,400),
+                })
+                break
             }
           }}
         />

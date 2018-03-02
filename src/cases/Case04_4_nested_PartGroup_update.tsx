@@ -121,8 +121,15 @@ export default class Case04 extends React.Component<any, any> {
               case 1:
                 this.setState({
                   count: this.state.count + 1,
-                  pivot: undefined,
-                  pivotPart: undefined
+                  pivotPart: undefined,
+                  pivot: undefined
+                })
+                break
+              case 2:
+                this.setState({
+                  count: this.state.count + 1,
+                  pivotPart: 0,
+                  pivot: Pivot.LEFT,
                 })
                 break
             }
