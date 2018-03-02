@@ -50,22 +50,26 @@ export default class Case05 extends React.Component<any, any> {
               pivot={this.state.pivot}
             >
               <RectPart
+                width={50}
+                height={50}
+              />
+            </PartGroup>
+          }
+          detectionPart={
+            <PartGroup
+              pivotPartIndex={0}
+              pivot={this.state.pivot}
+              opacity={0.5}
+            >
+              <RectPart
                 width={100}
                 height={100}
               />
             </PartGroup>
           }
-          detectionPart={
-            <RectPart
-              position={new Point(0,0)}
-              width={70}
-              height={70}
-              opacity={0.5}
-            />
-          }
           position={new Point(100, 100)}
           // angle={this.angle}
-          pivot={Pivot.LEFT}
+          pivot={this.state.pivot}
           pivotPartIndex={0}
           fillColors={['black', 'orange', 'blue', 'grey']}
           onClick={(e) => console.log('Clicked')}

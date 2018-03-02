@@ -59,7 +59,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
   componentDidMount() {
     // PivotまたはPivotPartの指定がある場合、ここでPivot位置を確定させて再描画する
     this.setPivotAndPosition()
-    this.setState({ fixed: true })
+    this.setState({fixed: true})
 
     if (this.props.onFixed) {
       this.props.onFixed(this)
@@ -68,20 +68,6 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     console.log(`[PartGroup][${name}] mount(): 
     position=${this.group.position}, pivot=${this.group.pivot}, bounds=${this.group.bounds}`)
   }
-
-  private setPivotAndPosition() {
-    // もしGroupが入れ子になっていて、親GroupがこのGroupをPivotとして指定した場合、再描画を待たなければならない問題がある
-    // それでは不便なので、ここでPaperJSのGroupを直接触ってpivot, positionを実質的に設定する
-    // TODO: より上手い方法が無いか考える
-    const {pivot, pivotPartIndex} = this.props
-    if (pivot == null && pivotPartIndex == null) {
-      this.group.position = this.props.position
-    } else {
-      this.group.pivot = this.getInternalPivotPosition(this.props.pivot)
-      this.group.position = this.props.position
-    }
-  }
-
 
   render() {
     const {
@@ -108,7 +94,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     // componentDidMountが呼ばれたらPivotを計算して再描画する
     let pivotPoint, position, angle
     if (this.props.pivotPartIndex != null && this.state.fixed) {
-      pivotPoint = this.getInternalPivotPosition(this.props.pivot)
+      pivotPoint = this.getInternalPivotPosition(pivot)
     }
     position = this.props.position
     angle = this.props.angle
@@ -167,6 +153,19 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
       case Pivot.CENTER:
       default:
         return this.group.parentToLocal(this.group.bounds.center)
+    }
+  }
+
+  private setPivotAndPosition() {
+    // もしGroupが入れ子になっていて、親GroupがこのGroupをPivotとして指定した場合、再描画を待たなければならない問題がある
+    // それでは不便なので、ここでPaperJSのGroupを直接触ってpivot, positionを実質的に設定する
+    // TODO: より上手い方法が無いか考える
+    const {pivot, pivotPartIndex} = this.props
+    if (pivot == null && pivotPartIndex == null) {
+      this.group.position = this.props.position
+    } else {
+      this.group.pivot = this.getInternalPivotPosition(this.props.pivot)
+      this.group.position = this.props.position
     }
   }
 }

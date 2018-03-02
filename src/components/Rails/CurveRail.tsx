@@ -3,13 +3,8 @@ import {Rectangle} from "react-paper-bindings";
 import CurveRailPart from "./RailParts/CurveRailPart";
 import Joint from "./RailParts/Joint";
 import {connect} from "react-redux";
-import {compose} from "recompose";
 import {ArcDirection} from "components/Rails/RailParts/Parts/ArcPart";
-import {
-  RailBase,
-  RailBaseDefaultProps,
-  RailBaseProps, RailBaseState
-} from "components/Rails/RailBase";
+import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
 import * as _ from "lodash";
 
 
@@ -23,8 +18,6 @@ export type CurveRailComposedProps = CurveRailProps
 
 export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
   public static NUM_JOINTS = 2
-  public static PIVOT_JOINT_CHANGING_STRIDE = 1
-
   public static defaultProps: RailBaseDefaultProps = {
     type: 'CurveRail',
     selected: false,
@@ -33,6 +26,7 @@ export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
     hasOpposingJoints: new Array(CurveRail.NUM_JOINTS).fill(false),
     enableJoints: true
   }
+  public static PIVOT_JOINT_CHANGING_STRIDE = 1
 
   constructor(props: CurveRailComposedProps) {
     super(props)

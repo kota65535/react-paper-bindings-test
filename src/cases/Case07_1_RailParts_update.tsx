@@ -1,0 +1,139 @@
+import * as React from "react";
+import {Point} from "paper";
+import {View, Tool} from "react-paper-bindings";
+import {createGridLines} from "./common";
+import StraightRailPart from "components/Rails/RailParts/StraightRailPart";
+import CurveRailPart from "../components/Rails/RailParts/CurveRailPart";
+import {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
+import SimpleTurnoutRailPart from "../components/Rails/RailParts/SimpleTurnoutRailPart";
+import CurvedTurnoutRailPart from "../components/Rails/RailParts/CurvedTurnoutRailPart";
+import {pointsEqual} from "../components/Rails/utils";
+import * as assert from "assert";
+
+export default class Case05 extends React.Component<any, any> {
+  s
+  c
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+      pivot: 0,
+      position: new Point(200,200),
+    }
+  }
+
+  componentDidMount() {
+    assert(pointsEqual(this.s.getJointPosition(0), new Point(200,200)))
+    assert(pointsEqual(this.s.getJointPosition(1), new Point(400,200)))
+    assert(this.s.getJointAngle(0) === 180)
+    assert(this.s.getJointAngle(1) === 0)
+
+    assert(pointsEqual(this.c.getJointPosition(0), new Point(200,200)))
+    // assert(pointsEqual(this.c.getJointPosition(1), new Point(400,200)))
+    assert(this.c.getJointAngle(0) === 180)
+    assert(this.c.getJointAngle(1) === 45)
+  }
+
+  componentDidUpdate() {
+    switch (this.state.count) {
+      case 1:
+        assert(pointsEqual(this.s.getJointPosition(1), new Point(200, 200)))
+        assert(pointsEqual(this.s.getJointPosition(0), new Point(400, 200)))
+        assert(this.s.getJointAngle(1) === 180)
+        assert(this.s.getJointAngle(0) === 0)
+
+        assert(pointsEqual(this.c.getJointPosition(1), new Point(200, 200)))
+        // assert(pointsEqual(this.c.getJointPosition(1), new Point(400,200)))
+        assert(this.c.getJointAngle(1) === 180)
+        assert(this.c.getJointAngle(0) === 315)
+        break
+      case 2:
+        assert(pointsEqual(this.s.getJointPosition(0), new Point(300, 200)))
+        assert(pointsEqual(this.s.getJointPosition(1), new Point(500, 200)))
+        assert(this.s.getJointAngle(0) === 180)
+        assert(this.s.getJointAngle(1) === 0)
+
+        assert(pointsEqual(this.c.getJointPosition(0), new Point(300, 200)))
+        // assert(pointsEqual(this.c.getJointPosition(1), new Point(400,200)))
+        assert(this.c.getJointAngle(0) === 180)
+        assert(this.c.getJointAngle(1) === 45)
+        break
+    }
+  }
+
+
+
+  render() {
+    const matrix = {
+      sx: 0, // scale center x
+      sy: 0, // scale center y
+      tx: 0, // translate x
+      ty: 0, // translate y
+      x: 0,
+      y: 0,
+      zoom: 1
+    };
+
+
+    return (
+      <View width={800}
+            height={600}
+            matrix={matrix}
+            settings={{
+              applyMatrix: false
+            }}
+      >
+        {createGridLines(800, 600, 100)}
+
+        <StraightRailPart
+          pivotJointIndex={this.state.pivot}
+          angle={0}
+          position={this.state.position}
+          length={200}
+          ref={(p) => this.s = p}
+        />
+
+        <CurveRailPart
+          pivotJointIndex={this.state.pivot}
+          position={this.state.position}
+          direction={ArcDirection.RIGHT}
+          angle={0}
+          radius={100}
+          centerAngle={45}
+          ref={(p) => this.c = p}
+        />
+
+
+        <Tool
+          active={true}
+          onMouseDown={(e) => {
+            switch (this.state.count) {
+              case 0:
+                this.setState({
+                  count: this.state.count + 1,
+                  pivot: 1,
+                  // position: new Point(300, 200),
+                })
+                break
+              case 1:
+                this.setState({
+                  count: this.state.count + 1,
+                  pivot: 0,
+                  // position: new Point(300, 200),
+                })
+                break
+              case 2:
+                this.setState({
+                  count: this.state.count + 1,
+                  pivot: 1,
+                  position: new Point(300, 200),
+                })
+                break
+            }
+          }}
+        />
+      </View>
+    )
+  }
+}

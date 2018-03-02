@@ -1,16 +1,9 @@
 import * as React from "react";
-import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
 import StraightRailPart from "./RailParts/StraightRailPart";
 import Joint from "./RailParts/Joint";
-import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import {connect} from "react-redux";
-import {compose} from "recompose";
-import {
-  RailBase,
-  RailBaseDefaultProps,
-  RailBaseProps, RailBaseState
-} from "components/Rails/RailBase";
+import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
 import * as _ from "lodash";
 
 
@@ -25,9 +18,6 @@ export type StraightRailComposedProps = StraightRailProps
 export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseState> {
 
   public static NUM_JOINTS = 2
-  public static PIVOT_JOINT_CHANGING_STRIDE = 1
-
-
   public static defaultProps: RailBaseDefaultProps = {
     type: 'StraightRail',
     selected: false,
@@ -36,6 +26,7 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
     hasOpposingJoints: new Array(StraightRail.NUM_JOINTS).fill(false),
     enableJoints: true
   }
+  public static PIVOT_JOINT_CHANGING_STRIDE = 1
 
   constructor(props: StraightRailComposedProps) {
     super(props)

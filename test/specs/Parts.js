@@ -94,35 +94,5 @@ module.exports = {
       .assert.visualRegression('body', '2')
       .click('canvas')
       .end()
-  },
-  // 'Case03':  function(client){
-  //   client
-  //     .url('http://localhost:3000/3')
-  //     .assert.visualRegression()
-  //     .end()
-  // },
-  // 'Case04':  function(client){
-  //   client
-  //     .url('http://localhost:3000/4')
-  //     .assert.visualRegression()
-  //     .end()
-  // },
-  // 'Case05':  function(client){
-  //   client
-  //     .url('http://localhost:3000/5')
-  //     .assert.visualRegression()
-  //     .end()
-  // },
-  // 'Case06':  function(client){
-  //   client
-  //     .url('http://localhost:3000/6')
-  //     .assert.visualRegression()
-  //     .end()
-  // },
-  // 'Case07':  function(client){
-  //   client
-  //     .url('http://localhost:3000/7')
-  //     .assert.visualRegression()
-  //     .end()
-  // }
+  }
 };

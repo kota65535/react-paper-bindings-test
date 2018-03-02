@@ -4,7 +4,6 @@ import {Rectangle} from "react-paper-bindings";
 import Joint from "./RailParts/Joint";
 import getLogger from "logging";
 import {pointsEqual} from "components/Rails/utils";
-import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import * as _ from "lodash";
 import RailPartBase from "components/Rails/RailParts/RailPartBase";
 
@@ -80,8 +79,8 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
   // レールパーツの位置・角度に合わせてジョイントの位置・角度を変更する
   private setJointPositionsAndAngles() {
     // 注意: オブジェクトをStateにセットする場合はきちんとCloneすること
-    const jointPositions =  _.range(this.joints.length).map(i => _.clone(this.railPart.getJointPosition(i)))
-    const jointAngles =  _.range(this.joints.length).map(i => _.clone(this.railPart.getJointAngle(i)))
+    const jointPositions = _.range(this.joints.length).map(i => _.clone(this.railPart.getJointPosition(i)))
+    const jointAngles = _.range(this.joints.length).map(i => _.clone(this.railPart.getJointAngle(i)))
 
     _.range(this.joints.length).forEach(i => {
       console.log(`Joint ${i} position: ${this.state.jointPositions[i]} -> ${jointPositions[i]}`)
@@ -90,8 +89,8 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
 
     // レールパーツから取得したジョイントの位置・角度が現在のものと異なれば再描画
     if (_.range(this.joints.length).every(i =>
-          pointsEqual(this.state.jointPositions[i], jointPositions[i])
-          && this.state.jointAngles[i] === jointAngles[i])) {
+        pointsEqual(this.state.jointPositions[i], jointPositions[i])
+        && this.state.jointAngles[i] === jointAngles[i])) {
       // noop
     } else {
       this.setState({
