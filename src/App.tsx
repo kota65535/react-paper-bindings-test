@@ -20,7 +20,7 @@ import Case06_1 from './cases/Case06_1_RailParts';
 import Case06_2 from './cases/Case06_2_RailParts';
 import Case07_1 from './cases/Case07_1_RailParts_update';
 // import Case07 from './cases/Case07';
-import Case08 from "./cases/Case08";
+import Case08_1 from './cases/Case08_1_Rails';
 
 const logo = require('./logo.svg');
 
@@ -54,7 +54,7 @@ class App extends React.Component<{}, AppState> {
             <Route path="/6_1" component={Case06_1}/>
             <Route path="/6_2" component={Case06_2}/>
             <Route path="/7_1" component={Case07_1}/>
-            <Route path="/8" component={Case08}/>
+            <Route path="/8_1" component={Case08_1}/>
           </div>
         </Router>
     );
