@@ -63,7 +63,6 @@ export class CurveRail extends RailBase<CurveRailComposedProps, RailBaseState> {
             partType: 'RailPart',
             partId: 0
           }}
-          // onFixed={this.onRailPartFixed}
           ref={(railPart) => this.railPart = railPart}
         />
         {_.range(CurveRail.NUM_JOINTS).map(i => {

@@ -7,6 +7,8 @@ import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
 import CirclePart from "../components/Rails/RailParts/Parts/CirclePart";
 import ArcPart, {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
+import {pointsEqual} from "components/Rails/utils";
+import * as assert from "assert";
 
 export default class Case04 extends React.Component<any, any> {
 
@@ -56,7 +58,14 @@ export default class Case04 extends React.Component<any, any> {
         <PartGroup
           pivot={this.state.pivot}
           position={this.state.g1_position}
-          name={'G2'}
+          name={'G1'}
+          ref={(g) => {
+            // 位置が確定していることを確認
+            if (g) {
+              console.log(`${g.getPosition(this.state.pivot)}, ${this.state.g1_position})`);
+              assert(pointsEqual(g.getPosition(this.state.pivot), this.state.g1_position))
+            }
+          }}
         >
           <CirclePart
             position={new Point(150, 200)}
@@ -67,10 +76,6 @@ export default class Case04 extends React.Component<any, any> {
           />
           <PartGroup
             position={this.state.g2_position}
-            onFixed={(g) => {
-              console.log(`G1: ${g.children[0].getGlobalPosition(Pivot.LEFT)}`)
-              console.log(`G1: ${g.children[0].getGlobalPosition(Pivot.RIGHT)}`)
-            }}
           >
             <RectPart
               position={this.state.c1_position}

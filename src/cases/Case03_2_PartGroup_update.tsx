@@ -10,7 +10,6 @@ import {pointsEqual} from "../components/Rails/utils";
 
 
 export default class Case03 extends React.Component<any, any> {
-  g
 
   constructor(props) {
     super(props)
@@ -21,7 +20,6 @@ export default class Case03 extends React.Component<any, any> {
       child_position_1: new Point(200,100),
       child_position_2: new Point(300,100)
     }
-    this.g = null
   }
 
   render() {
@@ -55,11 +53,12 @@ export default class Case03 extends React.Component<any, any> {
         <PartGroup
           position={this.state.position}
           pivot={this.state.pivot}
-          onFixed={(g) => {
+          ref={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPosition(this.state.pivot)}, ${this.state.position})`);
-            assert(pointsEqual(g.getPosition(this.state.pivot), this.state.position))
-            this.g = g
+            if (g) {
+              console.log(`${g.getPosition(this.state.pivot)}, ${this.state.position})`);
+              assert(pointsEqual(g.getPosition(this.state.pivot), this.state.position))
+            }
           }}
         >
           <RectPart
@@ -78,12 +77,6 @@ export default class Case03 extends React.Component<any, any> {
           />
         </PartGroup>
 
-        {this.g &&
-        <Rectangle
-          center={[this.g.group.position.x, this.g.group.position.y]}
-          size={[this.g.group.bounds.width, this.g.group.bounds.height]}
-          strokeColor={'black'}
-        />}
 
         <Tool
           active={true}

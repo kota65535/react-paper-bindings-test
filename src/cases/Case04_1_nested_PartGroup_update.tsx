@@ -53,11 +53,13 @@ export default class Case04 extends React.Component<any, any> {
 
         <PartGroup
           position={this.state.g1_position}
-          name={'g1'}
-          onFixed={(g) => {
+          name={'G1'}
+          ref={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPosition(this.state.pivot)}, ${this.state.g1_position})`);
-            assert(pointsEqual(g.getPosition(this.state.pivot), this.state.g1_position))
+            if (g) {
+              console.log(`${g.getPosition(this.state.pivot)}, ${this.state.g1_position})`);
+              assert(pointsEqual(g.getPosition(this.state.pivot), this.state.g1_position))
+            }
           }}
         >
           <CirclePart

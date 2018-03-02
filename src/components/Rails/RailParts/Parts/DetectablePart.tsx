@@ -13,7 +13,6 @@ export interface DetectablePartProps extends PartBaseProps {
   onRightClick?: (e: MouseEvent) => void
   detectionEnabled: boolean
   pivotPartIndex?: number
-  onFixed?: (instance: any) => void
 }
 
 export interface DetectablePartState {
@@ -155,7 +154,7 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
 
   render() {
     const {
-      position, angle, pivot, pivotPartIndex, fillColors, onFixed, name, data, detectionEnabled,
+      position, angle, pivot, pivotPartIndex, fillColors, name, data, detectionEnabled,
       mainPart, detectionPart
     } = this.props
 
@@ -190,7 +189,6 @@ export default class DetectablePart extends React.Component<DetectablePartProps,
         onMouseLeave={this.onMouseLeave}
         onMouseMove={this.onMouseMove}
         onClick={this.onClick}
-        onFixed={onFixed}
         ref={(r) => this._partGroup = r}
       >
         {clonedMainPart}

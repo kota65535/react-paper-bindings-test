@@ -57,13 +57,13 @@ export default class Case03 extends React.Component<any, any> {
           position={this.state.position}
           pivot={this.state.pivot}
           pivotPartIndex={this.state.pivotPart}
-          // pivotPartIndex={0}
-          onFixed={(g) => {
+          ref={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPosition(this.state.pivot)}, ${this.state.position})`);
-            assert(pointsEqual(g.getPosition(this.state.pivot), this.state.position))
+            if (g) {
+              console.log(`${g.getPosition(this.state.pivot)}, ${this.state.position})`);
+              assert(pointsEqual(g.getPosition(this.state.pivot), this.state.position))
+            }
           }}
-          name='unko'
         >
           <RectPart
             position={this.state.child_position_1}

@@ -43,7 +43,6 @@ export default class Case05 extends React.Component<any, any> {
           angle={30}
           position={new Point(100,200)}
           length={200}
-          onFixed={() => console.log("FIXED!")}
         />
 
         <DoubleStraightRailPart
@@ -51,7 +50,6 @@ export default class Case05 extends React.Component<any, any> {
           angle={30}
           position={new Point(200,200)}
           length={200}
-          onFixed={() => console.log("FIXED!")}
         />
 
         <DoubleStraightRailPart
@@ -59,7 +57,6 @@ export default class Case05 extends React.Component<any, any> {
           angle={30}
           position={new Point(300,200)}
           length={200}
-          onFixed={() => console.log("FIXED!")}
         />
 
         <DoubleStraightRailPart
@@ -67,7 +64,6 @@ export default class Case05 extends React.Component<any, any> {
           angle={30}
           position={new Point(400,200)}
           length={200}
-          onFixed={() => console.log("FIXED!")}
         />
 
         {/*<DoubleCrossTurnoutRailPart*/}

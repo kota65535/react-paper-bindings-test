@@ -56,10 +56,9 @@ export default class Case03 extends React.Component<any, any> {
 
         <PartGroup
           position={this.state.position}
-          onFixed={(g) => {
+          ref={(g) => {
             // 位置が確定していることを確認
-            assert(pointsEqual(g.position, this.state.position))
-            this.g = g
+            if (g) assert(pointsEqual(g.position, this.state.position))
           }}
         >
           <RectPart

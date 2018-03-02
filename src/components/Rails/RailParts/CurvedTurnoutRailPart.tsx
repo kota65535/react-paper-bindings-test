@@ -70,7 +70,7 @@ export default class CurvedTurnoutRailPart extends RailPartBase<CurvedTurnoutRai
   render() {
     const {
       innerRadius, outerRadius, innerCenterAngle, outerCenterAngle, position, direction, pivotJointIndex, detectionEnabled, selected, fillColors, opacity,
-      name, data, onLeftClick, onRightClick, onFixed
+      name, data, onLeftClick, onRightClick
     } = this.props
 
     const {pivotPartIndex, pivot} = this.getPivot(pivotJointIndex)
@@ -111,7 +111,6 @@ export default class CurvedTurnoutRailPart extends RailPartBase<CurvedTurnoutRai
         data={data}
         onLeftClick={onLeftClick}
         onRightClick={onRightClick}
-        onFixed={onFixed}
         ref={(part) => this.detectablePart = part}
       />
     )

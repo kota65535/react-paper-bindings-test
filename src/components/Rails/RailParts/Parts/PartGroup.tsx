@@ -2,11 +2,13 @@ import * as React from "react";
 import {Point} from "paper";
 import {Group as GroupComponent} from "react-paper-bindings";
 import PartBase, {PartBaseDefaultProps, PartBaseProps, Pivot} from "components/Rails/RailParts/Parts/PartBase";
+import getLogger from "logging";
+
+const logger = getLogger(__filename)
 
 
 interface PartGroupProps extends PartBaseProps {
   pivotPartIndex?: number
-  onFixed?: (instance: PartGroup) => void
 }
 
 interface PartGroupState {
@@ -40,11 +42,6 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     return this._children
   }
 
-  //
-  // get position() {
-  //   return this._group.position
-  // }
-
   get group() {
     return this._path
   }
@@ -52,8 +49,9 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
   componentDidUpdate() {
     this.setPivotAndPosition()
 
-    console.log(`[PartGroup][${name}] update(): 
-    position=${this.group.position}, pivot=${this.group.pivot}, bounds=${this.group.bounds}`)
+    logger.trace(
+      `[PartGroup][${name}] update(): 
+      position=${this.group.position}, pivot=${this.group.pivot}, bounds=${this.group.bounds}`)
   }
 
   componentDidMount() {
@@ -61,12 +59,9 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     this.setPivotAndPosition()
     this.setState({fixed: true})
 
-    if (this.props.onFixed) {
-      this.props.onFixed(this)
-    }
-
-    console.log(`[PartGroup][${name}] mount(): 
-    position=${this.group.position}, pivot=${this.group.pivot}, bounds=${this.group.bounds}`)
+    logger.trace(
+      `[PartGroup][${name}] mount(): 
+      position=${this.group.position}, pivot=${this.group.pivot}, bounds=${this.group.bounds}`)
   }
 
   render() {
@@ -99,7 +94,7 @@ export default class PartGroup extends PartBase<PartGroupProps, PartGroupState> 
     position = this.props.position
     angle = this.props.angle
 
-    console.log(`[PartGroup][${name}] render(): position=${position}, pivot=${pivotPoint}`)
+    logger.trace(`[PartGroup][${name}] render(): position=${position}, pivot=${pivotPoint}`)
 
     return (
       <GroupComponent

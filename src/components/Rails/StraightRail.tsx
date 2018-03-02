@@ -61,7 +61,6 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
             partType: 'RailPart',
             partId: 0
           }}
-          // onFixed={this.onRailPartFixed}
           ref={(railPart) => this.railPart = railPart}
         />
         {_.range(StraightRail.NUM_JOINTS).map(i => {

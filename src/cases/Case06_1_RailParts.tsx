@@ -39,14 +39,12 @@ export default class Case05 extends React.Component<any, any> {
           angle={30}
           position={new Point(200,200)}
           length={200}
-          onFixed={() => console.log("FIXED!")}
         />
         <StraightRailPart
           pivotJointIndex={1}
           angle={-30}
           position={new Point(200,200)}
           length={200}
-          onFixed={() => console.log("FIXED!")}
         />
 
         <CurveRailPart
