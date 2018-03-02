@@ -14,7 +14,7 @@ export default class Case04 extends React.Component<any, any> {
     super(props)
     this.state = {
       count: 0,
-      pivot: 0,
+      pivot: Pivot.LEFT,
       g1_position: new Point(200,200),
       g2_position: new Point(250,200),
       c1_position: new Point(200,100),
@@ -36,7 +36,6 @@ export default class Case04 extends React.Component<any, any> {
 
     /*
       Pivot指定あり＋PivotPart指定なしのパターン
-      TODO: 今は未実装！Pivot指定なしと同じ動作をする
      */
 
     return (
@@ -49,6 +48,10 @@ export default class Case04 extends React.Component<any, any> {
       >
         {createGridLines(800, 600, 100)}
 
+        /*
+          Pivot指定あり＋PivotPart指定なしのパターン
+          常にBoundingBoxに対するPivot指定となる
+         */
 
         <PartGroup
           pivot={this.state.pivot}
@@ -65,8 +68,8 @@ export default class Case04 extends React.Component<any, any> {
           <PartGroup
             position={this.state.g2_position}
             onFixed={(g) => {
-              console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.LEFT)}`)
-              console.log(`G1: ${g.children[0].getPivotPositionForGlobal(Pivot.RIGHT)}`)
+              console.log(`G1: ${g.children[0].getGlobalPosition(Pivot.LEFT)}`)
+              console.log(`G1: ${g.children[0].getGlobalPosition(Pivot.RIGHT)}`)
             }}
           >
             <RectPart
@@ -101,16 +104,18 @@ export default class Case04 extends React.Component<any, any> {
                 // Groupの位置を変更
                 this.setState({
                   count: this.state.count + 1,
-                  pivot: 1,
+                  g1_position: new Point(500, 300),
+                  pivot: Pivot.RIGHT
                 })
                 break
               case 1:
                 // 子の位置とGroupの位置を変更
+                // ここでGroup内のパーツの位置を変更するのでPivotも変化する
                 this.setState({
                   count: this.state.count + 1,
-                  // g1_position: new Point(300,300),
+                  // g1_position: new Point(500,300),
                   c2_position: new Point(300,200),
-                  c3_position: new Point(550,200)
+                  c3_position: new Point(450,200)
                 })
                 break
             }

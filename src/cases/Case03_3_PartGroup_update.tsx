@@ -52,8 +52,8 @@ export default class Case03 extends React.Component<any, any> {
           pivotPartIndex={this.state.pivotPart}
           onFixed={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPivotPositionForParent(undefined)}, ${this.state.position})`);
-            assert(pointsEqual(g.getPivotPositionForParent(undefined), this.state.position))
+            console.log(`${g.getPosition(undefined)}, ${this.state.position})`);
+            assert(pointsEqual(g.getPosition(undefined), this.state.position))
           }}
         >
           <RectPart
@@ -86,6 +86,7 @@ export default class Case03 extends React.Component<any, any> {
                 break
               case 1:
                 // PivotPartを指定なしに変更
+                // BoundingBoxの中心がPivotになる
                 this.setState({
                   count: this.state.count + 1,
                   pivotPart: undefined

@@ -55,12 +55,13 @@ export default class Case04 extends React.Component<any, any> {
         <PartGroup
           pivot={this.state.pivot}
           pivotPartIndex={this.state.pivotPart}
+          // pivotPartIndex={0}
           position={this.state.g1_position}
           name={'G1'}
           onFixed={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.g1_position})`);
-            assert(pointsEqual(g.getPivotPositionForParent(this.state.pivot), this.state.g1_position))
+            console.log(`${g.getPosition(this.state.pivot)}, ${this.state.g1_position})`);
+            assert(pointsEqual(g.getPosition(this.state.pivot), this.state.g1_position))
           }}
         >
           <CirclePart
@@ -74,10 +75,11 @@ export default class Case04 extends React.Component<any, any> {
             pivot={this.state.pivot}
             pivotPartIndex={this.state.pivotPart}
             position={this.state.g2_position}
+            name={'G2'}
             onFixed={(g) => {
               // 位置が確定していることを確認
-              console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.g2_position})`);
-              assert(pointsEqual(g.getPivotPositionForParent(this.state.pivot), this.state.g2_position))
+              console.log(`${g.getPosition(this.state.pivot)}, ${this.state.g2_position})`);
+              assert(pointsEqual(g.getPosition(this.state.pivot), this.state.g2_position))
             }}
           >
             <RectPart

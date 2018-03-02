@@ -30,21 +30,7 @@ export default class Case02 extends React.Component<any, any> {
       />,
       <RectPart
         position={new Point(200, 200)}
-        pivot={Pivot.TOP}
-        angle={30}
-        width={100}
-        height={100}
-      />,
-      <RectPart
-        position={new Point(200, 200)}
         pivot={Pivot.RIGHT}
-        angle={30}
-        width={100}
-        height={100}
-      />,
-      <RectPart
-        position={new Point(200, 200)}
-        pivot={Pivot.BOTTOM}
         angle={30}
         width={100}
         height={100}
@@ -64,28 +50,35 @@ export default class Case02 extends React.Component<any, any> {
         {createGridLines(800, 600, 100)}
 
         /* pivotPartIndexを指定しない場合、BoundingBox全体に対するpivot指定となる */
-        <PartGroup
-          pivot={Pivot.RIGHT}
-          position={new Point(300,300)}
-          // angle={30}
-          fillColor={'red'}
-        >
-          {paths}
-        </PartGroup>
-        <PartGroup
-          pivot={Pivot.LEFT}
-          position={new Point(300,300)}
-          angle={30}
-          fillColor={'red'}
-        >
-          {paths}
-        </PartGroup>
+        {/*<PartGroup*/}
+          {/*pivot={Pivot.LEFT}*/}
+          {/*position={new Point(100,200)}*/}
+          {/*angle={30}*/}
+          {/*fillColor={'red'}*/}
+        {/*>*/}
+          {/*{paths}*/}
+        {/*</PartGroup>*/}
+        {/*<PartGroup*/}
+          {/*position={new Point(400,200)}*/}
+          {/*angle={30}*/}
+          {/*fillColor={'red'}*/}
+        {/*>*/}
+          {/*{paths}*/}
+        {/*</PartGroup>*/}
+        {/*<PartGroup*/}
+          {/*pivot={Pivot.RIGHT}*/}
+          {/*position={new Point(700,200)}*/}
+          {/*angle={30}*/}
+          {/*fillColor={'red'}*/}
+        {/*>*/}
+          {/*{paths}*/}
+        {/*</PartGroup>*/}
 
         /* pivotPartIndexを指定した場合、指定のIndexのパーツに対するpivot指定となる */
         <PartGroup
           pivotPartIndex={0}
           pivot={Pivot.RIGHT}
-          position={new Point(300,600)}
+          position={new Point(200,500)}
           angle={30}
           fillColor={'red'}
         >
@@ -93,9 +86,9 @@ export default class Case02 extends React.Component<any, any> {
         </PartGroup>
 
         <PartGroup
-          pivotPartIndex={2}
+          pivotPartIndex={1}
           pivot={Pivot.LEFT}
-          position={new Point(400,600)}
+          position={new Point(400,500)}
           angle={30}
           fillColor={'red'}
         >

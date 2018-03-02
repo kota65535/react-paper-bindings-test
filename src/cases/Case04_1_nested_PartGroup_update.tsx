@@ -56,8 +56,8 @@ export default class Case04 extends React.Component<any, any> {
           name={'g1'}
           onFixed={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.g1_position})`);
-            assert(pointsEqual(g.getPivotPositionForParent(this.state.pivot), this.state.g1_position))
+            console.log(`${g.getPosition(this.state.pivot)}, ${this.state.g1_position})`);
+            assert(pointsEqual(g.getPosition(this.state.pivot), this.state.g1_position))
           }}
         >
           <CirclePart

@@ -1,7 +1,7 @@
 import * as React from "react";
 import RectPart from "components/Rails/RailParts/Parts/RectPart";
 import {Point, Path} from "paper";
-import {View, Tool} from "react-paper-bindings";
+import {View, Tool, Rectangle} from "react-paper-bindings";
 import {createGridLines} from "./common";
 import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
 import PartGroup from "components/Rails/RailParts/Parts/PartGroup";
@@ -10,6 +10,7 @@ import {pointsEqual} from "../components/Rails/utils";
 
 
 export default class Case03 extends React.Component<any, any> {
+  g
 
   constructor(props) {
     super(props)
@@ -19,6 +20,7 @@ export default class Case03 extends React.Component<any, any> {
       child_position_1: new Point(200,100),
       child_position_2: new Point(300,100)
     }
+    this.g = null
   }
 
   render() {
@@ -57,6 +59,7 @@ export default class Case03 extends React.Component<any, any> {
           onFixed={(g) => {
             // 位置が確定していることを確認
             assert(pointsEqual(g.position, this.state.position))
+            this.g = g
           }}
         >
           <RectPart
@@ -75,7 +78,6 @@ export default class Case03 extends React.Component<any, any> {
           />
         </PartGroup>
 
-
         <Tool
           active={true}
           onMouseDown={(e) => {
@@ -88,9 +90,8 @@ export default class Case03 extends React.Component<any, any> {
                 })
                 break
               case 1:
-                // 子の位置とGroupの位置を変更
-                // 本当はGroupのBoundsが変化するはずなのだが、何故かcomponentDidUpdate が呼ばれた時点で変わっていない・・・。
-                // TODO: 調査する
+                // 子とGroupの位置を変更
+                // GroupのBoundingBoxが変化したので、Pivotとなる中心点も変わる。
                 this.setState({
                   count: this.state.count + 1,
                   position: new Point(300,300),

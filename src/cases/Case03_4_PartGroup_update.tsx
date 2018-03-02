@@ -57,11 +57,13 @@ export default class Case03 extends React.Component<any, any> {
           position={this.state.position}
           pivot={this.state.pivot}
           pivotPartIndex={this.state.pivotPart}
+          // pivotPartIndex={0}
           onFixed={(g) => {
             // 位置が確定していることを確認
-            console.log(`${g.getPivotPositionForParent(this.state.pivot)}, ${this.state.position})`);
-            assert(pointsEqual(g.getPivotPositionForParent(this.state.pivot), this.state.position))
+            console.log(`${g.getPosition(this.state.pivot)}, ${this.state.position})`);
+            assert(pointsEqual(g.getPosition(this.state.pivot), this.state.position))
           }}
+          name='unko'
         >
           <RectPart
             position={this.state.child_position_1}
@@ -93,10 +95,17 @@ export default class Case03 extends React.Component<any, any> {
                 })
                 break
               case 1:
-                // TODO: PivotPartとPivotの両方を変更
+                // TODO: PivotPartをundefinedにセットすると、BoundingBoxの中心がPivotになるはずだが、ならない？
                 this.setState({
                   count: this.state.count + 1,
                   pivotPart: undefined
+                })
+                break
+              case 2:
+                // PivotPartを変更
+                this.setState({
+                  count: this.state.count + 1,
+                  pivotPart: 0
                 })
                 break
             }
