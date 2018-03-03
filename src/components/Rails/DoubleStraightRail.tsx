@@ -49,7 +49,6 @@ export class DoubleStraightRail extends RailBase<DoubleStraightRailComposedProps
   render() {
     const {
       position, angle, length, id, selected, pivotJointIndex, opacity,
-      hasOpposingJoints
     } = this.props
 
     return (
@@ -69,29 +68,7 @@ export class DoubleStraightRail extends RailBase<DoubleStraightRailComposedProps
           }}
           ref={(railPart) => this.railPart = railPart}
         />
-        {_.range(DoubleStraightRail.NUM_JOINTS).map(i => {
-          return (
-            <Joint
-              angle={this.state.jointAngles[i]}
-              position={this.state.jointPositions[i]}
-              opacity={opacity}
-              name={'Rail'}
-              data={{
-                railId: id,
-                partType: 'Joint',
-                partId: i
-              }}
-              detectionEnabled={this.props.enableJoints}
-              hasOpposingJoint={hasOpposingJoints[i]}
-              // onLeftClick={this.onJointLeftClick.bind(this, i)}
-              // onRightClick={this.onJointRightClick.bind(this, i)}
-              // onMouseMove={this.onJointMouseMove.bind(this, i)}
-              // onMouseEnter={this.onJointMouseEnter.bind(this, i)}
-              // onMouseLeave={this.onJointMouseLeave.bind(this, i)}
-              ref={(joint) => this.joints[i] = joint}
-            />
-          )
-        })}
+        {this.createJointComponents()}
       </React.Fragment>
     )
   }

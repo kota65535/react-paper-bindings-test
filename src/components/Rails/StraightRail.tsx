@@ -1,10 +1,8 @@
 import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
 import StraightRailPart from "./RailParts/StraightRailPart";
-import Joint from "./RailParts/Joint";
 import {connect} from "react-redux";
 import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
-import * as _ from "lodash";
 
 
 export interface StraightRailProps extends RailBaseProps {
@@ -43,7 +41,6 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
   render() {
     const {
       position, angle, length, id, selected, pivotJointIndex, opacity,
-      hasOpposingJoints, enableJoints
     } = this.props
 
     return (
@@ -63,29 +60,7 @@ export class StraightRail extends RailBase<StraightRailComposedProps, RailBaseSt
           }}
           ref={(railPart) => this.railPart = railPart}
         />
-        {_.range(StraightRail.NUM_JOINTS).map(i => {
-          return (
-            <Joint
-              angle={this.state.jointAngles[i]}
-              position={this.state.jointPositions[i]}
-              opacity={opacity}
-              name={'Rail'}
-              data={{
-                railId: id,
-                partType: 'Joint',
-                partId: i
-              }}
-              detectionEnabled={this.props.enableJoints}
-              hasOpposingJoint={hasOpposingJoints[i]}
-              // onLeftClick={this.onJointLeftClick.bind(this, i)}
-              // onRightClick={this.onJointRightClick.bind(this, i)}
-              // onMouseMove={this.onJointMouseMove.bind(this, i)}
-              // onMouseEnter={this.onJointMouseEnter.bind(this, i)}
-              // onMouseLeave={this.onJointMouseLeave.bind(this, i)}
-              ref={(joint) => this.joints[i] = joint}
-            />
-          )
-        })}
+        {this.createJointComponents()}
       </React.Fragment>
     )
   }

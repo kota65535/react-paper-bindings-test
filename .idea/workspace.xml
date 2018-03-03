@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="640e4422-933c-4350-a5ce-80fac79fcc8a" name="Default" comment="PartGroup refactor">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
+    <list default="true" id="640e4422-933c-4350-a5ce-80fac79fcc8a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" afterPath="$PROJECT_DIR$/src/App.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx" afterPath="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/logging.ts" afterPath="$PROJECT_DIR$/src/logging.ts" />
-      <change beforePath="$PROJECT_DIR$/test/specs/Parts.js" afterPath="$PROJECT_DIR$/test/specs/Parts.js" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx.bak" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/CurveRail.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/CurveRail.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailBase.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailBase.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rails/StraightRail.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/StraightRail.tsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,11 +23,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="CurveRail.tsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/CurveRail.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="StraightRail.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Rails/StraightRail.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RailParts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/specs/RailParts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RailBase.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailBase.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="101" column="2" lean-forward="false" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -36,51 +68,19 @@
       <file leaf-file-name="DoubleStraightRail.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+            <state relative-caret-position="277">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Case03_1_PartGroup_update.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case03_1_PartGroup_update.tsx">
+      <file leaf-file-name="utils.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/utils.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="60" column="23" lean-forward="false" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Case03_2_PartGroup_update.tsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="103" column="31" lean-forward="false" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Case08_1_Rails.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case08_1_Rails.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Case08_2_Rails.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -88,8 +88,8 @@
       <file leaf-file-name="DoubleCrossTurnout.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="262">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -100,28 +100,30 @@
       <file leaf-file-name="App.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+            <state relative-caret-position="322">
+              <caret line="44" column="52" lean-forward="false" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleTurnoutRailPart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/SimpleTurnoutRailPart.tsx">
+      <file leaf-file-name="logging.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logging.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Case07_1_RailParts_update.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case07_1_RailParts_update.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -246,9 +248,6 @@
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/SimpleTurnoutRailPart.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailBase.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/StraightRail.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/CurveRail.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case05_1_DetectablePart.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case06_1_RailParts.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case06_2_RailParts.tsx" />
@@ -262,11 +261,14 @@
         <option value="$PROJECT_DIR$/src/cases/Case04_1_nested_PartGroup_update.tsx" />
         <option value="$PROJECT_DIR$/src/logging.ts" />
         <option value="$PROJECT_DIR$/test/specs/Parts.js" />
-        <option value="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailBase.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/StraightRail.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/CurveRail.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
       </list>
     </option>
   </component>
@@ -395,12 +397,6 @@
               <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="cases" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
@@ -623,14 +619,7 @@
       <workItem from="1519504618688" duration="108800000" />
       <workItem from="1520008815331" duration="15570000" />
       <workItem from="1520050028569" duration="1274000" />
-      <workItem from="1520058248364" duration="2258000" />
-    </task>
-    <task id="LOCAL-00006" summary="parts">
-      <created>1518200439743</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1518200439743</updated>
+      <workItem from="1520058248364" duration="3466000" />
     </task>
     <task id="LOCAL-00007" summary="rails">
       <created>1518236402493</created>
@@ -968,11 +957,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520022262780</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="double cross">
+      <created>1520067994656</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1520067994657</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290261000" />
+    <option name="totallyTimeSpent" value="291469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1044,7 +1040,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="circle" />
     <MESSAGE value="part group" />
     <MESSAGE value="triangle" />
     <MESSAGE value="default" />
@@ -1069,7 +1064,8 @@
     <MESSAGE value="reformat code" />
     <MESSAGE value="baselines" />
     <MESSAGE value="no onFixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="no onFixed" />
+    <MESSAGE value="double cross" />
+    <option name="LAST_COMMIT_MESSAGE" value="double cross" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1092,16 +1088,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="71" column="4" lean-forward="false" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.186_Mac OS X/1200x1013/Case03_3__body--0.png" />
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case07_1__body--0.png" />
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case07_1__body--1.png" />
     <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case06_1__body.diff.png" />
     <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case06_1__body.png" />
     <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case06_2__body.diff.png" />
@@ -1284,13 +1270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1305,13 +1284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logging.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/specs/Parts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -1319,52 +1291,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/CurveRail.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailBase.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/StraightRail.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cases/Case08_1_Rails.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1385,14 +1315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cases/Case03_1_PartGroup_update.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1404,7 +1326,7 @@
     <entry file="file://$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -1415,6 +1337,108 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="103" column="31" lean-forward="false" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="44" column="52" lean-forward="false" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.test.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.tsx.bak">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logging.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailBase.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="101" column="2" lean-forward="false" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/utils.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/StraightRail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/RailParts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/CurveRail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
           <folding />
         </state>
       </provider>
