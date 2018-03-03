@@ -1,14 +1,7 @@
 import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
-import Joint from "./RailParts/Joint";
 import {connect} from "react-redux";
-import {compose} from "recompose";
-import {
-  RailBase,
-  RailBaseDefaultProps,
-  RailBaseProps, RailBaseState
-} from "components/Rails/RailBase";
-import * as _ from "lodash";
+import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
 import DoubleStraightRailPart from "components/Rails/RailParts/DoubleStraightRailPart";
 
 
@@ -23,8 +16,6 @@ export type DoubleStraightRailComposedProps = DoubleStraightRailProps
 export class DoubleStraightRail extends RailBase<DoubleStraightRailComposedProps, RailBaseState> {
 
   public static NUM_JOINTS = 4
-  public static PIVOT_JOINT_CHANGING_STRIDE = 1
-
   public static defaultProps: RailBaseDefaultProps = {
     type: 'DoubleStraightRail',
     selected: false,
@@ -33,6 +24,7 @@ export class DoubleStraightRail extends RailBase<DoubleStraightRailComposedProps
     hasOpposingJoints: new Array(DoubleStraightRail.NUM_JOINTS).fill(false),
     enableJoints: true
   }
+  public static PIVOT_JOINT_CHANGING_STRIDE = 1
 
   constructor(props: DoubleStraightRailComposedProps) {
     super(props)

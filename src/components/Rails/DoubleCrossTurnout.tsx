@@ -1,14 +1,7 @@
 import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
-import Joint from "./RailParts/Joint";
 import {connect} from "react-redux";
-import {compose} from "recompose";
-import {
-  RailBase,
-  RailBaseDefaultProps,
-  RailBaseProps, RailBaseState
-} from "components/Rails/RailBase";
-import * as _ from "lodash";
+import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
 import DoubleCrossTurnoutPart from "components/Rails/RailParts/DoubleCrossTurnoutRailPart";
 
 
@@ -23,8 +16,6 @@ export type DoubleCrossTurnoutComposedProps = DoubleCrossTurnoutProps
 export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutComposedProps, RailBaseState> {
 
   public static NUM_JOINTS = 4
-  public static PIVOT_JOINT_CHANGING_STRIDE = 2
-
   public static defaultProps: RailBaseDefaultProps = {
     type: 'DoubleCrossTurnout',
     selected: false,
@@ -33,6 +24,7 @@ export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutComposedProps
     hasOpposingJoints: new Array(DoubleCrossTurnout.NUM_JOINTS).fill(false),
     enableJoints: true
   }
+  public static PIVOT_JOINT_CHANGING_STRIDE = 2
 
   constructor(props: DoubleCrossTurnoutComposedProps) {
     super(props)

@@ -101,6 +101,7 @@ export default abstract class PartBase<P extends PartBaseProps, S> extends React
    * @param {Pivot} pivot
    */
   getGlobalPosition(pivot: Pivot) {
+    // This is a workaround of
     (this.path as any)._project._updateVersion += 1
     return this.path.localToGlobal(this.getInternalPivotPosition(pivot))
   }

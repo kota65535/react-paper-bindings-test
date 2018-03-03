@@ -1,11 +1,9 @@
 import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
 import CurveRailPart from "./RailParts/CurveRailPart";
-import Joint from "./RailParts/Joint";
 import {connect} from "react-redux";
 import {ArcDirection} from "components/Rails/RailParts/Parts/ArcPart";
 import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
-import * as _ from "lodash";
 
 
 export interface CurveRailProps extends RailBaseProps {

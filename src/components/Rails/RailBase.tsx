@@ -75,30 +75,6 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
     this.setJointPositionsAndAngles()
   }
 
-  // レールパーツの位置・角度に合わせてジョイントの位置・角度を変更する
-  private setJointPositionsAndAngles() {
-    // 注意: オブジェクトをStateにセットする場合はきちんとCloneすること
-    const jointPositions = _.range(this.joints.length).map(i => _.clone(this.railPart.getGlobalJointPosition(i)))
-    const jointAngles = _.range(this.joints.length).map(i => _.clone(this.railPart.getGlobalJointAngle(i)))
-
-    _.range(this.joints.length).forEach(i => {
-      LOGGER.debug(`[Rail][${this.props.name}] Joint${i} position: ${this.state.jointPositions[i]} -> ${jointPositions[i]}`)
-      LOGGER.debug(`[Rail][${this.props.name}] Joint${i} angle: ${this.state.jointAngles[i]} -> ${jointAngles[i]}`)
-    })
-
-    // レールパーツから取得したジョイントの位置・角度が現在のものと異なれば再描画
-    if (_.range(this.joints.length).every(i =>
-        pointsEqual(this.state.jointPositions[i], jointPositions[i])
-        && this.state.jointAngles[i] === jointAngles[i])) {
-      // noop
-    } else {
-      this.setState({
-        jointPositions,
-        jointAngles
-      })
-    }
-  }
-
   createJointComponents() {
     const {id, opacity, hasOpposingJoints, enableJoints} = this.props
     const {jointPositions, jointAngles} = this.state
@@ -126,5 +102,29 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
         />
       )
     })
+  }
+
+  // レールパーツの位置・角度に合わせてジョイントの位置・角度を変更する
+  private setJointPositionsAndAngles() {
+    // 注意: オブジェクトをStateにセットする場合はきちんとCloneすること
+    const jointPositions = _.range(this.joints.length).map(i => _.clone(this.railPart.getGlobalJointPosition(i)))
+    const jointAngles = _.range(this.joints.length).map(i => _.clone(this.railPart.getGlobalJointAngle(i)))
+
+    _.range(this.joints.length).forEach(i => {
+      LOGGER.debug(`[Rail][${this.props.name}] Joint${i} position: ${this.state.jointPositions[i]} -> ${jointPositions[i]}`)
+      LOGGER.debug(`[Rail][${this.props.name}] Joint${i} angle: ${this.state.jointAngles[i]} -> ${jointAngles[i]}`)
+    })
+
+    // レールパーツから取得したジョイントの位置・角度が現在のものと異なれば再描画
+    if (_.range(this.joints.length).every(i =>
+        pointsEqual(this.state.jointPositions[i], jointPositions[i])
+        && this.state.jointAngles[i] === jointAngles[i])) {
+      // noop
+    } else {
+      this.setState({
+        jointPositions,
+        jointAngles
+      })
+    }
   }
 }
