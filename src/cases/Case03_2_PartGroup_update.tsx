@@ -92,6 +92,7 @@ export default class Case03 extends React.Component<any, any> {
               case 1:
                 // 子とGroupの位置を変更
                 // ここでGroup内のパーツの位置を変更するのでPivotも変化する
+                // TODO: Bounds のキャッシュが更新されず、古いままのものを使う不具合あり？
                 this.setState({
                   count: this.state.count + 1,
                   position: new Point(300,300),

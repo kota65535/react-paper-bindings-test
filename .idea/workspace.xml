@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="640e4422-933c-4350-a5ce-80fac79fcc8a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cases/Case08.tsx" />
+    <list default="true" id="640e4422-933c-4350-a5ce-80fac79fcc8a" name="Default" comment="PartGroup refactor">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" afterPath="$PROJECT_DIR$/src/App.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx" afterPath="$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" afterPath="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx" afterPath="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/logging.ts" afterPath="$PROJECT_DIR$/src/logging.ts" />
+      <change beforePath="$PROJECT_DIR$/test/specs/Parts.js" afterPath="$PROJECT_DIR$/test/specs/Parts.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,83 +23,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Case05_DetectablePart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PartBase.tsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PartGroup.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="117" column="24" lean-forward="true" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArcPart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RectPart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrianglePart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RailPartBase.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="63" column="36" lean-forward="false" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Case06_RailParts.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case06_RailParts.tsx">
+      <file leaf-file-name="StraightRail.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/StraightRail.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DoubleStraightRail.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Case03_1_PartGroup_update.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case03_1_PartGroup_update.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="60" column="23" lean-forward="false" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Case03_2_PartGroup_update.tsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="103" column="31" lean-forward="false" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Case08_1_Rails.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case08_1_Rails.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Case08_2_Rails.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -110,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Case08.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cases/Case08.tsx">
+      <file leaf-file-name="DoubleCrossTurnout.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -122,14 +97,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CirclePart.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx">
+      <file leaf-file-name="App.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleTurnoutRailPart.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/SimpleTurnoutRailPart.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1455">
+              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Case07_1_RailParts_update.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cases/Case07_1_RailParts_update.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,59 +138,43 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>../../../src/</find>
-      <find>SetState</find>
-      <find>setState</find>
-      <find>console</find>
-      <find>render</find>
-      <find>DidMount</find>
-      <find>pivotJointIndex</find>
-      <find>(200</find>
-      <find>CirclePart</find>
-      <find>400, 200</find>
-      <find>RectPart</find>
-      <find>200, 200</find>
-      <find>direction</find>
-      <find>fillColor</find>
-      <find>CurveRailPart</find>
-      <find>SimpleTurn</find>
-      <find>Double</find>
-      <find>DoubleStraightRail</find>
-      <find>200, 600</find>
-      <find>Simple</find>
-      <find>_children</find>
-      <find>200,400</find>
+      <find>g2_position</find>
+      <find>g1_position</find>
       <find>pivot</find>
-      <find>ArcPart</find>
+      <find>g3_position</find>
+      <find>detectablePart</find>
+      <find>getLocalPivotPosition(pivot: Pivot) {</find>
+      <find>getLocalPivotPosition</find>
+      <find>Item</find>
+      <find>getPivotPosition</find>
+      <find>path</find>
+      <find>group</find>
+      <find>getPivotPointLeft</find>
+      <find>getPivotAngle</find>
+      <find>angle</find>
+      <find>getPivotPositionForParent</find>
+      <find>getPivotPositionForGlobal</find>
+      <find>state</find>
       <find>visualRegression</find>
-      <find>saveScreenshot</find>
-      <find>move</find>
-      <find>children</find>
-      <find>Joint</find>
+      <find>3_2</find>
+      <find>3_4</find>
+      <find>pivotPoin</find>
+      <find>null`</find>
+      <find>null</find>
+      <find>!== undefined</find>
+      <find>!= null</find>
+      <find>== null</find>
+      <find>console</find>
+      <find>congg</find>
       <find>onFixed</find>
+      <find>.position</find>
     </findStrings>
     <replaceStrings>
-      <replace>PartGroup</replace>
-      <replace>const</replace>
-      <replace>Multi</replace>
-      <replace>state.group</replace>
-      <replace>getPivotPointFromBoundingBox</replace>
-      <replace>radius</replace>
-      <replace>angles</replace>
-      <replace>SimpleTurnoutRailPart</replace>
-      <replace>DoubleStraightRailPart</replace>
-      <replace>CrossoverTurnoutRailPart</replace>
-      <replace>RailBase.RAIL_SPACE</replace>
-      <replace>RailPartBaseProps</replace>
-      <replace>SimpleTurnout</replace>
-      <replace>RailPartBase.SPACE</replace>
-      <replace>RailPartBase.RAIL_SPACE</replace>
       <replace>DoubleStraightRail</replace>
       <replace>Parts</replace>
       <replace>&quot;react-paper-bindings&quot;</replace>
       <replace>400</replace>
       <replace>0</replace>
-      <replace />
       <replace>CirclePart</replace>
       <replace>(400</replace>
       <replace>200, 400</replace>
@@ -206,15 +183,31 @@
       <replace>400, 400</replace>
       <replace>600,200</replace>
       <replace>Curved</replace>
+      <replace>position</replace>
       <replace>400,400</replace>
+      <replace>g1_position</replace>
+      <replace>pivotPart</replace>
+      <replace>getPivotPoint</replace>
+      <replace>getInternalPivotPositionLeft</replace>
+      <replace>getInternalPivotAngle</replace>
+      <replace>getGlobalPosition</replace>
+      <replace>getPosition</replace>
+      <replace>3_3</replace>
+      <replace>3_4</replace>
+      <replace>4_1</replace>
+      <replace>4_2</replace>
+      <replace>4_3</replace>
+      <replace />
+      <replace>4_4</replace>
+      <replace>.g1_position</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/src</dir>
-      <dir>$PROJECT_DIR$/src/components</dir>
       <dir>$PROJECT_DIR$/test/config</dir>
       <dir>$PROJECT_DIR$/src/cases</dir>
-      <dir>$PROJECT_DIR$/src/components/Rails/RailParts</dir>
       <dir>$PROJECT_DIR$/src/components/Rails</dir>
+      <dir>$PROJECT_DIR$/src/components/Rails/RailParts</dir>
+      <dir>$PROJECT_DIR$/src/components</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -223,57 +216,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Rails/utils.tsx" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case01_React.js" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case02_React.js" />
-        <option value="$PROJECT_DIR$/test/package.json" />
-        <option value="$PROJECT_DIR$/test/config/paths.js" />
-        <option value="$PROJECT_DIR$/test/config/webpack.config.dev.js" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case01.ts" />
-        <option value="$PROJECT_DIR$/test/tsconfig.json" />
-        <option value="$PROJECT_DIR$/test/tslint.json" />
-        <option value="$PROJECT_DIR$/test/src/cases/common.js" />
-        <option value="$PROJECT_DIR$/test/src/cases/common.ts" />
-        <option value="$PROJECT_DIR$/test/src/cases/common.tsx" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case01.tsx" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case02.tsx" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case03.tsx" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case04.tsx" />
-        <option value="$PROJECT_DIR$/test/src/App.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx" />
-        <option value="$PROJECT_DIR$/test/src/cases/Case05.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case04.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case05.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case01.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case02.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case03.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case06.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case07.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/CurvedTurnoutRailPart.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/CurveRailPart.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case06_RailParts.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case01_PrimitiveParts.tsx" />
-        <option value="$PROJECT_DIR$/src/cases/Case02_PartGroup.tsx" />
-        <option value="$PROJECT_DIR$/test/nightwatch.json" />
-        <option value="$PROJECT_DIR$/test/test.sh" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/test.sh" />
-        <option value="$PROJECT_DIR$/src/cases/Case04_nested_PartGroup.tsx" />
-        <option value="$PROJECT_DIR$/test/assertions/visualRegression.js" />
-        <option value="$PROJECT_DIR$/test/specs/specs.js" />
-        <option value="$PROJECT_DIR$/test/globals.js" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update_pivot.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case04_1_PartGroup_nested_update_position.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update_position.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_1_PartGroup_no_pivot.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_3_PartGroup_update_pivot.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case06_RailParts_update.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx" />
-        <option value="$PROJECT_DIR$/src/App.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case05_DetectablePart_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case05_2_DetectablePart_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case01_PrimitiveParts.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case02_PartGroup.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/utils.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case07_RailParts_update.tsx" />
         <option value="$PROJECT_DIR$/src/cases/Case08.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx" />
+        <option value="$PROJECT_DIR$/test/specs/specs.js" />
+        <option value="$PROJECT_DIR$/test/specs/RailParts.js" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/CurveRailPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/CurvedTurnoutRailPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/DoubleStraightRailPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/DoubleCrossTurnoutRailPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Joint.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/SimpleTurnoutRailPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/RailBase.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/StraightRail.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/CurveRail.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case05_1_DetectablePart.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case06_1_RailParts.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case06_2_RailParts.tsx" />
         <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_1_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_3_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_4_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case04_4_nested_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case04_3_nested_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case04_2_nested_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case04_1_nested_PartGroup_update.tsx" />
+        <option value="$PROJECT_DIR$/src/logging.ts" />
+        <option value="$PROJECT_DIR$/test/specs/Parts.js" />
+        <option value="$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx" />
+        <option value="$PROJECT_DIR$/src/App.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx" />
+        <option value="$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx" />
       </list>
     </option>
   </component>
@@ -295,6 +288,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
@@ -447,41 +441,132 @@
               <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="assertions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="reports" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline" type="462c0819:PsiDirectoryNode" />
+              <item name="Parts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline" type="462c0819:PsiDirectoryNode" />
+              <item name="Parts" type="462c0819:PsiDirectoryNode" />
+              <item name="chrome_64.0.3282.186_Mac OS X" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="failures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="failures" type="462c0819:PsiDirectoryNode" />
+              <item name="Parts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="failures" type="462c0819:PsiDirectoryNode" />
+              <item name="Parts" type="462c0819:PsiDirectoryNode" />
+              <item name="chrome_64.0.3282.186_Mac OS X" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="new" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+              <item name="new" type="462c0819:PsiDirectoryNode" />
+              <item name="RailParts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-paper-bindings-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-paper-bindings-test" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="specs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="nodejs_interpreter_path" value="/usr/local/Cellar/node/8.9.1/bin/node" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.tslint" value="" />
+    <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="/usr/local/lib/node_modules/gulp" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="" />
+    <property name="node.js.detected.package.tslint" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/cases" />
-      <recent name="$PROJECT_DIR$/test" />
-      <recent name="$PROJECT_DIR$/src/components/Rails/RailParts" />
-      <recent name="$PROJECT_DIR$/src/components/Rails/RailParts/Parts" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/components/Rails/parts" />
       <recent name="$PROJECT_DIR$/src/components/Rail" />
       <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Rails" />
+      <recent name="$PROJECT_DIR$/src/cases" />
+      <recent name="$PROJECT_DIR$/test/specs" />
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/src/components/Rails/RailParts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -535,42 +620,10 @@
       <workItem from="1518233682316" duration="70752000" />
       <workItem from="1519315343253" duration="19925000" />
       <workItem from="1519491580894" duration="12386000" />
-      <workItem from="1519504618688" duration="35707000" />
-    </task>
-    <task id="LOCAL-00001" summary="webpack config">
-      <created>1518200284365</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1518200284365</updated>
-    </task>
-    <task id="LOCAL-00002" summary="webpack config">
-      <created>1518200294276</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1518200294276</updated>
-    </task>
-    <task id="LOCAL-00003" summary="webpack config">
-      <created>1518200300717</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1518200300717</updated>
-    </task>
-    <task id="LOCAL-00004" summary="webpack config">
-      <created>1518200316180</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1518200316180</updated>
-    </task>
-    <task id="LOCAL-00005" summary="parts">
-      <created>1518200339014</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1518200339014</updated>
+      <workItem from="1519504618688" duration="108800000" />
+      <workItem from="1520008815331" duration="15570000" />
+      <workItem from="1520050028569" duration="1274000" />
+      <workItem from="1520058248364" duration="2258000" />
     </task>
     <task id="LOCAL-00006" summary="parts">
       <created>1518200439743</created>
@@ -768,29 +821,175 @@
       <option name="project" value="LOCAL" />
       <updated>1519567177488</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="joint">
+      <created>1519569963611</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1519569963611</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fix arc bug">
+      <created>1519570804829</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1519570804829</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fix arc bug">
+      <created>1519571086710</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1519571086710</updated>
+    </task>
+    <task id="LOCAL-00037" summary="test">
+      <created>1519750985719</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1519750985719</updated>
+    </task>
+    <task id="LOCAL-00038" summary="WIP">
+      <created>1519755976758</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1519755976758</updated>
+    </task>
+    <task id="LOCAL-00039" summary="WIP">
+      <created>1519757399761</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1519757399761</updated>
+    </task>
+    <task id="LOCAL-00040" summary="WIP">
+      <created>1519757565602</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1519757565602</updated>
+    </task>
+    <task id="LOCAL-00041" summary="update PartGroup">
+      <created>1519757588515</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1519757588515</updated>
+    </task>
+    <task id="LOCAL-00042" summary="primitive parts">
+      <created>1519935142897</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1519935142897</updated>
+    </task>
+    <task id="LOCAL-00043" summary="primitive parts">
+      <created>1520002456924</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1520002456924</updated>
+    </task>
+    <task id="LOCAL-00044" summary="primitive parts">
+      <created>1520002465058</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1520002465058</updated>
+    </task>
+    <task id="LOCAL-00045" summary="primitive parts">
+      <created>1520002552496</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1520002552496</updated>
+    </task>
+    <task id="LOCAL-00046" summary="PartGroup test">
+      <created>1520007464403</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1520007464403</updated>
+    </task>
+    <task id="LOCAL-00047" summary="PartGroup test">
+      <created>1520008182223</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1520008182223</updated>
+    </task>
+    <task id="LOCAL-00048" summary="PartGroup test">
+      <created>1520009619515</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1520009619515</updated>
+    </task>
+    <task id="LOCAL-00049" summary="PartGroup refactor">
+      <created>1520010135484</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1520010135484</updated>
+    </task>
+    <task id="LOCAL-00050" summary="PartGroup refactor">
+      <created>1520011639268</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1520011639270</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Rails">
+      <created>1520016217357</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1520016217357</updated>
+    </task>
+    <task id="LOCAL-00052" summary="reformat code">
+      <created>1520016989402</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1520016989402</updated>
+    </task>
+    <task id="LOCAL-00053" summary="baselines">
+      <created>1520017317347</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1520017317348</updated>
+    </task>
+    <task id="LOCAL-00054" summary="no onFixed">
+      <created>1520022262780</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1520022262780</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198066000" />
+    <option name="totallyTimeSpent" value="290261000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42322096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36579275" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23472223" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26180556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39950064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39950064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -798,11 +997,22 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="123" width="1240" height="673" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -834,16 +1044,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="webpack config" />
-    <MESSAGE value="parts" />
-    <MESSAGE value="aa" />
-    <MESSAGE value="bb" />
-    <MESSAGE value="group pivot" />
-    <MESSAGE value="group" />
-    <MESSAGE value="group pivot final" />
-    <MESSAGE value="group pivot selectable" />
-    <MESSAGE value="group pivot selectable 2" />
-    <MESSAGE value="rect &amp; arc revisited" />
     <MESSAGE value="circle" />
     <MESSAGE value="part group" />
     <MESSAGE value="triangle" />
@@ -857,7 +1057,19 @@
     <MESSAGE value="curved turnout" />
     <MESSAGE value="refactored" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="joint" />
+    <MESSAGE value="fix arc bug" />
+    <MESSAGE value="test" />
+    <MESSAGE value="WIP" />
+    <MESSAGE value="update PartGroup" />
+    <MESSAGE value="primitive parts" />
+    <MESSAGE value="PartGroup test" />
+    <MESSAGE value="PartGroup refactor" />
+    <MESSAGE value="Rails" />
+    <MESSAGE value="reformat code" />
+    <MESSAGE value="baselines" />
+    <MESSAGE value="no onFixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="no onFixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -866,226 +1078,283 @@
           <url>file://$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx</url>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Rails/RailParts/CurveRailPart.tsx</url>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/App.tsx</url>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case02__body.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case02__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case02__canvas.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nightwatch.json">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="298">
+          <caret line="71" column="4" lean-forward="false" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case02__canvas.diff.png">
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.186_Mac OS X/1200x1013/Case03_3__body--0.png" />
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case07_1__body--0.png" />
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case07_1__body--1.png" />
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case06_1__body.diff.png" />
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case06_1__body.png" />
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x833/Case06_2__body.diff.png" />
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x829/Case07_1__body--1.diff.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case02__canvas.png">
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x829/Case06_2__body.diff.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case03__canvas.diff.png">
+    <entry file="file://$PROJECT_DIR$/test/screenshots/new/RailParts/chrome_64.0.3282.186_Mac OS X/1200x829/Case06_2__body.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case03__canvas.png">
+    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/RailParts/chrome_64.0.3282.186_Mac OS X/1200x1013/Case06_1__body.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case04__canvas.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case04__canvas.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case01__canvas.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/aaa.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case01__canvas.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x833/Case01__canvas.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/failures/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__html.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__html.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__html.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case01__html.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/assertions/visualRegression.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="279" column="0" lean-forward="false" selection-start-line="279" selection-start-column="0" selection-end-line="279" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="543">
+          <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/globals.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/DoubleCrossTurnoutRailPart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/CurvedTurnoutRailPart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="58" column="13" lean-forward="false" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="1695">
+          <caret line="113" column="0" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case04__body.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/specs/specs.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/DoubleStraightRailPart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case03__html.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/failures/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case03__body.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case03__body.diff.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/new/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case03__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/specs/chrome_64.0.3282.167_Mac OS X/1200x829/Case03__body.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/reports/CHROME_64.0.3282.167_Mac OS X_specs.xml">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Joint.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case03.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-986">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case04_nested_PartGroup.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.tsx.bak">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-923">
+          <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/DetectablePart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        <state relative-caret-position="377">
+          <caret line="165" column="6" lean-forward="false" selection-start-line="165" selection-start-column="6" selection-end-line="165" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="88" column="25" lean-forward="false" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/CurveRailPart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1590">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="77" column="16" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case02_PartGroup.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1313">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case04_3_nested_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case04_2_nested_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case04_1_nested_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-564">
+          <caret line="55" column="17" lean-forward="false" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case04_4_nested_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="121" column="36" lean-forward="false" selection-start-line="121" selection-start-column="36" selection-end-line="121" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case05_1_DetectablePart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="64" column="20" lean-forward="false" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case05_2_DetectablePart_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case06_1_RailParts.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-941">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case06_2_RailParts.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/Parts/chrome_64.0.3282.186_Mac OS X/1200x829/Case03_3__body--0.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/Parts/chrome_64.0.3282.186_Mac OS X/1200x829/Case03_3__body--2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/screenshots/baseline/Parts/chrome_64.0.3282.186_Mac OS X/1200x829/Case03_2__body--2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/screenshots/failures/Parts/chrome_64.0.3282.186_Mac OS X/1200x829/Case03_2__body--2.diff.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case03_4_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-73">
+          <caret line="72" column="25" lean-forward="false" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case03_3_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logging.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/Parts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/CurveRail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case07.tsx">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailBase.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1155">
+          <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/StraightRail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case08_1_Rails.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleCrossTurnout.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -1094,136 +1363,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+        <state relative-caret-position="330">
+          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/StraightRailPart.tsx">
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/SimpleTurnoutRailPart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/CurvedTurnoutRailPart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case01_PrimitiveParts.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Joint.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/ArcPart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="1455">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case06_RailParts.tsx">
+    <entry file="file://$PROJECT_DIR$/src/cases/Case07_1_RailParts_update.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="450">
+          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Rails/DoubleStraightRail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case03_1_PartGroup_update.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="60" column="23" lean-forward="false" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cases/Case08_2_Rails.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case05_DetectablePart.tsx">
+    <entry file="file://$PROJECT_DIR$/src/cases/Case03_2_PartGroup_update.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/RailPartBase.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="63" column="36" lean-forward="false" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cases/Case08.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/CirclePart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartGroup.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="117" column="24" lean-forward="true" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/RectPart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/TrianglePart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Rails/RailParts/Parts/PartBase.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+        <state relative-caret-position="303">
+          <caret line="103" column="31" lean-forward="false" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
           <folding />
         </state>
       </provider>

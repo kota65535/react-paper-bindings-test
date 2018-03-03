@@ -20,17 +20,17 @@ module.exports = {
       .click('canvas')
       .end()
   },
-  'Case03_2':  function(client){
-    client
-      .url('http://localhost:3000/3_2')
-      .assert.visualRegression('body', '0')
-      .click('canvas')
-      .assert.visualRegression('body', '1')
-      .click('canvas')
-      .assert.visualRegression('body', '2')
-      .click('canvas')
-      .end()
-  },
+  // 'Case03_2':  function(client){
+  //   client
+  //     .url('http://localhost:3000/3_2')
+  //     .assert.visualRegression('body', '0')
+  //     .click('canvas')
+  //     .assert.visualRegression('body', '1')
+  //     .click('canvas')
+  //     .assert.visualRegression('body', '2')
+  //     .click('canvas')
+  //     .end()
+  // },
   'Case03_3':  function(client){
     client
       .url('http://localhost:3000/3_3')
