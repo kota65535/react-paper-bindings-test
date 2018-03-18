@@ -65,11 +65,14 @@ export default class StraightRailPart extends RailPartBase<StraightRailPartProps
       <PartGroup
         pivotPartIndex={pivotPartIndex}
         pivot={Pivot.LEFT}
-        name={'Part'}
       >
         <RectPart
           width={length}
           height={RAIL_PART_WIDTH}
+          pivot={Pivot.LEFT}
+          data={{
+            type: 'Part'
+          }}
         />
       </PartGroup>
     )
@@ -88,9 +91,8 @@ export default class StraightRailPart extends RailPartBase<StraightRailPartProps
         data={data}
         onLeftClick={onLeftClick}
         onRightClick={onRightClick}
-        ref={(part) => {
-          if (part) this.detectablePart = part
-        }}
+        selected={selected}
+        ref={(part) => this.detectablePart = part}
       />
     )
   }
