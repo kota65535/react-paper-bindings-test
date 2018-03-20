@@ -10,31 +10,22 @@ export interface DoubleCrossTurnoutProps extends RailBaseProps {
 }
 
 
-export type DoubleCrossTurnoutComposedProps = DoubleCrossTurnoutProps
+export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutProps, RailBaseState> {
 
-
-export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutComposedProps, RailBaseState> {
-
-  public static NUM_JOINTS = 4
   public static defaultProps: RailBaseDefaultProps = {
+    ...RailBase.defaultProps,
     type: 'DoubleCrossTurnout',
-    selected: false,
-    pivotJointIndex: 0,
-    opacity: 1,
-    hasOpposingJoints: new Array(DoubleCrossTurnout.NUM_JOINTS).fill(false),
-    enableJoints: true
+    numJoints: 4,
+    pivotJointChangingStride: 2,
+    opposingJoints: new Array(4).fill(null),
   }
-  public static PIVOT_JOINT_CHANGING_STRIDE = 2
 
-  constructor(props: DoubleCrossTurnoutComposedProps) {
+  constructor(props: DoubleCrossTurnoutProps) {
     super(props)
-
     this.state = {
-      jointPositions: new Array(DoubleCrossTurnout.NUM_JOINTS).fill(props.position),
-      jointAngles: new Array(DoubleCrossTurnout.NUM_JOINTS).fill(props.angle)
+      jointPositions: new Array(this.props.numJoints).fill(props.position),
+      jointAngles: new Array(this.props.numJoints).fill(props.angle),
     }
-    this.temporaryPivotJointIndex = 0
-    this.joints = new Array(DoubleCrossTurnout.NUM_JOINTS).fill(null)
   }
 
 
@@ -52,12 +43,12 @@ export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutComposedProps
           pivotJointIndex={pivotJointIndex}
           selected={selected}
           opacity={opacity}
-          name={'Rail'}
           data={{
+            type: 'RailPart',
             railId: id,
-            partType: 'RailPart',
-            partId: 0
+            partId: 0,
           }}
+          onLeftClick={this.props.onRailPartLeftClick}
           ref={(railPart) => this.railPart = railPart}
         />
         {this.createJointComponents()}
@@ -65,4 +56,3 @@ export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutComposedProps
     )
   }
 }
-

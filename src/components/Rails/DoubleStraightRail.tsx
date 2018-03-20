@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
-import {connect} from "react-redux";
 import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
 import DoubleStraightRailPart from "components/Rails/RailParts/DoubleStraightRailPart";
 
@@ -10,31 +9,22 @@ export interface DoubleStraightRailProps extends RailBaseProps {
 }
 
 
-export type DoubleStraightRailComposedProps = DoubleStraightRailProps
+export class DoubleStraightRail extends RailBase<DoubleStraightRailProps, RailBaseState> {
 
-
-export class DoubleStraightRail extends RailBase<DoubleStraightRailComposedProps, RailBaseState> {
-
-  public static NUM_JOINTS = 4
   public static defaultProps: RailBaseDefaultProps = {
+    ...RailBase.defaultProps,
     type: 'DoubleStraightRail',
-    selected: false,
-    pivotJointIndex: 0,
-    opacity: 1,
-    hasOpposingJoints: new Array(DoubleStraightRail.NUM_JOINTS).fill(false),
-    enableJoints: true
+    numJoints: 4,
+    pivotJointChangingStride: 2,
+    opposingJoints: new Array(4).fill(null),
   }
-  public static PIVOT_JOINT_CHANGING_STRIDE = 1
 
-  constructor(props: DoubleStraightRailComposedProps) {
+  constructor(props: DoubleStraightRailProps) {
     super(props)
-
     this.state = {
-      jointPositions: new Array(DoubleStraightRail.NUM_JOINTS).fill(props.position),
-      jointAngles: new Array(DoubleStraightRail.NUM_JOINTS).fill(props.angle)
+      jointPositions: new Array(this.props.numJoints).fill(props.position),
+      jointAngles: new Array(this.props.numJoints).fill(props.angle),
     }
-    this.temporaryPivotJointIndex = 0
-    this.joints = new Array(DoubleStraightRail.NUM_JOINTS).fill(null)
   }
 
 
@@ -52,12 +42,12 @@ export class DoubleStraightRail extends RailBase<DoubleStraightRailComposedProps
           pivotJointIndex={pivotJointIndex}
           selected={selected}
           opacity={opacity}
-          name={'Rail'}
           data={{
+            type: 'RailPart',
             railId: id,
-            partType: 'RailPart',
-            partId: 0
+            partId: 0,
           }}
+          onLeftClick={this.props.onRailPartLeftClick}
           ref={(railPart) => this.railPart = railPart}
         />
         {this.createJointComponents()}

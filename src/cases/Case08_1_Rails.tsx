@@ -12,8 +12,10 @@ import SimpleTurnoutRailPart from "../components/Rails/RailParts/SimpleTurnoutRa
 import DoubleStraightRailPart from "../components/Rails/RailParts/DoubleStraightRailPart";
 import DoubleCrossTurnoutRailPart from "../components/Rails/RailParts/DoubleCrossTurnoutRailPart";
 import Joint from "../components/Rails/RailParts/Joint";
+// import {CurveRail} from "components/Rails/CurveRail";
+import StraightRail from "../components/Rails/StraightRail";
 import {CurveRail} from "components/Rails/CurveRail";
-import {StraightRail} from "../components/Rails/StraightRail";
+import {SimpleTurnout} from "components/Rails/SimpleTurnout";
 
 export default class Case08 extends React.Component<any, any> {
   r: any
@@ -75,6 +77,18 @@ export default class Case08 extends React.Component<any, any> {
           layerId={1}
         />
 
+        <SimpleTurnout
+          position={this.state.position}
+          pivotJointIndex={this.state.pivotJoint}
+          branchDirection={ArcDirection.RIGHT}
+          angle={210}
+          length={140}
+          radius={280}
+          centerAngle={30}
+          id={0}
+          layerId={1}
+        />
+
         <Tool
           active={true}
           onMouseDown={(e) => {
@@ -82,6 +96,7 @@ export default class Case08 extends React.Component<any, any> {
               case 0:
                 this.setState({
                   count: this.state.count + 1,
+                  position: new Point(300, 200),
                   pivotJoint: 1,
                 })
                 break
@@ -95,7 +110,6 @@ export default class Case08 extends React.Component<any, any> {
                 this.setState({
                   count: this.state.count + 1,
                   pivotJoint: 1,
-                  position: new Point(300, 200),
                 })
                 break
             }

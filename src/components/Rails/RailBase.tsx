@@ -2,31 +2,57 @@ import * as React from "react";
 import {Point} from "paper";
 import {Rectangle} from "react-paper-bindings";
 import Joint from "./RailParts/Joint";
-import getLogger from "logging";
 import {pointsEqual} from "components/Rails/utils";
 import * as _ from "lodash";
 import RailPartBase from "components/Rails/RailParts/RailPartBase";
+import getLogger from "logging";
 
 const LOGGER = getLogger(__filename)
 
+export interface JointInfo {
+  railId: number
+  jointId: number
+}
 
 export interface RailBaseProps extends Partial<RailBaseDefaultProps> {
   position: Point
   angle: number
   id: number
-  layerId: number    // このアイテムが所属するレイヤー
+  // レールが所属するレイヤーのID
+  layerId: number
+  // 任意の名前
   name?: string
-  onFixed?: (ref: any) => void
-
+  // このレールのインスタンスを取得するコールバック
+  refInstance?: (ref: RailBase<any, any>) => void
 }
 
 export interface RailBaseDefaultProps {
-  type?: string    // アイテムの種類、すなわちコンポーネントクラス。この文字列がReactElementのタグ名として用いられる
-  selected?: boolean
-  pivotJointIndex?: number
-  opacity?: number
-  hasOpposingJoints?: boolean[]
+  // このレールの実装クラス名
+  type: string
+  // ジョイント数
+  numJoints: number
+  // 右クリックでPivotJointIndexを加算する数
+  pivotJointChangingStride: number
+
+  // 選択状態
+  selected: boolean
+  // ピボットとなるジョイントのIndex
+  pivotJointIndex: number
+  // 透明度
+  opacity: number
+  // 対向ジョイント情報
+  opposingJoints: JointInfo[]
+  // ジョイント表示のON/OFF
   enableJoints: boolean
+
+  // イベントハンドラ
+  onRailPartLeftClick: (e: MouseEvent) => void
+  onRailPartRightClick: (e: MouseEvent) => void
+  onJointLeftClick: (jointId: number, e: MouseEvent) => void
+  onJointRightClick: (jointId: number, e: MouseEvent) => void
+  onJointMouseMove: (jointId: number, e: MouseEvent) => void
+  onJointMouseEnter: (jointId: number, e: MouseEvent) => void
+  onJointMouseLeave: (jointId: number, e: MouseEvent) => void
 }
 
 export interface RailBaseState {
@@ -34,49 +60,57 @@ export interface RailBaseState {
   jointAngles: number[]
 }
 
-type RailBaseComposedProps = RailBaseProps
 
-
-export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBaseState> extends React.Component<P, S> {
+export abstract class RailBase<P extends RailBaseProps, S extends RailBaseState> extends React.Component<P, S> {
 
   public static defaultProps: RailBaseDefaultProps = {
     type: 'RailBase',
+    numJoints: 2,
+    pivotJointChangingStride: 1,
+
     selected: false,
     pivotJointIndex: 0,
     opacity: 1,
-    hasOpposingJoints: [],
-    enableJoints: true
+    opposingJoints: [],
+    enableJoints: true,
+
+    onRailPartLeftClick: (e: MouseEvent) => {},
+    onRailPartRightClick: (e: MouseEvent) => {},
+    onJointLeftClick: (jointId: number, e: MouseEvent) => {},
+    onJointRightClick: (jointId: number, e: MouseEvent) => {},
+    onJointMouseMove: (jointId: number, e: MouseEvent) => {},
+    onJointMouseEnter: (jointId: number, e: MouseEvent) => {},
+    onJointMouseLeave: (jointId: number, e: MouseEvent) => {},
   }
 
   railPart: RailPartBase<any, any>
   joints: Joint[]
-  temporaryPivotJointIndex: number
+
 
   constructor(props: P) {
     super(props)
-    // 本当はここに書きたいがエラーになる。Typescriptが糞
-    // this.state = {
-    //   railPartsFixed: false
-    // }
-
+    this.joints = new Array(this.props.numJoints).fill(null)
   }
-
-  // TODO: これでOK?
-  // shouldComponentUpdate() {
-  //   return false
-  // }
 
   componentDidUpdate() {
     this.setJointPositionsAndAngles()
   }
 
-
   componentDidMount() {
     this.setJointPositionsAndAngles()
+    // HOCを用いる場合、refではラップされたコンテナを取得することになってしまう
+    // そのためrefInstanceコールバックでコンポーネントインスタンスを取得する手段を与える
+    if (this.props.refInstance) {
+      this.props.refInstance(this)
+    }
   }
 
-  createJointComponents() {
-    const {id, opacity, hasOpposingJoints, enableJoints} = this.props
+  /**
+   * ジョイントコンポーネントを生成する
+   * @returns {any[]}
+   */
+  protected createJointComponents() {
+    const {id, opacity, opposingJoints, enableJoints} = this.props
     const {jointPositions, jointAngles} = this.state
 
     return _.range(this.joints.length).map(i => {
@@ -85,35 +119,36 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
           position={jointPositions[i]}
           angle={jointAngles[i]}
           opacity={opacity}
-          name={'Rail'}
           data={{
+            type: 'Joint',
+            partId: i,
             railId: id,
-            partType: 'Joint',
-            partId: i
           }}
           detectionEnabled={enableJoints}
-          hasOpposingJoint={hasOpposingJoints[i]}
-          // onLeftClick={this.onJointLeftClick.bind(this, i)}
-          // onRightClick={this.onJointRightClick.bind(this, i)}
-          // onMouseMove={this.onJointMouseMove.bind(this, i)}
-          // onMouseEnter={this.onJointMouseEnter.bind(this, i)}
-          // onMouseLeave={this.onJointMouseLeave.bind(this, i)}
+          hasOpposingJoint={opposingJoints[i] != null}
+          onLeftClick={this.props.onJointLeftClick.bind(this, i)}
+          onRightClick={this.props.onJointRightClick.bind(this, i)}
+          onMouseMove={this.props.onJointMouseMove.bind(this, i)}
+          onMouseEnter={this.props.onJointMouseEnter.bind(this, i)}
+          onMouseLeave={this.props.onJointMouseLeave.bind(this, i)}
           ref={(joint) => this.joints[i] = joint}
         />
       )
     })
   }
 
-  // レールパーツの位置・角度に合わせてジョイントの位置・角度を変更する
+  /**
+   * レールパーツの位置・角度に合わせてジョイントの位置・角度を変更する
+   */
   private setJointPositionsAndAngles() {
     // 注意: オブジェクトをStateにセットする場合はきちんとCloneすること
     const jointPositions = _.range(this.joints.length).map(i => _.clone(this.railPart.getGlobalJointPosition(i)))
     const jointAngles = _.range(this.joints.length).map(i => _.clone(this.railPart.getGlobalJointAngle(i)))
 
-    _.range(this.joints.length).forEach(i => {
-      LOGGER.debug(`[Rail][${this.props.name}] Joint${i} position: ${this.state.jointPositions[i]} -> ${jointPositions[i]}`)
-      LOGGER.debug(`[Rail][${this.props.name}] Joint${i} angle: ${this.state.jointAngles[i]} -> ${jointAngles[i]}`)
-    })
+    // _.range(this.joints.length).forEach(i => {
+    //   LOGGER.debug(`[Rail][${this.props.name}] Joint${i} position: ${this.state.jointPositions[i]} -> ${jointPositions[i]}`)
+    //   LOGGER.debug(`[Rail][${this.props.name}] Joint${i} angle: ${this.state.jointAngles[i]} -> ${jointAngles[i]}`)
+    // })
 
     // レールパーツから取得したジョイントの位置・角度が現在のものと異なれば再描画
     if (_.range(this.joints.length).every(i =>
@@ -128,3 +163,4 @@ export abstract class RailBase<P extends RailBaseComposedProps, S extends RailBa
     }
   }
 }
+

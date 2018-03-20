@@ -12,10 +12,12 @@ import SimpleTurnoutRailPart from "../components/Rails/RailParts/SimpleTurnoutRa
 import DoubleStraightRailPart from "../components/Rails/RailParts/DoubleStraightRailPart";
 import DoubleCrossTurnoutRailPart from "../components/Rails/RailParts/DoubleCrossTurnoutRailPart";
 import Joint from "../components/Rails/RailParts/Joint";
-import {CurveRail} from "components/Rails/CurveRail";
-import {StraightRail} from "../components/Rails/StraightRail";
-import {DoubleStraightRail} from "components/Rails/DoubleStraightRail";
 import {DoubleCrossTurnout} from "components/Rails/DoubleCrossTurnout";
+import {DoubleStraightRail} from "components/Rails/DoubleStraightRail";
+// import {CurveRail} from "components/Rails/CurveRail";
+// import {StraightRail} from "../components/Rails/StraightRail";
+// import {DoubleStraightRail} from "components/Rails/DoubleStraightRail";
+// import {DoubleCrossTurnout} from "components/Rails/DoubleCrossTurnout";
 
 export default class Case08 extends React.Component<any, any> {
   r: any
@@ -58,14 +60,14 @@ export default class Case08 extends React.Component<any, any> {
         {createGridLines(800, 600, 100)}
 
 
-        {/*<DoubleStraightRail*/}
-          {/*position={this.state.position}*/}
-          {/*pivotJointIndex={this.state.pivotJoint}*/}
-          {/*length={200}*/}
-          {/*angle={30}*/}
-          {/*id={0}*/}
-          {/*layerId={1}*/}
-        {/*/>*/}
+        <DoubleStraightRail
+          position={this.state.position}
+          pivotJointIndex={this.state.pivotJoint}
+          length={200}
+          angle={30}
+          id={0}
+          layerId={1}
+        />
 
         <DoubleCrossTurnout
           position={this.state.position}
