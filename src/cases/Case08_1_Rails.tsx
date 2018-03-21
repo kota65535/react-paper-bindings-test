@@ -1,21 +1,12 @@
 import * as React from "react";
 import {Point} from "paper";
-import {View, Tool} from "react-paper-bindings";
+import {Tool, View} from "react-paper-bindings";
 import {createGridLines} from "./common";
-import StraightRailPart from "components/Rails/RailParts/StraightRailPart";
-import DetectablePart from "components/Rails/RailParts/Parts/DetectablePart";
-import RectPart from "components/Rails/RailParts/Parts/RectPart";
-import {Pivot} from "components/Rails/RailParts/Parts/PartBase";
-import CurveRailPart from "../components/Rails/RailParts/CurveRailPart";
 import {ArcDirection} from "../components/Rails/RailParts/Parts/ArcPart";
-import SimpleTurnoutRailPart from "../components/Rails/RailParts/SimpleTurnoutRailPart";
-import DoubleStraightRailPart from "../components/Rails/RailParts/DoubleStraightRailPart";
-import DoubleCrossTurnoutRailPart from "../components/Rails/RailParts/DoubleCrossTurnoutRailPart";
-import Joint from "../components/Rails/RailParts/Joint";
 // import {CurveRail} from "components/Rails/CurveRail";
 import StraightRail from "../components/Rails/StraightRail";
-import {CurveRail} from "components/Rails/CurveRail";
-import {SimpleTurnout} from "components/Rails/SimpleTurnout";
+import CurveRail from "components/Rails/CurveRail";
+import SimpleTurnout from "components/Rails/SimpleTurnout";
 
 export default class Case08 extends React.Component<any, any> {
   r: any

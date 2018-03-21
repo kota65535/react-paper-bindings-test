@@ -13,7 +13,7 @@ export interface SimpleTurnoutProps extends RailBaseProps {
 }
 
 
-export class SimpleTurnout extends RailBase<SimpleTurnoutProps, RailBaseState> {
+export default class SimpleTurnout extends RailBase<SimpleTurnoutProps, RailBaseState> {
   public static defaultProps: RailBaseDefaultProps = {
     ...RailBase.defaultProps,
     type: 'SimpleTurnout',

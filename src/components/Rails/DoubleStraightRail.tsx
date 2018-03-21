@@ -9,7 +9,7 @@ export interface DoubleStraightRailProps extends RailBaseProps {
 }
 
 
-export class DoubleStraightRail extends RailBase<DoubleStraightRailProps, RailBaseState> {
+export default class DoubleStraightRail extends RailBase<DoubleStraightRailProps, RailBaseState> {
 
   public static defaultProps: RailBaseDefaultProps = {
     ...RailBase.defaultProps,

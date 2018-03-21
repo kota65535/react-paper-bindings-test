@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Rectangle} from "react-paper-bindings";
-import {connect} from "react-redux";
 import {RailBase, RailBaseDefaultProps, RailBaseProps, RailBaseState} from "components/Rails/RailBase";
 import DoubleCrossTurnoutPart from "components/Rails/RailParts/DoubleCrossTurnoutRailPart";
 
@@ -10,7 +9,7 @@ export interface DoubleCrossTurnoutProps extends RailBaseProps {
 }
 
 
-export class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutProps, RailBaseState> {
+export default class DoubleCrossTurnout extends RailBase<DoubleCrossTurnoutProps, RailBaseState> {
 
   public static defaultProps: RailBaseDefaultProps = {
     ...RailBase.defaultProps,

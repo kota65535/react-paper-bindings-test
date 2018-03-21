@@ -14,7 +14,7 @@ export interface CurveRailProps extends RailBaseProps {
 export default class CurveRail extends RailBase<CurveRailProps, RailBaseState> {
   public static defaultProps: RailBaseDefaultProps = {
     ...RailBase.defaultProps,
-    type: 'StraightRail',
+    type: 'CurveRail',
     numJoints: 2,
     pivotJointChangingStride: 1,
     opposingJoints: new Array(2).fill(null),

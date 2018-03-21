@@ -120,7 +120,7 @@ export default class Case05 extends React.Component<any, any> {
                 this.setState({
                   count: this.state.count + 1,
                   pivot: 0,
-                  // position: new Point(300, 200),
+                  position: new Point(300, 200),
                 })
                 break
               case 2:
